@@ -1,11 +1,25 @@
-<h1>用水路安全確認マップへようこそ！！</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+    <h1>用水路安全確認マップへようこそ！！</h1>
+    
+    <p>危険な用水路や安全な用水路の情報交換を行えるＳＮＳです。</p>
+    </div>
+  </div>
+  <!--パス先変更すること-->
+  <div class="row my-3">
+    <div class="col-3">
+      <p>会員登録済みの方はこちら</p>
+    </div>
+    <div class="col-7">
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-success px-4" %>
+    </div>
+  </div>
+  <div class="row my-3">
+    <p>会員登録がまだの方はこちら</p>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-info px-4" %>
+  </div>
+    <!--ゲストログイン設定の際にリンクをつけること-->
+    <p>お試しはこちら</p>
 
-<p>危険な用水路や安全な用水路の情報交換を行えるＳＮＳです。</p>
-
-<!--パス先変更すること-->
-<p>会員登録済みの方はこちら</p>
-<%= link_to "ログイン", new_user_session_path, class: "btn btn-success btn-block" %>
-<p>会員登録がまだの方はこちら</p>
-<%= link_to "新規登録", new_user_registration_path %>
-<!--ゲストログイン設定の際にリンクをつけること-->
-<p>お試しはこちら</p>
+</div>
