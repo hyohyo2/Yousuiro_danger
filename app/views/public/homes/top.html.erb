@@ -1,2 +1,11 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<h1>用水路安全確認マップへようこそ！！</h1>
+
+<p>危険な用水路や安全な用水路の情報交換を行えるＳＮＳです。</p>
+
+<!--パス先変更すること-->
+<p>会員登録済みの方はこちら</p>
+<%= link_to "ログイン", new_user_session_path, class: "btn btn-success btn-block" %>
+<p>会員登録がまだの方はこちら</p>
+<%= link_to "新規登録", new_user_registration_path %>
+<!--ゲストログイン設定の際にリンクをつけること-->
+<p>お試しはこちら</p>
