@@ -1,26 +1,37 @@
-<h2>Log in</h2>
+<div class="container">
 
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <span class='heading-title'>ユーザログイン</span>
+    </h3>
 <%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+ <%= render "public/shared/error_messages", resource: resource %>
+  <div class="row form-group">
+    <%= f.label :email, "メールアドレス", class: "col-2" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row form-group">
+    <%= f.label :password, "パスワード", class: "col-2" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "col-2" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
+    <div class="row form-group">
+      <div class="col-2"></div>
+      <%= f.check_box :remember_me, class: "mr-1" %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="row form-group">
+    <div class="col-2"></div>
+    <%= f.submit "ログイン", class: "btn btn-success col-2 " %>
   </div>
 <% end %>
-
-<%= render "public/shared/links" %>
+<div class="row form-group">
+      <div class="col-2"></div>
+      会員登録がお済みでない方は
+      <%= render "public/shared/links" %>
+       から会員登録をしてください。
+</div>

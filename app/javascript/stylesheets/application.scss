@@ -1,1 +1,12 @@
 @use '~bootstrap/scss/bootstrap';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.heading-title{
+  background-color: lightsteelblue;
+  padding: 0 30px;
+}
