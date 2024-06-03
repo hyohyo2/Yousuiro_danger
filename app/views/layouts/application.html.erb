@@ -13,13 +13,17 @@
 
   <body>
     <header>
-      <%= render "layouts/header" %>
+      <div class="mb-4">
+        <%= render "layouts/header" %>
+      </div>
     </header>
     <main>
       <%= yield %>
     </main>
     <footer>
-      <%= render "layouts/footer" %>
+      <div class="mt-4">
+        <%= render "layouts/footer" %>
+      </div>
     </footer>
   </body>
 </html>

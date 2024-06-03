@@ -1,44 +1,43 @@
 <div class="container">
 
     <h3 class="row my-4">
-      <div class="col-1"></div>
+      <div class="col-2"></div>
       <span class='heading-title'>新規ユーザ登録</span>
     </h3>
 
     <%= form_with model: @user, url: user_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
-      <div class="row form-group">
+      <div class="row form-group justify-content-center">
         <%= f.label :name, "ユーザネーム", class: "col-3" %>
-        <%= f.text_field :name, class: "col-2" %>
+        <%= f.text_field :name, class: "col-4" %>
       </div>
 
-      <div class="row form-group">
+      <div class="row form-group justify-content-center">
         <%= f.label :email, "メールアドレス", class: "col-3" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-4" %>
       </div>
 
-      <div class="row form-group">
+      <div class="row form-group justify-content-center">
         <div class="col-3">
           <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
           (<%= @minimum_password_length %> 文字以上)
           <% end %>
         </div>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-2" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "col-4" %>
       </div>
 
-      <div class="row form-group">
+      <div class="row form-group justify-content-center">
         <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-3" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-2" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-4" %>
       </div>
 
-      <div class="row form-group">
-        <div class="col-3"> </div>
+      <div class="row form-group justify-content-center">
+
         <%= f.submit "新規登録", class: "btn btn-info col-2 " %>
       </div>
     <% end %>
-    <div class="row form-group">
-      <div class="col-2"></div>
+    <div class="row form-group justify-content-center">
       すでに登録済みの方は
     <%= render "public/shared/links" %>
     からログインしてください。
