@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'maps/show'
-  end
   # ユーザ用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -18,8 +15,13 @@ Rails.application.routes.draw do
   # ユーザ用
   root to: "public/homes#top"
   get '/about' => 'public/homes#about'
+  get '/users/my_page' => 'public/users#mypage', as: 'mypage'
+  get '/users/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
+  patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
+  
   scope module: :public do
-    resource :maps, only:[:show], as: 'map'
+    resources :users, only:[:show, :edit, :update]
+    resource :maps, only:[:show]
   end
   
 

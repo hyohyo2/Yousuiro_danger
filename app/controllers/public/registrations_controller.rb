@@ -38,9 +38,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-
+  # 遷移先をマップへ変更すること
   def after_sign_in_path_for(resource)
-    map_path
+    mypage_path
   end
   
   def after_sign_out_path_for(resource)

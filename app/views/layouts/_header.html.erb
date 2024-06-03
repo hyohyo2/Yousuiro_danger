@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a59ea4; ">
   <div class="container py-2">
-    <!--リンク先修正すること-->
-    <a class="navbar-brand pb-3" href="/maps">
+    <!--リンク先マップへ修正すること-->
+    <a class="navbar-brand pb-3" href="/users/my_page">
       <span>用水路安全マップ<i class="fa-solid fa-map-location-dot"></i></span>
     </a>
     <!--ロゴを記述すること-->
@@ -13,19 +13,19 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <!--マイページへ-->
-          <li class="nav-item">
-
+          <li class="nav-item mx-3">
+            <%= link_to "マイページ", mypage_path(current_user) , class: 'btn btn-outline-light btn-text-dark btn-block'%>
           </li>
           <!--タイムラインへ-->
-          <li class="nav-item">
+          <li class="nav-item mx-3">
 
           </li>
           <!--通知ボタン-->
-          <li class="nav-item">
+          <li class="nav-item mx-3">
 
           </li>
           <!--ログアウトリンク-->
-          <li class="nav-item">
+          <li class="nav-item mx-3">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light btn-text-dark btn-block'%>
           </li>
 

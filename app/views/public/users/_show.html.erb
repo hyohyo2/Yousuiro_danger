@@ -1,0 +1,16 @@
+<!--ユーザ画像・名前・メアドを表示-->
+<div class="col-6">
+    <div class="mb-3 text-center">
+      <%= image_tag user.get_profile_image(200,200) %>
+    </div>
+    <table class="table">
+      <tr>
+        <th>ユーザネーム</th>
+        <td><%= user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= user.email %></td>
+      </tr>
+    </table>
+  </div>
