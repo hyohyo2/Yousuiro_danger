@@ -9,12 +9,12 @@
       <%= render "public/shared/error_messages", resource: resource %>
       <div class="row form-group justify-content-center">
         <%= f.label :name, "ユーザネーム", class: "col-3" %>
-        <%= f.text_field :name, class: "col-4" %>
+        <%= f.text_field :name,autofocus: true, class: "col-4" %>
       </div>
 
       <div class="row form-group justify-content-center">
         <%= f.label :email, "メールアドレス", class: "col-3" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-4" %>
+        <%= f.email_field :email,  autocomplete: "email", class: "col-4" %>
       </div>
 
       <div class="row form-group justify-content-center">
