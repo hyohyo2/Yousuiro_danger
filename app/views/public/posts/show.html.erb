@@ -1,14 +1,55 @@
 <div class="container">
-    <h3 class="row my-4">
-      <div class="col-2"></div>
-      <span class='heading-title'>投稿内容</span>
-    </h3>
-   
-    <%= image_tag @post.get_image(400,300) %>
-    <%= @post.status %>
-    <%= @post.post_code %>
-    <%= @post.prefecture_address %>
-    <%= @post.city_address %>
-    <%= @post.block_address %>
-    <%= @post.detail %>
+  <h3 class="row my-4">
+    <div class="col-2"></div>
+    <span class='heading-title'>投稿内容</span>
+  </h3>
+  <div class="row">
+    <div class="col-5">
+      <%= image_tag @post.get_image(320,240) %>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-6">
+      <table class="table border-bottom">
+        <tr>
+          <th>投稿者名</th>
+          <td><%= @post.user.name %></td>
+        </tr>
+        <tr>
+          <th class="align-middle">状況</th>
+          <td>
+            <!--危険だと赤色表示、安全だと緑色表示-->
+            <% if @post.danger? %>
+              <span class="status-size text-danger font-weight-bold">
+                <%= @post.status_i18n %>
+              </span>
+            <% elsif @post.safety? %>
+              <span class="status-size text-success font-weight-bold">
+                <%= @post.status_i18n %>
+              </span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td>〒<%= @post.post_code.to_s.insert(3, "-") %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td>
+            <%= @post.prefecture_address %>
+            <%= @post.city_address %>
+            <%= @post.block_address %>
+          </td>
+        </tr>
+        <tr>
+          <th>詳細</th>
+          <td><%= @post.detail %></td>
+        </tr>
+      </table>
+      <% if @post.user == current_user %>
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary" %>
+        <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div>
+  </div>
 </div>
