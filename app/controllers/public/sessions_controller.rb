@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -26,7 +27,16 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-
+  private
+  # ユーザステータス(退会したらログインできないようにする)
+  def user_state
+    user = User.find_by(email: params[:user][:email])
+    return if user.nil?
+    return unless user.valid_password?(params[:user][:password])
+    unless user.is_active == true
+      redirect_to new_user_registration_path, notice: '退会済みのため、再度新規登録が必要です。'
+    end
+  end
   
   # protected
 

@@ -1,2 +1,19 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<h1>新規投稿</h1>
+
+<%= form_with model: [@post] do |f| %>
+<h4>都道府県</h4>
+  <%= f.text_field :prefecture_address %>
+<h4>市区町村</h4>
+  <%= f.text_field :city_address %>
+<h4>以降の住所</h4>
+  <%= f.text_field :block_address %>
+<h4>詳細</h4>
+  <%= f.text_area :detail %>
+<h4>状況</h4>
+  <%= f.radio_button :status, 0 %>危険
+  <%= f.radio_button :status, 1 %>安全
+  
+  <%= f.submit "投稿" %>  
+  
+
+<% end %>
