@@ -4,12 +4,16 @@
     <span class='heading-title'>投稿内容</span>
   </h3>
   <div class="row">
-    <div class="col-5">
+    <div class="col-5 text-center">
       <%= image_tag @post.get_image(320,240) %>
     </div>
     <div class="col-1"></div>
     <div class="col-6">
       <table class="table border-bottom">
+        <tr>
+          <th>投稿日時</th>
+          <td><%= l @post.created_at%></td>
+        </tr>
         <tr>
           <th>投稿者名</th>
           <td><%= @post.user.name %></td>
