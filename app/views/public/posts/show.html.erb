@@ -1,2 +1,14 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+    <h3 class="row my-4">
+      <div class="col-2"></div>
+      <span class='heading-title'>投稿内容</span>
+    </h3>
+   
+    <%= image_tag @post.get_image(400,300) %>
+    <%= @post.status %>
+    <%= @post.post_code %>
+    <%= @post.prefecture_address %>
+    <%= @post.city_address %>
+    <%= @post.block_address %>
+    <%= @post.detail %>
+</div>

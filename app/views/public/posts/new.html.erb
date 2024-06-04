@@ -1,19 +1,53 @@
-<h1>新規投稿</h1>
+<div class="container">
 
-<%= form_with model: [@post] do |f| %>
-<h4>都道府県</h4>
-  <%= f.text_field :prefecture_address %>
-<h4>市区町村</h4>
-  <%= f.text_field :city_address %>
-<h4>以降の住所</h4>
-  <%= f.text_field :block_address %>
-<h4>詳細</h4>
-  <%= f.text_area :detail %>
-<h4>状況</h4>
-  <%= f.radio_button :status, 0 %>危険
-  <%= f.radio_button :status, 1 %>安全
-  
-  <%= f.submit "投稿" %>  
-  
+    <h3 class="row my-4">
+      <div class="col-2"></div>
+      <span class='heading-title'>新規投稿</span>
+    </h3>
 
-<% end %>
+  <%= form_with model: [@post] do |f| %>
+    <div class="row d-flex justify-content-center align-items-center">
+      <%= f.label :status, "状況", class: "col-2" %>
+      <div class="status-size col-5 p-0 d-flex justify-content-left">
+        <%= f.radio_button :status, Post.statuses.key(0) %>
+        <%= f.label :status, Post.statuses_i18n[:danger], class: "text-danger font-weight-bold"%>
+        <div class="col-2"></div>
+        <%= f.radio_button :status, Post.statuses.key(1) %>
+        <%= f.label :status, Post.statuses_i18n[:safety], class: "text-success font-weight-bold" %>
+      </div>
+    </div>  
+    <div class="row form-group d-flex justify-content-center">
+      <%= f.label :image, "画像", class: "col-2" %>
+      <%= f.file_field :image, accept: "image*/", class: "col-5 p-0" %>
+    </div> 
+    <div class="row form-group d-flex justify-content-center">
+      <%= f.label :post_code, "郵便番号", class: "col-2" %>
+      <%= f.text_field :post_code, placeholder: "1234567" , class: "col-2" %>
+      <div class="col-3"></div>
+    </div>
+    <div class="row form-group d-flex justify-content-center">
+      <%= f.label :prefecture_address, "都道府県", class: "col-2" %>
+      <%= f.text_field :prefecture_address, placeholder: "岡山県", class: "col-2" %>
+      <div class="col-3"></div>
+    </div>
+    <div class="row form-group d-flex justify-content-center">
+      <%= f.label :city_address, "市区町村", class: "col-2" %>
+      <%= f.text_field :city_address,placeholder: "岡山市北区", class: "col-3" %>
+      <div class="col-2"></div>
+    </div>
+    <div class="row form-group d-flex justify-content-center">
+      <%= f.label :block_address, "以降の住所", class: "col-2" %>
+      <%= f.text_field :block_address,placeholder: "駅元町１－１", class: "col-5" %>
+    </div>
+    <div class="row form-group d-flex justify-content-center">
+      <%= f.label :detail, "詳細", class: "col-2" %>
+      <%= f.text_area :detail, rows: 5, placeholder: "どのような状況か詳しく教えてください。", class: "col-5" %>
+    </div>
+    
+    <div class="row form-group d-flex justify-content-center">  
+      <%= f.submit "投稿",class: "btn btn-success  col-3" %>  
+    </div>
+  
+  <% end %>
+
+</div>
