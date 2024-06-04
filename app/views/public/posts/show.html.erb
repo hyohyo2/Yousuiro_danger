@@ -51,8 +51,10 @@
         </tr>
       </table>
       <% if @post.user == current_user %>
-        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary" %>
-        <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+      <div class="text-center">
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary col-4" %>
+        <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
+      </div>
       <% end %>
     </div>
   </div>

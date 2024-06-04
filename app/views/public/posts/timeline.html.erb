@@ -1,2 +1,47 @@
-<h1>Public::Posts#timeline</h1>
-<p>Find me in app/views/public/posts/timeline.html.erb</p>
+<div class="container">
+  <h3 class="row my-4">
+    <div class="col-2"></div>
+    <span class='heading-title'>タイムライン</span>
+  </h3>
+  
+  <table class="table border-bottom">
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <td class="align-middle text-center">
+          <%= image_tag post.user.get_profile_image(120,90) %><br>
+          <%= post.user.name %>
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to post_path(post.id) do %>
+            <%= l post.created_at, format: :short %><br>
+            <%= post.prefecture_address %>
+            <%= post.city_address %>
+            <%= post.block_address %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <%= image_tag post.get_image(120,90) %>
+        </td>
+        <td class="align-middle text-center">
+          <!--危険だと赤色表示、安全だと緑色表示-->
+          <% if post.danger? %>
+            <span class="status-size text-danger font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% elsif post.safety? %>
+            <span class="status-size text-success font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% end %>
+        </td>
+        
+      </tr>
+      <% end %>
+    </tbody>
+    
+  </table>
+  <div class="d-flex justify-content-center">
+  <%= paginate @posts, theme: 'bootstrap-5'  %>
+  </div>
+</div>
