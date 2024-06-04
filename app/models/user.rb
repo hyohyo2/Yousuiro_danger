@@ -6,7 +6,10 @@ class User < ApplicationRecord
   
   has_one_attached :profile_image
   
-       
+  validates :name, presence: true
+  validates :is_active, inclusion: { in: [true,false] }
+  
+  #プロフィール画像 
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/No_image.jpg')

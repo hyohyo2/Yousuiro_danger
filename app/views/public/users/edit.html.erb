@@ -20,6 +20,11 @@
         <%= f.email_field :email,  autocomplete: "email", class: "col-4 my-2" %>
       </div>
       <div class="row form-group justify-content-center">
+        <%= f.label :introduction, "紹介文", class: "col-3 my-2" %>
+        <%= f.text_area :introduction, rows: 5, class: "col-4 my-2" %>
+      </div>
+      
+      <div class="row form-group justify-content-center">
         <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2" %>
         
       </div>

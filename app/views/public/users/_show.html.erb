@@ -8,9 +8,16 @@
       <th>ユーザネーム</th>
       <td><%= user.name %></td>
     </tr>
+    <!--ログインユーザのみアドレスを-->
+    <% if user == current_user %>
     <tr>
       <th>メールアドレス</th>
       <td><%= user.email %></td>
+    </tr>
+    <tr>
+    <% end %>
+      <th>紹介文</th>
+      <td><%= user.introduction %></td>
     </tr>
   </table>
 </div>
