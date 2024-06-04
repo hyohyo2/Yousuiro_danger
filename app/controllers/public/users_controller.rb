@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  #before_action :authenticate_user! コメントアウト解除すること
   def mypage
     @user = current_user
   end
@@ -25,8 +26,7 @@ class Public::UsersController < ApplicationController
   end
   
   def withdraw
-    @user = current_user
-    @user.update(is_active: true)
+    current_user.update(is_active: false)
     reset_session
     # フラッシュメッセージ導入
     redirect_to root_path

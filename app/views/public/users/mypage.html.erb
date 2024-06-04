@@ -4,6 +4,10 @@
     <span class='heading-title'>マイページ</span>
   </h3>
   <%= render 'public/users/show', user: @user %>
-  
-  <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-secondary" %>
+  <!--後で削除すること-->
+  <%= @user.is_active %>
+  <div class="row">
+    <div class="col-1"></div>
+    <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-secondary col-3"%>
+  </div>
 </div>

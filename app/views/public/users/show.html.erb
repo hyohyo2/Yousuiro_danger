@@ -4,4 +4,6 @@
     <span class='heading-title'>ユーザ登録情報</span>
   </h3>
   <%= render 'public/users/show', user: @user %>
+  <!--後で削除すること-->
+  <%= @user.is_active %>
 </div>
