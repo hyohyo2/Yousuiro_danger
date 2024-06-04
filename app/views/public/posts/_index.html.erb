@@ -1,0 +1,38 @@
+<div class="row my-5">
+  <h3><%= user.name %>さんの投稿一覧</h3>
+  <table class="table border-bottom">
+    <tbody>
+      <% posts.each do |post| %>
+      <tr>
+        <td >
+          <%= image_tag post.get_image(120,90) %>
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to post_path(post.id) do %>
+            <%= l post.created_at, format: :short %><br>
+            <%= post.prefecture_address %>
+            <%= post.city_address %>
+            <%= post.block_address %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <!--危険だと赤色表示、安全だと緑色表示-->
+          <% if post.danger? %>
+            <span class="text-danger font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% elsif post.safety? %>
+            <span class="text-success font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!--ページネーション-->
+<div class="d-flex justify-content-center">
+    <%= paginate posts, theme: 'bootstrap-5'  %>
+</div>

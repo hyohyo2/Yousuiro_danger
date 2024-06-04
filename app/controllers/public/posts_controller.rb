@@ -37,9 +37,8 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
-    # 後でフォローしている人と遺文の投稿のみ表示にする
+    # 後でフォローしている人と自分の投稿のみ表示にする
     @posts = Post.page(params[:page]).per(10)
-    
   end
   
   private

@@ -1,7 +1,7 @@
 <!--ユーザ画像・名前・メアドを表示-->
 <div class="col-6">
   <div class="mb-3 text-center">
-    <%= image_tag user.get_profile_image(200,150) %>
+    <%= image_tag user.get_profile_image(150,150), class: "rounded-circle" %>
   </div>
   <table class="table">
     <tr>
@@ -20,4 +20,7 @@
       <td><%= user.introduction %></td>
     </tr>
   </table>
+  
+  
+  
 </div>

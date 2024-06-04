@@ -2,10 +2,13 @@ class Public::UsersController < ApplicationController
   #before_action :authenticate_user! コメントアウト解除すること
   def mypage
     @user = current_user
+    @posts = @user.posts.page(params[:page]).per(8)
+    @post = @user.posts
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(8)
   end
   
   def edit

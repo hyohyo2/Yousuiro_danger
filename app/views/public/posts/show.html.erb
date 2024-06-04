@@ -16,7 +16,10 @@
         </tr>
         <tr>
           <th>投稿者名</th>
-          <td><%= @post.user.name %></td>
+          <td>
+            <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+            <%= @post.user.name %>
+          </td>
         </tr>
         <tr>
           <th class="align-middle">状況</th>

@@ -8,4 +8,6 @@
     <div class="col-1"></div>
     <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-secondary col-3"%>
   </div>
+  <%= render 'public/posts/index', posts: @posts, user: @user %>
+  </div>
 </div>
