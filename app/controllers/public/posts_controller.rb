@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_matching_login_user, only:[:edit, :update]
   def new
     @post = Post.new
     @current_user = current_user
@@ -50,6 +52,14 @@ class Public::PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:image, :post_code, :prefecture_address, :city_address, :block_address, :detail, :status)
+  end
+  
+  # 他ユーザからのアクセスの制限
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to timeline_path
+    end
   end
   
 end
