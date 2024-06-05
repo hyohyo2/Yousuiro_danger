@@ -1,9 +1,15 @@
+
 <div class="row">
+  
   <%= render 'public/users/info', current_user: @current_user %>
 
-  <div class="col-10 my-5">    
+  <div class="col-10">    
     <div class="container m-0">
-      <h3 class="row mb-5">
+      <!--フラッシュメッセージ-->
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+      <h3 class="row my-4">
         <div class="col-1"></div>
         <span class='heading-title'>投稿内容</span>
       </h3>

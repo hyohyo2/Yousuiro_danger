@@ -21,9 +21,10 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-    # フラッシュメッセージ入れる
+      flash[:notice] = "ユーザー情報の更新しました。"
       redirect_to mypage_path(@user)
     else
+      flash.now[:alert] = "ユーザー情報の更新に失敗しました。"
       render :edit
     end
   end

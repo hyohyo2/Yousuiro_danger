@@ -19,3 +19,21 @@
   background-color: #f8f8ff;
   padding: 20px;
 }
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 5px 0px;
+}
+
+.flash-message.notice {
+  background-color: #bbcedb;
+  color: #006699;
+  border: solid 1px #006699;
+}
+
+.flash-message.alert {
+  background-color: #f8c4cf;
+  color: #cc3366;
+  border: solid 1px #cc3366;
+}
