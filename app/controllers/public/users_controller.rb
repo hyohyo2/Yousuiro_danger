@@ -38,7 +38,7 @@ class Public::UsersController < ApplicationController
     # ユーザが退会ステータスになったらユーザの投稿は削除される
     current_user.posts.destroy_all
     reset_session
-    # フラッシュメッセージ導入
+    flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
     redirect_to root_path
   end
   

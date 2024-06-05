@@ -3,59 +3,58 @@
   <%= render 'public/users/info', current_user: @current_user %>
 
   <div class="col-10">
-    <div class="container m-0">
-      <h3 class="row my-4">
-        <div class="col-1"></div>
-        <!--ページ名表示消す-->
-        <span class='heading-title'>タイムライン</span>
-      </h3>
-    
-      <table class="table border-bottom table-hover table-inverse">
-        <tbody>
-          <% @posts.each do |post| %>
-          <tr>
-            <td class="align-middle text-center">
-              <% if post.user == current_user %>
-                <%= link_to mypage_path do %>
-                  <%= image_tag current_user.get_profile_image(100,100), class: "rounded-circle" %><br>
-                    <%= current_user.name %>
-                <% end %>
-              <% else %>
-                <%= link_to user_path(post.user_id) do %>
-                  <%= image_tag post.user.get_profile_image(100,100), class: "rounded-circle" %><br>
-                  <%= post.user.name %>
-                <% end %>
+
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <!--ページ名表示消す-->
+      <span class='heading-title'>タイムライン</span>
+    </h3>
+  
+    <table class="table border-bottom table-hover table-inverse">
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td class="align-middle text-center">
+            <% if post.user == current_user %>
+              <%= link_to mypage_path do %>
+                <%= image_tag current_user.get_profile_image(100,100), class: "rounded-circle" %><br>
+                  <%= current_user.name %>
               <% end %>
-            </td>
-            <td class="align-middle text-center">
-              <%= link_to post_path(post.id) do %>
-                <%= image_tag post.get_image(120,90) %><br>
-                <%= l post.created_at, format: :short %><br>
-                <i class="fa-solid fa-location-dot" style="color: #7a7a7a;"></i>
-                <%= post.prefecture_address %>
-                <%= post.city_address %>
-                <%= post.block_address %>
+            <% else %>
+              <%= link_to user_path(post.user_id) do %>
+                <%= image_tag post.user.get_profile_image(100,100), class: "rounded-circle" %><br>
+                <%= post.user.name %>
               <% end %>
-            </td>
-            <td class="align-middle text-center">
-              <!--危険だと赤色表示、安全だと緑色表示-->
-              <% if post.danger? %>
-                <span class="text-danger font-weight-bold">
-                  <%= post.status_i18n %>
-                </span>
-              <% elsif post.safety? %>
-                <span class="text-success font-weight-bold">
-                  <%= post.status_i18n %>
-                </span>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <div class="d-flex justify-content-center">
-      <%= paginate @posts, theme: 'bootstrap-5'  %>
-      </div>
+            <% end %>
+          </td>
+          <td class="align-middle text-center">
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.get_image(120,90) %><br>
+              <%= l post.created_at, format: :short %><br>
+              <i class="fa-solid fa-location-dot" style="color: #7a7a7a;"></i>
+              <%= post.prefecture_address %>
+              <%= post.city_address %>
+              <%= post.block_address %>
+            <% end %>
+          </td>
+          <td class="align-middle text-center">
+            <!--危険だと赤色表示、安全だと緑色表示-->
+            <% if post.danger? %>
+              <span class="text-danger font-weight-bold">
+                <%= post.status_i18n %>
+              </span>
+            <% elsif post.safety? %>
+              <span class="text-success font-weight-bold">
+                <%= post.status_i18n %>
+              </span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+    <%= paginate @posts, theme: 'bootstrap-5'  %>
     </div>
   </div>
 </div>

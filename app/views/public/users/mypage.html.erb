@@ -2,23 +2,21 @@
   <%= render 'public/users/info', current_user: @current_user %>
 
   <div class="col-10"> 
-    <div class="container m-0">
-      <!--フラッシュメッセージ-->
-      <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %>"><%= message %></div>
-      <% end %>
-      <h3 class="row my-4">
-        <div class="col-1"></div>
-        <span class='heading-title'>マイページ</span>
-      </h3>
-      <!--ログインユーザの情報-->
-      <div class="col-6">
-        <%= render 'public/users/show', user: @user %>
-      </div>
-      <!--ログインユーザの投稿-->
-      <div class="row my-5">
-        <%= render 'public/posts/index', posts: @posts, user: @user %>
-      </div>
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <span class='heading-title'>マイページ</span>
+    </h3>
+    <!--ログインユーザの情報-->
+    <div class="col-6">
+      <%= render 'public/users/show', user: @user %>
+    </div>
+    <!--ログインユーザの投稿-->
+    <div class="row mt-5">
+      <%= render 'public/posts/index', posts: @posts, user: @user %>
     </div>
   </div>
 </div>

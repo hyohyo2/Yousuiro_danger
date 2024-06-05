@@ -16,7 +16,7 @@
   
         <div class="row form-group justify-content-center">
           <%= f.label :email, "メールアドレス", class: "col-3" %>
-          <%= f.email_field :email,  autocomplete: "email", class: "col-4" %>
+          <%= f.email_field :email,  autocomplete: "email",placeholder: "", class: "col-4" %>
         </div>
   
         <div class="row form-group justify-content-center">
@@ -38,7 +38,10 @@
           <%= f.submit "新規登録", class: "btn btn-info col-2 " %>
         </div>
       <% end %>
-      <div class="row form-group justify-content-center">
+      <div class="row justify-content-center">
+       <p>※一度登録されたメールアドレスは使用できません。</p>
+      </div>
+      <div class="row justify-content-center mb-4">
         すでに登録済みの方は
         <%= render "public/shared/links" %>
         からログインしてください。
