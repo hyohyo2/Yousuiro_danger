@@ -12,24 +12,6 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <!--マイページへ-->
-          <li class="nav-item mx-3">
-            <%= link_to "マイページ", mypage_path(current_user) , class: 'btn btn-outline-light btn-text-dark btn-block'%>
-          </li>
-          <!--タイムラインへ-->
-          <li class="nav-item mx-3">
-            <%= link_to "タイムライン", timeline_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
-
-          </li>
-          <!--通知ボタン-->
-          <li class="nav-item mx-3">
-
-          </li>
-          <!--ログアウトリンク-->
-          <li class="nav-item mx-3">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light btn-text-dark btn-block'%>
-          </li>
-
         <% else %>
           <!--Topへ-->
           <li class="nav-item mx-3">

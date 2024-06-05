@@ -1,26 +1,27 @@
 <!--ユーザ画像・名前・メアドを表示-->
-<div class="col-6">
-  <div class="mb-3 text-center">
-    <%= image_tag user.get_profile_image(150,150), class: "rounded-circle" %>
-  </div>
-  <table class="table">
-    <tr>
-      <th>ユーザネーム</th>
-      <td><%= user.name %></td>
-    </tr>
-    <!--ログインユーザのみアドレスを-->
-    <% if user == current_user %>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= user.email %></td>
-    </tr>
-    <tr>
-    <% end %>
-      <th>紹介文</th>
-      <td><%= user.introduction %></td>
-    </tr>
-  </table>
-  
-  
-  
+<div class="mb-3 text-center">
+  <%= image_tag user.get_profile_image(150,150), class: "rounded-circle" %>
 </div>
+<table class="table">
+  <tr>
+    <th class="text-center">ユーザネーム</th>
+    <td><%= user.name %></td>
+  </tr>
+  <!--ログインユーザのみアドレスを表示-->
+  <% if user == current_user %>
+  <tr>
+    <th class="text-center">メールアドレス</th>
+    <td><%= user.email %></td>
+  </tr>
+  <tr>
+  <% end %>
+    <th class="text-center">
+      <i class="fa-solid fa-message"></i>
+      メッセージ
+    </th>
+    <td>
+      <!--ユーザのメッセージ-->
+      <%= render 'public/users/message', user: user%>
+    </td>
+  </tr>
+</table>

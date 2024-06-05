@@ -1,11 +1,16 @@
-<div class="container">
-  <div class="text-center">
-    <h3 class="my-5">本当に退会しますか？</h3>
-    <p>退会するとユーザ登録情報やこれまでの投稿内容などは閲覧できなくなります。</p>
-    退会する場合は「退会する」をクリックしてください。
-  </div>
-  <div>
-    <%= link_to "退会しない", mypage_path(current_user), class: "btn btn-primary" %>
-    <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+<div class="row">
+  <%= render 'public/users/info', current_user: @current_user %>
+  <div class="col-10 my-5">     
+    <div class="container">
+      <div class="text-center">
+        <h3 class="my-5">本当に退会しますか？</h3>
+        <p>退会するとユーザ登録情報やこれまでの投稿内容などは閲覧できなくなります。</p>
+        退会する場合は「退会する」をクリックしてください。
+      </div>
+      <div class="text-center my-5">
+        <%= link_to "退会しない", mypage_path(current_user), class: "btn btn-primary mr-3" %>
+        <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+      </div>
+    </div>
   </div>
 </div>

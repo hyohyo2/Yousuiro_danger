@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
+    @current_user = current_user
   end
   
   def create
@@ -15,6 +16,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @current_user = current_user
   end
 
   def edit
@@ -37,6 +39,7 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
+    @current_user = current_user
     # 後でフォローしている人と自分の投稿のみ表示にする
     @posts = Post.page(params[:page]).per(10)
   end

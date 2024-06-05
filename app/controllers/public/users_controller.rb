@@ -7,11 +7,13 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @current_user = current_user
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(8)
   end
   
   def edit
+    @current_user = current_user
     @user = current_user
   end
   
@@ -26,10 +28,13 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
+    @current_user = current_user
   end
   
   def withdraw
     current_user.update(is_active: false)
+    # ユーザが退会ステータスになったらユーザの投稿は削除される
+    current_user.posts.destroy_all
     reset_session
     # フラッシュメッセージ導入
     redirect_to root_path

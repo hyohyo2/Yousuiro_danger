@@ -1,35 +1,41 @@
-<div class="container">
-  <div class="row mb-5">
-    <div class="mx-auto">
-      <h1><strong>用水路安全確認マップへようこそ！！</strong></h1>
+<div class="row">
+  <%= render 'public/users/info', current_user: @current_user %>
+
+  <div class="col-10">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="mx-auto">
+          <h1><strong>用水路安全確認マップへようこそ！！</strong></h1>
+        </div>
+      </div>
+      <h4 class="text-center mb-5">
+        用水路の危険・安全な場所を投稿してユーザへ伝えよう。<br>
+        あなたの投稿が誰かの命を救うきっかけになるかもしれません。
+      </h4>
+      <!--パス先変更すること-->
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-4">
+          <p>会員登録済みの方はこちら</p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-5">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-block btn-success px-4" %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3"></div>
+        <div class="col-4">
+          <p>会員登録がまだの方はこちら</p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-5">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-block btn-info px-4" %>
+        </div>
+      </div>
+    <!--ゲストログイン設定の際にリンクをつけること-->
     </div>
   </div>
-  <h4 class="text-center mb-5">
-    用水路の危険・安全な場所を投稿してユーザへ伝えよう。<br>
-    あなたの投稿が誰かの命を救うきっかけになるかもしれません。
-  </h4>
-  <!--パス先変更すること-->
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-3">
-      <p>会員登録済みの方はこちら</p>
-    </div>
-  </div>
-  <div class="row d-flex justify-content-center">
-    <div class="col-6">
-      <%= link_to "ログイン", new_user_session_path, class: "btn btn-block btn-success px-4" %>
-    </div>
-  </div>
-  <div class="row mt-3">
-    <div class="col-2"></div>
-    <div class="col-3">
-      <p>会員登録がまだの方はこちら</p>
-    </div>
-  </div>
-  <div class="row d-flex justify-content-center">
-    <div class="col-6">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-block btn-info px-4" %>
-    </div>
-  </div>
-<!--ゲストログイン設定の際にリンクをつけること-->
 </div>

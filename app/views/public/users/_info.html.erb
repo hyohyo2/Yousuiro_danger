@@ -1,0 +1,56 @@
+<div class="user-info col-2 text-center">
+  <% if user_signed_in? %>
+  
+    <%= image_tag @current_user.get_profile_image(80,80), class: "rounded-circle" %><br>
+    <%= current_user.name %><br>
+    
+    <!--ユーザのメッセージ-->
+    <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>　
+    <%= render 'public/users/message', user: current_user%>
+    
+    <%= link_to new_post_path do %>
+      <h1><i class="fa-regular fa-square-plus" style="color: #7a7a7a;"></i></h1>
+      <p>新規投稿</p>
+    <% end %>
+    
+    <%= link_to timeline_path do %>
+      <h1><i class="fa-solid fa-house" style="color: #7a7a7a;"></i></i></h1>
+      <p>タイムライン</p>
+    <% end %>
+    
+    <%= link_to mypage_path(current_user.id) do %>
+      <h1><i class="fa-solid fa-user" style="color: #7a7a7a;"></i></h1>
+      <p>マイページ</p>
+    <% end %>
+    
+    <%= link_to edit_user_path(current_user.id) do %>
+      <h1><i class="fa-solid fa-sliders" style="color: #7a7a7a;"></i></h1>
+      <p>設定</p>
+    <% end %>
+    
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <h1> <i class="fa-solid fa-right-from-bracket" style="color: #7a7a7a;"></i></h1>
+      <p>ログアウト</p>
+    <% end %>
+  <% else %>
+    <%= link_to root_path do %>
+      <h1> <i class="fa-solid fa-desktop" style="color: #7a7a7a;"></i></h1>
+      <p>トップページ</p>
+    <% end %>
+  
+    <%= link_to about_path do %>
+      <h1><i class="fa-solid fa-link" style="color: #7a7a7a;"></i></h1>
+      <p>サイトについて</p>
+    <% end %>
+  
+    <%= link_to new_user_session_path do %>
+      <h1><i class="fa-solid fa-right-to-bracket" style="color: #7a7a7a;"></i></h1>
+      <p>ログイン</p>
+    <% end %>
+    
+    <%= link_to new_user_registration_path do %>
+      <h1><i class="fa-solid fa-user-plus" style="color: #7a7a7a;"></i></h1>
+      <p>新規登録</p>
+    <% end %>
+  <% end %>
+</div>

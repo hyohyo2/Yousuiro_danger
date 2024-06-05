@@ -1,8 +1,22 @@
-<div class="container">
-  <h3 class="row my-4">
-    <div class="col-2"></div>
-    <span class='heading-title'>ユーザ登録情報</span>
-  </h3>
-  <%= render 'public/users/show', user: @user %>
-  <%= render 'public/posts/index', posts: @posts, user: @user %>
+<!--ログインユーザ共通欄-->
+<div class="row">
+  <%= render 'public/users/info', current_user: @current_user %>
+
+  <div class="col-10">
+    <!--ユーザ情報詳細欄-->
+    <div class="container">
+      <h3 class="row my-4">
+        <div class="col-2"></div>
+        <span class='heading-title'>ユーザ登録情報</span>
+      </h3>
+      <!--ユーザ情報-->
+      <div class="col-6">
+        <%= render 'public/users/show', user: @user %>
+      </div>
+      <!--ユーザの投稿一覧-->
+      <div class="row my-5">
+        <%= render 'public/posts/index', posts: @posts, user: @user %>
+      </div>
+    </div>
+  </div>
 </div>
