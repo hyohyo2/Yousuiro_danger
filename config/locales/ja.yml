@@ -5,7 +5,17 @@ ja:
         danger: "危険"
         safety: "安全"
   activerecord:
-    errors:
+    attributes:
+      user:
+        name: "ユーザーネーム"
+      post:
+        image: "画像"
+        post_code: "郵便番号"
+        prefecture_address: "都道府県"
+        city_address: "市区町村"
+        block_address: "以降の住所"
+        detail: "詳細"
+        
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
@@ -21,7 +31,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -47,7 +57,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -86,6 +96,7 @@ ja:
       day: 日
       month: 月
       year: 年
+
   errors:
     format: "%{attribute}%{message}"
     messages:
