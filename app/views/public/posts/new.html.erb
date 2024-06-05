@@ -6,6 +6,10 @@
         <div class="col-1"></div>
         <span class='heading-title'>新規投稿</span>
       </h3>
+      <!--バリデーションエラーメッセージ-->
+      <div class="mx-5">
+        <%= render 'layouts/errors', obj: @post %>
+      </div>
       <%= form_with model: [@post] do |f| %>
         <div class="row d-flex justify-content-center align-items-center">
           <%= f.label :status, "状況", class: "col-2" %>
