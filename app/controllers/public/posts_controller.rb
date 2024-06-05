@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+     @current_user = current_user
   end
   
   def update

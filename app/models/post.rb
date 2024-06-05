@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   
   enum status: { danger: 0, safety: 1 }
   
+  validates :image, presence: true
   validates :post_code, presence: true
   validates :prefecture_address, presence: true
   validates :city_address, presence: true
