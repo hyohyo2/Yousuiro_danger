@@ -8,6 +8,7 @@
       </h3>
       <%= form_with model: @user, url: user_session_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
+        <%= alert %>
         <div class="row form-group justify-content-center">
           <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "col-4" %>
         </div>

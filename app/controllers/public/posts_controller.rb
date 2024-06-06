@@ -42,8 +42,13 @@ class Public::PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to timeline_path
+    if @post.destroy
+      flash[:notice] = "投稿を削除しました。"
+      redirect_to timeline_path
+    else
+      flash.now[:alert] = "投稿内容の削除に失敗しました。"
+      render :show
+    end
   end
 
   def timeline

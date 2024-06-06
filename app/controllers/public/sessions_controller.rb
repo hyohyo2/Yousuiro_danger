@@ -18,6 +18,9 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+ 
+  
   # 遷移先をマップへ変更すること
   def after_sign_in_path_for(resource)
     mypage_path
