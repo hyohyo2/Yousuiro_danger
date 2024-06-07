@@ -21,8 +21,16 @@ User.create!(
   introduction: 'よろしくおねがいします',
   is_active: true
 )
+User.create!(
+  email: 'test2@test',
+  password: 'example',
+  name: 'テスト二郎',
+  introduction: 'よろしくお願いいたします。',
+  is_active: true
+)
 
 # 投稿情報
+# 投稿画像を変更すること
 Post.create!(
   user_id: User.find_by(name: 'テスト太郎').id,
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
@@ -43,4 +51,15 @@ Post.create!(
   block_address: '岡山町２３４５',
   detail: 'ここは柵がなく危険でしたが、昨日柵が設置されました！',
   status: 1
+)
+
+Post.create!(
+  user_id: User.find_by(name: 'テスト二郎').id,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
+  post_code: '1234567',
+  prefecture_address: '岡山県',
+  city_address: '岡山市中区',
+  block_address: '岡山町９８７６',
+  detail: 'ここの用水路は学生の通学路ですが柵がありません。水深が深く転落すると非常に危険です。',
+  status: 0
 )
