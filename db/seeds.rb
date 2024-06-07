@@ -29,7 +29,7 @@ Post.create!(
   post_code: '1234567',
   prefecture_address: '岡山県',
   city_address: '岡山市北区',
-  block_address: '駅元町１２３４',
+  block_address: '岡山町１２３４',
   detail: 'ここは柵がなくて危険です！近くを通るときはお気を付けください。',
   status: 0
 )
@@ -40,7 +40,7 @@ Post.create!(
   post_code: '1234567',
   prefecture_address: '岡山県',
   city_address: '岡山市北区',
-  block_address: '駅元町２３４５',
+  block_address: '岡山町２３４５',
   detail: 'ここは柵がなく危険でしたが、昨日柵が設置されました！',
   status: 1
 )
