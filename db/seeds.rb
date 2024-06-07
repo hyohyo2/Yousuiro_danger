@@ -8,14 +8,14 @@
 
 # ユーザ情報
 User.create!(
-  email: 'test@test.com',
+  email: 'test@test',
   password: 'example',
   name: 'テスト太郎',
   introduction: 'よろしくね',
   is_active: true
 )
 User.create!(
-  email: 'test1@test.com',
+  email: 'test1@test',
   password: 'example',
   name: 'テスト花子',
   introduction: 'よろしくおねがいします',
