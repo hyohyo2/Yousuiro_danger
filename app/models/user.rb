@@ -21,13 +21,9 @@ class User < ApplicationRecord
     profile_image.variant(resize: "#{width}x#{height}!").processed
   end
   
-  # 検索機能
-  def self.search_for(content, method)
-    if method == 'perfect'
-      User.where(name: content)
-    else
-      User.where('name LIKE ?', '%' + content + '%')
-    end
+  # 検索機能(部分検索のみ)
+  def self.search_for(content)
+    User.where('name LIKE ?', '%' + content + '%')
   end
     
 end
