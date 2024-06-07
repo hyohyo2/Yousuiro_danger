@@ -18,4 +18,13 @@ class Post < ApplicationRecord
     image.variant(resize: "#{width}x#{height}!").processed
   end
   
+  # 検索機能
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(prefecture_address: content)
+    else
+      Post.where('prefecture_address LIKE ?', '%' + content + '%')
+    end
+  end
 end

@@ -1,0 +1,15 @@
+<div class="row">
+  <%= render 'public/users/info'%>
+
+  <div class="col-10 p-0 mb-4">
+    <% if @model == 'user' %>
+      <h3>ユーザー名検索結果 "<%= @content %>"</h3>
+      <%= render 'public/users/index', users: @records %>
+    
+    
+    <% elsif @model == 'post' %>
+      <h3>投稿住所検索結果 "<%= @content %>"</h3>
+      <%= render 'public/posts/timeline', posts: @records %>
+    <% end %>
+  </div>
+</div>
