@@ -8,6 +8,7 @@ ja:
     attributes:
       user:
         name: "ユーザーネーム"
+        introduction: "メッセージ"
       post:
         image: "画像"
         post_code: "郵便番号"

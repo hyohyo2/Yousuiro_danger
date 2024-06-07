@@ -1,64 +1,68 @@
 <div class="user-info col-2 text-center">
   <ul class="navbar-nav">
+    <!--ログイン時表示ボタン-->
     <% if user_signed_in? %>
       <li class="nav-item">
         <%= image_tag @current_user.get_profile_image(80,80), class: "rounded-circle" %><br>
         <%= current_user.name %><br>
       </li>
-      <!--ユーザのメッセージ-->
+      <!--ユーザのメッセージ表示-->
       <li class="nav-item">
         <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>　
         <%= render 'public/users/message', user: current_user%><br><br>
       </li>
+      <!--新規投稿ボタン-->
       <li class="nav-item">
       <%= link_to new_post_path do %>
         <h1><i class="fa-regular fa-square-plus" style="color: #7a7a7a;"></i></h1>
         <p>新規投稿</p>
       </li>
       <% end %>
+      <!--タイムラインボタン-->
       <li class="nav-item">
       <%= link_to timeline_path do %>
         <h1><i class="fa-solid fa-house" style="color: #7a7a7a;"></i></i></h1>
         <p>タイムライン</p>
       <% end %>
       </li>
+      <!--マイページボタン-->
       <li class="nav-item">
-        <%= link_to mypage_path(current_user.id) do %>
+        <%= link_to mypage_path do %>
           <h1><i class="fa-solid fa-user" style="color: #7a7a7a;"></i></h1>
           <p>マイページ</p>
         <% end %>
       </li>
-      <li class="nav-item">
-        <%= link_to edit_user_path(current_user.id) do %>
-          <h1><i class="fa-solid fa-sliders" style="color: #7a7a7a;"></i></h1>
-          <p>設定</p>
-        <% end %>
-      </li>
+      <!--ログアウトボタン-->
       <li class="nav-item">
         <%= link_to destroy_user_session_path, method: :delete do %>
           <h1> <i class="fa-solid fa-right-from-bracket" style="color: #7a7a7a;"></i></h1>
           <p>ログアウト</p>
         <% end %>
       </li>
+    <!--以下ログアウト時表示ボタン-->
     <% else %>
+      <!--トップページボタン-->
       <li class="nav-item">
         <%= link_to root_path do %>
           <h1> <i class="fa-solid fa-desktop" style="color: #7a7a7a;"></i></h1>
           <p>トップページ</p>
         <% end %>
       </li>
+      <!--アバウトページボタン-->
       <li class="nav-item">
         <%= link_to about_path do %>
           <h1><i class="fa-solid fa-link" style="color: #7a7a7a;"></i></h1>
           <p>サイトについて</p>
         <% end %>
       </li>
+      <!--ログインボタン-->
       <li class="nav-item">
         <%= link_to new_user_session_path do %>
           <h1><i class="fa-solid fa-right-to-bracket" style="color: #7a7a7a;"></i></h1>
           <p>ログイン</p>
         <% end %>
       </li>
+      <!--新規登録ボタン-->
       <li class="nav-item">
         <%= link_to new_user_registration_path do %>
           <h1><i class="fa-solid fa-user-plus" style="color: #7a7a7a;"></i></h1>

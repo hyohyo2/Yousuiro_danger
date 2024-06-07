@@ -31,7 +31,7 @@
         </div>
         <div class="row form-group justify-content-center">
           <%= f.label :introduction, "メッセージ", class: "col-3 my-2" %>
-          <%= f.text_area :introduction, rows: 5, class: "col-4 my-2" %>
+          <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-4 my-2" %>
         </div>
         
         <div class="row form-group justify-content-center">
@@ -39,7 +39,7 @@
           
         </div>
         <div class="row form-group justify-content-center">
-          <%= link_to "退会する", unsubscribe_path(@user.id), class: "btn btn-danger col-3 mb-3" %>
+          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-3 mb-3" %>
         </div>
         
       <% end %>

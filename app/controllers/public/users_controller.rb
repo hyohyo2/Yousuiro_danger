@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報の更新しました。"
-      redirect_to mypage_path(@user)
+      redirect_to mypage_path
     else
       flash.now[:alert] = "ユーザー情報の更新に失敗しました。"
       render :edit
@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
     current_user.posts.destroy_all
     reset_session
     flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
-    redirect_to root_path
+    redirect_to new_user_registration_path
   end
   
   private
@@ -51,7 +51,7 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to timeline_path
+      redirect_to mypage_path
     end
   end
   

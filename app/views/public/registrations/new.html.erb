@@ -1,24 +1,28 @@
 <div class="row">
    <%= render 'public/users/info'%>
   <div class="col-10">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <div class="container m-0">
       <h3 class="row my-4">
         <div class="col-2"></div>
         <span class='heading-title'>新規ユーザ登録</span>
       </h3>
-  
+
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <div class="row form-group justify-content-center">
           <%= f.label :name, "ユーザーネーム", class: "col-3" %>
           <%= f.text_field :name,autofocus: true, class: "col-4" %>
         </div>
-  
+
         <div class="row form-group justify-content-center">
           <%= f.label :email, "メールアドレス", class: "col-3" %>
           <%= f.email_field :email,  autocomplete: "email",placeholder: "", class: "col-4" %>
         </div>
-  
+
         <div class="row form-group justify-content-center">
           <div class="col-3">
             <%= f.label :password, "パスワード" %>
@@ -28,12 +32,12 @@
           </div>
           <%= f.password_field :password, autocomplete: "new-password", class: "col-4" %>
         </div>
-  
+
         <div class="row form-group justify-content-center">
           <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-3" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-4" %>
         </div>
-  
+
         <div class="row form-group justify-content-center">
           <%= f.submit "新規登録", class: "btn btn-info col-2 " %>
         </div>

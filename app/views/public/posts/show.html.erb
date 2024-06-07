@@ -64,8 +64,8 @@
             </tr>
           </table>
            <% if @post.user != current_user %>
-          <div>
-            <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-outline-secondary col-4" %>
+          <div class="text-center">
+            <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-secondary col-4" %>
           </div>
           <% end %>
           <% if @post.user == current_user %>

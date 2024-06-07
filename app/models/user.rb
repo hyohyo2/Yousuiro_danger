@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   validates :name, presence: true
+  validates :introduction, length: { maximum: 30 }
   validates :is_active, inclusion: { in: [true,false] }
   
   #プロフィール画像 

@@ -2,11 +2,11 @@
   <%= render 'public/users/info', current_user: @current_user %>
 
   <div class="col-10 p-0 mb-4">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <div class="container m-0">
-      <!--フラッシュメッセージ-->
-      <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %>"><%= message %></div>
-      <% end %>
       <div class="row my-3">
         <div class="mx-auto">
           <h1><strong>用水路安全確認マップへようこそ！！</strong></h1>
