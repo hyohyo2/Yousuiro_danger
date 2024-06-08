@@ -19,6 +19,11 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize: "#{width}x#{height}!").processed
-  end       
+  end
+  
+  # 検索機能(部分検索のみ)
+  def self.search_for(content)
+    User.where('name LIKE ?', '%' + content + '%')
+  end
     
 end

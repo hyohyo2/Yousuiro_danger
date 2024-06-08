@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'posts/new'
-    get 'posts/show'
-    get 'posts/edit'
-    get 'posts/timeline'
-  end
   # ユーザ用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -25,6 +18,7 @@ Rails.application.routes.draw do
   get '/users/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
+  get '/search' => 'public/searches#search', as: 'search'
 
   scope module: :public do
     resources :users, only:[:show, :edit, :update]

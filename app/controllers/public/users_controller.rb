@@ -3,14 +3,16 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only:[:edit, :update]
   def mypage
     @user = current_user
-    @posts = @user.posts.page(params[:page]).per(8)
+    # 新着順
+    @posts = @user.posts.page(params[:page]).per(8).order('id DESC')
     @post = @user.posts
   end
 
   def show
     @current_user = current_user
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(8)
+    # 新着順
+    @posts = @user.posts.page(params[:page]).per(8).order('id DESC')
   end
   
   def edit
