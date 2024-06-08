@@ -77,14 +77,16 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <!--コメント一覧-->
+    <div class="row mt-5">
       <div class="col-lg-6 col-sm-12">
       <%= render "public/post_comments/index", post: @post %>
       </div>
     </div>
     <!--コメントフォーム-->
     <div class="row">
-      <div class="col-lg-4 col-sm-12 my-3">
+      <div class="col-lg-1 col-sm-1"></div>
+      <div class="col-lg-4 col-sm-9 my-3">
         <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
       </div>
     </div>
