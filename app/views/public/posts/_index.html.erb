@@ -20,6 +20,10 @@
               <%= post.block_address %>
             <% end %>
           </td>
+          <td class="align-middle text-center">
+            <!--コメント数の表示-->
+            <%= render "public/post_comments/count", post: post %>
+          </td>
           <td class="align-middle text-center" colspan="3">
             <!--危険だと赤色表示、安全だと緑色表示-->
             <% if post.danger? %>

@@ -1,13 +1,13 @@
 
 <div class="row">
-  
+
   <%= render 'public/users/info', current_user: @current_user %>
 
   <div class="col-10">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>    
+    <% end %>
     <div class="container m-0">
       <h3 class="row my-4">
         <div class="col-1"></div>
@@ -77,6 +77,16 @@
         </div>
       </div>
     </div>
-    
+    <div class="row">
+      <div class="col-lg-6 col-sm-12">
+      <%= render "public/post_comments/index", post: @post %>
+      </div>
+    </div>
+    <!--コメントフォーム-->
+    <div class="row">
+      <div class="col-lg-4 col-sm-12 my-3">
+        <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+      </div>
+    </div>
   </div>
 </div>

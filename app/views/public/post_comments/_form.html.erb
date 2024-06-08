@@ -1,0 +1,6 @@
+<%= form_with model: [post, post_comment] do |f| %>
+  <div class="d-flex">
+    <%= f.text_area :comment, placeholder: "コメントを20文字以内で入力してください。", class: "w-100" %>
+    <%= f.submit "送信", class: "btn btn-success ml-3" %>
+  </div>
+<% end %>
