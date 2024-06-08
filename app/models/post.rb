@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   enum status: { danger: 0, safety: 1 }
 
