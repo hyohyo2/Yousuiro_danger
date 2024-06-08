@@ -20,12 +20,15 @@ class Post < ApplicationRecord
   end
 
   
-  def self.search_for(content)
+  def self.search_for(content, model)
     # 検索機能(部分検索のみ)
     # 都道府県・市区町村・以降の住所どこを検索しても表示される
+    if model == "post"
       Post.where('prefecture_address LIKE ? OR city_address LIKE ? OR block_address LIKE ?', '%' + content + '%', '%' + content + '%', '%' + content + '%')
+    elsif model == "post_code"
       # 検索機能(郵便番号だけは完全一致検索)
       Post.where('post_code = ?', content)
+    end
   end
   
 end
