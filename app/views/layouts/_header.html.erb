@@ -1,12 +1,16 @@
 <nav class="navbar-dark" style="background-color: #a59ea4; ">
-  <div class="container py-2">
+    <div class="row py-3">
     <!--リンク先マップへ修正すること-->
     <!--ロゴを記述すること-->
+    <div class="col-2"></div>
+    <div class="col-3">
     <a class="navbar-brand pb-3" href="/">
       <span>用水路安全マップ<i class="fa-solid fa-map-location-dot"></i></span>
     </a>
+    </div>
+    <div class="col-3"></div>
     <!--検索フォーム-->
-    <div>
+    <div class="col-4 d-flex align-items-center">
         <%= render "public/searches/form" %>
       </div>
 

@@ -7,9 +7,10 @@ class Public::SearchesController < ApplicationController
     @content = params[:content]
     
     if @model == "user"
-      @records = User.search_for(@content)
+      # 投稿住所検索は新着順に表示
+      @records = User.search_for(@content).page(params[:page]).per(8)
     else
-      @records = Post.search_for(@content)
+      @records = Post.search_for(@content).page(params[:page]).per(8).order('id DESC')
     end
     
   end

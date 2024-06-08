@@ -4,10 +4,19 @@
     <% users.each do |user| %>
       <tr>
         <td>
-          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
-          <%= user.name %>
+          <% if user == current_user %>
+            <%= link_to mypage_path do %>
+              <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+              <%= user.name %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+              <%= user.name %>
+            <% end %>
+          <% end %>
         </td>
-        <td>
+        <td class="align-middle">
           <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>
           <%= user.introduction %>
         </td>
