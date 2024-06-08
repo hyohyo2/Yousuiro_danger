@@ -1,13 +1,20 @@
 <div class="row">
   <%= render 'public/users/info'%>
-  <div class="col-10 p-0 my-4 text-center">
+  <div class="col-9 p-0 my-3 text-center">
     <!--検索結果の表示-->
     <% if @model == 'user' %>
-      <h4>ユーザー名<strong>" <%= @content %> "</strong>は<%= @records.total_count %>件見つかりました。 </h4>
+      <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　ユーザー名<strong>" <%= @content %> "</strong>さんは<%= @records.total_count %>件見つかりました。 </h4>
       <%= render 'public/users/index', users: @records %>
     <% elsif @model == 'post' %>
-      <h4>投稿住所<strong>"<%= @content %>"</strong>は<%= @records.total_count %>件見つかりました。</h4>
+      <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　投稿住所<strong>"<%= @content %>"</strong>は<%= @records.total_count %>件見つかりました。</h4>
       <%= render 'public/posts/timeline', posts: @records %>
+    <% else @model =='post_code' %>
+      <% if @records.total_count == 0 %>
+        <h4>この郵便番号の投稿は存在しません</h4>
+      <% else %>
+        <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　郵便番号<strong>"〒<%= @content.to_s.insert(3, "-") %>"</strong>は<%= @records.total_count %>件見つかりました。</h4>
+        <%= render 'public/posts/timeline', posts: @records %>
+      <% end %>
     <% end %>
     <div class="d-flex justify-content-center">
       <%= paginate @records, theme: 'bootstrap-5' %>
