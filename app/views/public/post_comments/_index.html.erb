@@ -7,7 +7,7 @@
     <% post.post_comments.each do |post_comment| %>
       <tr>
         <td class="text-center align-middle">
-          <%= l post.created_at, format: :short %>
+          <%= l post_comment.created_at, format: :short %>
         </td>
         <td class="text-center">
           <% if post_comment.user == current_user %>
