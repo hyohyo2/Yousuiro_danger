@@ -18,19 +18,22 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
   
-  def admin_authentication
-    if params[:email] == ENV['ADMIN_EMAIL'] && params[:password] == ENV['ADMIN_PASSWORD']
-      redirect_to "admin_root"
+  # 管理者のログインページ
+  def create
+    if params[:admin][:email] == ENV['ADMIN_EMAIL'] && params[:admin][:password] == ENV['ADMIN_PASSWORD']
+      flash[:notice] = "ログインに成功しました。"
+      sign_in(:admin, Admin.new(email: ENV['ADMIN_EMAIL'])) # 仮のAdminオブジェクトを作成してログイン
+      redirect_to admin_root_path
     else
-      flash[:alert]="Eメールもしくはパスワードが違います"
-      redirect_to admin_session_path
+      flash[:alert] = "Eメールもしくはパスワードが間違っています。"
+      redirect_to new_admin_session_path
     end
   end
-  
+
   def admin_sign_in_path_for(resource)
     admin_root_path
   end
-  
+
   def after_sign_out_path_for(resource) #管理者のログアウト後の遷移先
     new_admin_session_path
   end
@@ -41,7 +44,7 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
-  
-  
+
+
+
 end

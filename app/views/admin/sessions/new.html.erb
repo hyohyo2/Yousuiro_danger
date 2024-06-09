@@ -1,5 +1,7 @@
 <div class="row">
-   <%= render 'public/users/info'%>
+   <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
   <div class="col-10">
     <div class="container m-0">
       <h3 class="row my-4">
