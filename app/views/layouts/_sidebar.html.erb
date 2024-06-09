@@ -12,17 +12,18 @@
       </li>
       <!--新規投稿ボタン-->
       <li class="nav-item">
-      <%= link_to new_post_path do %>
-        <h1><i class="fa-regular fa-square-plus" style="color: #7a7a7a;"></i></h1>
-        <p>新規投稿</p>
+        <%= link_to new_post_path do %>
+          <h1><i class="fa-regular fa-square-plus" style="color: #7a7a7a;"></i></h1>
+          <p>新規投稿</p>
+        <% end %>
       </li>
-      <% end %>
+      
       <!--タイムラインボタン-->
       <li class="nav-item">
-      <%= link_to timeline_path do %>
-        <h1><i class="fa-solid fa-house" style="color: #7a7a7a;"></i></i></h1>
-        <p>タイムライン</p>
-      <% end %>
+        <%= link_to timeline_path do %>
+          <h1><i class="fa-solid fa-house" style="color: #7a7a7a;"></i></i></h1>
+          <p>タイムライン</p>
+        <% end %>
       </li>
       <!--マイページボタン-->
       <li class="nav-item">
@@ -38,7 +39,15 @@
           <p>ログアウト</p>
         <% end %>
       </li>
+      <!--管理者ページでの表示-->
     <% elsif admin_signed_in? %>
+      <!--タイムラインボタン-->
+      <li class="nav-item">
+        <%= link_to admin_root_path do %>
+          <h1><i class="fa-solid fa-pen-to-square" style="color: #7a7a7a;"></i></h1>
+          <p>投稿一覧</p>
+        <% end %>
+      </li>
       <!--ログアウトボタン-->
       <li class="nav-item">
         <%= link_to destroy_admin_session_path, method: :delete do %>

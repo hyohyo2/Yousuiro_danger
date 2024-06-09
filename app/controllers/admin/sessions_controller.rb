@@ -18,7 +18,6 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # 管理者のログインページ
 
   def admin_sign_in_path_for(resource)
     admin_root_path
