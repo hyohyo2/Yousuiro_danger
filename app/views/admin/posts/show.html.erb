@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-    </div>    
+    </div>
     <div class="row mt-5">
       <div class="col-lg-6 col-sm-12">
         <h5>
@@ -83,9 +83,7 @@
                   <%= post_comment.comment %>
                 </td>
                 <td class="text-center align-middle" colspan="3">
-                  <% if post_comment.user == current_user %>
-                    <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
-                  <% end %>
+                  <%= link_to "コメントを削除", admin_post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
                 </td>
               </tr>
             <% end %>
