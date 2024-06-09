@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
-   def show
+  def show
     @current_user = current_user
     @user = User.find(params[:id])
     # 新着順

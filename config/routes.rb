@@ -31,8 +31,8 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
-    get '/admin/:users/:id/userpost' => 'admin/users#userpost', as: 'userpost'
-    
+    get '/users/:id/userpost' => 'users#userpost', as: 'userpost'
+
     resources :posts, only:[:show, :destroy] do
       resources :post_comments, only:[:destroy]
     end

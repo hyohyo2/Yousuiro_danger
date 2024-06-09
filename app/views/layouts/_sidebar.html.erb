@@ -41,11 +41,18 @@
       </li>
       <!--管理者ページでの表示-->
     <% elsif admin_signed_in? %>
-      <!--タイムラインボタン-->
+      <!--投稿一覧-->
       <li class="nav-item">
         <%= link_to admin_root_path do %>
           <h1><i class="fa-solid fa-pen-to-square" style="color: #7a7a7a;"></i></h1>
           <p>投稿一覧</p>
+        <% end %>
+      </li>
+      <!--ユーザー一覧-->
+      <li class="nav-item">
+        <%= link_to admin_users_path do %>
+          <h1><i class="fa-solid fa-user" style="color: #7a7a7a;"></i></h1>
+          <p>ユーザー一覧</p>
         <% end %>
       </li>
       <!--ログアウトボタン-->

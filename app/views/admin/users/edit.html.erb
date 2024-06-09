@@ -1,2 +1,49 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="row">
+  <%= render 'layouts/sidebar'%>
+  <div class="col-10">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    <div class="container m-0">
+      <h3 class="row my-4">
+        <div class="col-1"></div>
+        <span class='heading-title'>ユーザー情報編集</span>
+      </h3>
+      <!--バリデーションエラーメッセージ-->
+      <div class="mx-5">
+        <%= render 'layouts/errors', obj: @user %>
+      </div>
+
+      <%= form_with model: @user do |f| %>
+        <div class="row form-group justify-content-center">
+          <%= f.label :profile_image, "プロフィール画像", class: "col-3 my-2" %>
+          <%= f.file_field :profile_image, accept: "image/*", class: "col-4 px-0 my-2" %>
+        </div>
+        <div class="row form-group justify-content-center">
+          <%= f.label :name, "ユーザーネーム", class: "col-3" %>
+          <%= f.text_field :name,autofocus: true, class: "col-4" %>
+        </div>
+
+        <div class="row form-group justify-content-center">
+          <%= f.label :email, "メールアドレス", class: "col-3 my-2" %>
+          <%= f.email_field :email,  autocomplete: "email", class: "col-4 my-2" %>
+        </div>
+        <div class="row form-group justify-content-center">
+          <%= f.label :introduction, "メッセージ", class: "col-3 my-2" %>
+          <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-4 my-2" %>
+        </div>
+        <div class="row form-group justify-content-center">
+          <%= f.label :status, "ステータス", class: "col-3 my-2" %>
+          <div class="col-4 my-2 p-0">
+            <%= f.radio_button :is_active, true, class: "col-1" %> 有効
+            <%= f.radio_button :is_active, false, class: "col-1" %> 退会
+          </div>
+        </div>
+        <div class="row form-group justify-content-center">
+          <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
