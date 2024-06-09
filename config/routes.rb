@@ -31,10 +31,12 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
+    get '/admin/:users/:id/userpost' => 'admin/users#userpost', as: 'userpost'
     
     resources :posts, only:[:show, :destroy] do
       resources :post_comments, only:[:destroy]
     end
+    resources :users, only:[:index, :show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
