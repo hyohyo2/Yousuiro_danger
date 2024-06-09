@@ -17,18 +17,8 @@ class Admin::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   # 管理者のログインページ
-  def create
-    if params[:admin][:email] == ENV['ADMIN_EMAIL'] && params[:admin][:password] == ENV['ADMIN_PASSWORD']
-      flash[:notice] = "ログインに成功しました。"
-      sign_in(:admin, Admin.new(email: ENV['ADMIN_EMAIL'])) # 仮のAdminオブジェクトを作成してログイン
-      redirect_to admin_root_path
-    else
-      flash[:alert] = "Eメールもしくはパスワードが間違っています。"
-      redirect_to new_admin_session_path
-    end
-  end
 
   def admin_sign_in_path_for(resource)
     admin_root_path

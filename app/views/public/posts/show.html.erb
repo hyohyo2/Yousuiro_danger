@@ -1,8 +1,6 @@
 
 <div class="row">
-
-  <%= render 'public/users/info', current_user: @current_user %>
-
+<%= render 'layouts/sidebar', current_user: @current_user %>
   <div class="col-10">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
@@ -70,7 +68,7 @@
             <% else %>
               <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-secondary col-4" %>
           </div>
-          
+
           <% end %>
         </div>
       </div>

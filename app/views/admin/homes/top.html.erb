@@ -1,6 +1,9 @@
 <div class="row">
-   <%= render "admin/shared/sidebar" %>
+   <%= render 'layouts/sidebar'%>
   <div class="col-10">
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <div class="container m-0">
       <h3 class="row my-4">
         <div class="col-2"></div>
