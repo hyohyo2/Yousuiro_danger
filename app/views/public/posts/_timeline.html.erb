@@ -8,22 +8,22 @@
         <% if post.user == current_user %>
         <!--投稿ユーザーがログインユーザーだったらマイページへ遷移-->
           <%= link_to mypage_path do %>
-            <%= image_tag current_user.get_profile_image(100,100), class: "rounded-circle" %><br>
+            <%= image_tag current_user.get_profile_image(50,50), class: "rounded-circle" %><br>
               <%= current_user.name %>
           <% end %>
         <% else %>
         <!--異なっていたらユーザ詳細ページへ-->
           <%= link_to user_path(post.user_id) do %>
-            <%= image_tag post.user.get_profile_image(100,100), class: "rounded-circle" %><br>
+            <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %><br>
             <%= post.user.name %>
           <% end %>
         <% end %>
       </td>
       <td class="align-middle text-center">
-        <%= l post.created_at, format: :short %><br>
+        <%= l post.created_at, format: :short %>
       </td>
       <td class="align-middle text-center">
-        <%= image_tag post.get_image(120,90) %>
+        <%= image_tag post.get_image(90,60) %>
       </td>
       <td class="align-middle text-center">
         <%= link_to post_path(post.id) do %>
@@ -33,6 +33,10 @@
           <%= post.city_address %>
           <%= post.block_address %>
         <% end %>
+      </td>
+      <td class="align-middle text-center">
+        <!--コメント数の表示-->
+        <%= render "public/post_comments/count", post: post %>
       </td>
       <td class="align-middle text-center" colspan="3">
         <!--危険だと赤色表示、安全だと緑色表示-->

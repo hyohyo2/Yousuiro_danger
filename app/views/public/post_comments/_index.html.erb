@@ -1,0 +1,36 @@
+<h5>
+  <i class="fa-solid fa-comment"  style="color: #7a7a7a;"></i>
+  <%= post.post_comments.count %>件のコメント
+</h5>
+<table class="table border-bottom table-hover table-inver">
+  <tbody>
+    <% post.post_comments.each do |post_comment| %>
+      <tr>
+        <td class="text-center align-middle">
+          <%= l post_comment.created_at, format: :short %>
+        </td>
+        <td class="text-center">
+          <% if post_comment.user == current_user %>
+            <%= link_to mypage_path do %>
+              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+              <%= post_comment.user.name %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(post_comment.user) do %>
+              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+              <%= post_comment.user.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td class="text-center align-middle">
+          <%= post_comment.comment %>
+        </td>
+        <td class="text-center align-middle" colspan="3">
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
