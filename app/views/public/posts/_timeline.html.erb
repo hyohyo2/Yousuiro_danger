@@ -5,18 +5,9 @@
     <tr>
       <!--ユーザ画像とユーザー名をクリックすると-->
       <td class="align-middle text-center">
-        <% if post.user == current_user %>
-        <!--投稿ユーザーがログインユーザーだったらマイページへ遷移-->
-          <%= link_to mypage_path do %>
-            <%= image_tag current_user.get_profile_image(50,50), class: "rounded-circle" %><br>
-              <%= current_user.name %>
-          <% end %>
-        <% else %>
-        <!--異なっていたらユーザ詳細ページへ-->
-          <%= link_to user_path(post.user_id) do %>
-            <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-            <%= post.user.name %>
-          <% end %>
+        <%= link_to user_path(post.user_id) do %>
+          <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+          <%= post.user.name %>
         <% end %>
       </td>
       <td class="align-middle text-center">
