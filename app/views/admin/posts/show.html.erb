@@ -1,19 +1,12 @@
-
 <div class="row">
-
-  <%= render 'public/users/info', current_user: @current_user %>
-
+   <%= render "admin/shared/sidebar" %>
   <div class="col-10">
-    <!--フラッシュメッセージ-->
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
     <div class="container m-0">
       <h3 class="row my-4">
         <div class="col-1"></div>
-        <span class='heading-title'>投稿内容</span>
+        <span class='heading-title'>投稿詳細内容</span>
       </h3>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-5 text-center">
           <%= image_tag @post.get_image(320,240) %>
         </div>
@@ -64,28 +57,40 @@
             </tr>
           </table>
           <div class="text-center">
-            <% if @post.user == current_user %>
-              <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary col-4" %>
-              <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
-            <% else %>
-              <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-secondary col-4" %>
+            <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
           </div>
-          
-          <% end %>
         </div>
       </div>
-    </div>
-    <!--コメント一覧-->
+    </div>    
     <div class="row mt-5">
       <div class="col-lg-6 col-sm-12">
-      <%= render "public/post_comments/index", post: @post %>
-      </div>
-    </div>
-    <!--コメントフォーム-->
-    <div class="row">
-      <div class="col-lg-1 col-sm-1"></div>
-      <div class="col-lg-4 col-sm-9 my-3">
-        <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+        <h5>
+          <i class="fa-solid fa-comment"  style="color: #7a7a7a;"></i>
+          <%= @post.post_comments.count %>件のコメント
+        </h5>
+        <table class="table border-bottom table-hover table-inver">
+          <tbody>
+            <% @post.post_comments.each do |post_comment| %>
+              <tr>
+                <td class="text-center align-middle">
+                  <%= l post_comment.created_at, format: :short %>
+                </td>
+                <td class="text-center">
+                  <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+                  <%= post_comment.user.name %>
+                </td>
+                <td class="text-center align-middle">
+                  <%= post_comment.comment %>
+                </td>
+                <td class="text-center align-middle" colspan="3">
+                  <% if post_comment.user == current_user %>
+                    <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
