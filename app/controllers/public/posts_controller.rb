@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @current_user = current_user
+    # コメント機能の記述
     @post_comment = PostComment.new
     @post_comments = PostComment.all
   end
@@ -46,7 +47,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "投稿を削除しました。"
-      redirect_to mypage_path
+      redirect_to user_path(current_user.id)
     else
       flash.now[:alert] = "投稿内容の削除に失敗しました。"
       render :show

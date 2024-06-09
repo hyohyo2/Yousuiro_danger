@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # ユーザ用
   root to: "public/homes#top"
   get '/about' => 'public/homes#about'
-  get '/users/my_page' => 'public/users#mypage', as: 'mypage'
   get '/users/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'

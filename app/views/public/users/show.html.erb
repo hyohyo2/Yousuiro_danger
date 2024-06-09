@@ -2,14 +2,27 @@
 <div class="row">
   <%= render 'public/users/info', current_user: @current_user %>
   <div class="col-10">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <!--ユーザ情報詳細欄-->
       <h3 class="row my-4">
         <div class="col-1"></div>
-        <span class='heading-title'>ユーザ登録情報</span>
+        <% if @user.id == current_user.id %>
+          <span class='heading-title'>マイページ</span>
+        <% else %>
+          <span class='heading-title'>ユーザ登録情報</span>
+        <% end %>
       </h3>
       <!--ユーザ情報-->
-      <div class="col-lg-4 col-sm-6">
+      <div class="col-lg-4 col-sm-6 text-center">
         <%= render 'public/users/show', user: @user %>
+        <% if @user.id == current_user.id %>
+          <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary col-6" do %>
+            <i class="fa-solid fa-sliders"></i>　設定
+          <% end %>
+        <% end %>
       </div>
       <!--ユーザの投稿一覧-->
       <div class="row my-5">

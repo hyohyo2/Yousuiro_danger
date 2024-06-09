@@ -10,16 +10,9 @@
           <%= l post_comment.created_at, format: :short %>
         </td>
         <td class="text-center">
-          <% if post_comment.user == current_user %>
-            <%= link_to mypage_path do %>
-              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-              <%= post_comment.user.name %>
-            <% end %>
-          <% else %>
-            <%= link_to user_path(post_comment.user) do %>
-              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-              <%= post_comment.user.name %>
-            <% end %>
+          <%= link_to user_path(post_comment.user) do %>
+            <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+            <%= post_comment.user.name %>
           <% end %>
         </td>
         <td class="text-center align-middle">

@@ -28,7 +28,7 @@
       </li>
       <!--マイページボタン-->
       <li class="nav-item">
-        <%= link_to mypage_path do %>
+        <%= link_to user_path(current_user.id) do %>
           <h1><i class="fa-solid fa-user" style="color: #7a7a7a;"></i></h1>
           <p>マイページ</p>
         <% end %>

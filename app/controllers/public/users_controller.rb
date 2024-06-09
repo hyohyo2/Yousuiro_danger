@@ -1,14 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
-  def mypage
-    @user = current_user
-    # 新着順
-    @posts = @user.posts.page(params[:page]).per(8).order('id DESC')
-    @post = @user.posts
-  end
-
-  def show
+   def show
     @current_user = current_user
     @user = User.find(params[:id])
     # 新着順
@@ -24,7 +17,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報の更新しました。"
-      redirect_to mypage_path
+      redirect_to user_path(@user.id)
     else
       flash.now[:alert] = "ユーザー情報の更新に失敗しました。"
       render :edit
@@ -53,7 +46,7 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to mypage_path
+      redirect_to user_path(current_user.id)
     end
   end
   
