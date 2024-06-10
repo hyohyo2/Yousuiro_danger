@@ -6,38 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
-  email: ENV["ADMIN_EMAIL"],
-  password: ENV["ADMIN_PASSWORD"]
-  )
+Admin.find_or_create_by!(email: ENV["ADMIN_EMAIL"]) do |admin|
+  admin.password = ENV["ADMIN_PASSWORD"]
+end
 
 # ユーザ情報
-User.create!(
-  email: 'test@test',
-  password: 'example',
-  name: 'テスト太郎',
-  introduction: 'よろしくね',
-  is_active: true
-)
-User.create!(
-  email: 'test1@test',
-  password: 'example',
-  name: 'テスト花子',
-  introduction: 'よろしくおねがいします',
-  is_active: true
-)
-User.create!(
-  email: 'test2@test',
-  password: 'example',
-  name: 'テスト二郎',
-  introduction: 'よろしくお願いいたします。',
-  is_active: true
-)
+taro = User.find_or_create_by!(email: 'test@test') do |user|
+  user.password = 'example'
+  user.name = 'テスト太郎'
+  user.introduction = 'よろしくね'
+  user.is_active = true
+end
+
+hanako = User.find_or_create_by!(email: 'test1@test') do |user|
+  user.password = 'example'
+  user.name = 'テスト花子'
+  user.introduction = 'よろしくおねがいします'
+  user.is_active = true
+end
+
+jiro = User.find_or_create_by!(email: 'test2@test') do |user|
+  user.password = 'example'
+  user.name = 'テスト二郎'
+  user.introduction = 'よろしくお願いいたします。'
+  user.is_active = true
+end
 
 # 投稿情報
 # 投稿画像を変更すること
-Post.create!(
-  user_id: User.find_by(name: 'テスト太郎').id,
+post = taro.posts.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
   post_code: '1234567',
   prefecture_address: '岡山県',
@@ -47,8 +44,7 @@ Post.create!(
   status: 0
 )
 
-Post.create!(
-  user_id: User.find_by(name: 'テスト花子').id,
+hanako.posts.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
   post_code: '1234567',
   prefecture_address: '岡山県',
@@ -58,8 +54,7 @@ Post.create!(
   status: 1
 )
 
-Post.create!(
-  user_id: User.find_by(name: 'テスト二郎').id,
+jiro.posts.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
   post_code: '1234567',
   prefecture_address: '岡山県',
@@ -69,14 +64,12 @@ Post.create!(
   status: 0
 )
 
-PostComment.create!(
-  user_id: User.find_by(id: 3).id,
-  post_id: Post.find_by(id: 1).id,
+jiro.post_comments.create!(
+  post: post,
   comment: "とてもいい投稿ですね"
-  )
+)
 
-PostComment.create!(
-  user_id: User.find_by(id: 2).id,
-  post_id: Post.find_by(id: 1).id,
+hanako.post_comments.create!(
+  post: post,
   comment: "気を付けます！！"
-  )
+)
