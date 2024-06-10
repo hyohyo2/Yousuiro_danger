@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     get '/users/:id/userpost' => 'users#userpost', as: 'userpost'
+    get '/search' => 'searches#search'
 
     resources :posts, only:[:show, :destroy] do
       resources :post_comments, only:[:destroy]

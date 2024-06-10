@@ -8,7 +8,7 @@
       <%= link_to "戻る", admin_user_path(@user), class: "btn btn-outline-info col-1" %>
     </h3>
     <div class="row my-3 mr-4">
-      <%= render "admin/posts/index", posts: @posts %>
+      <%= render "admin/posts/userpostindex", posts: @posts %>
     </div>
     <div class="d-flex justify-content-center">
       <%= paginate @posts, theme: 'bootstrap-5'%>

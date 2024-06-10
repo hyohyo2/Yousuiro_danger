@@ -9,56 +9,7 @@
         <div class="col-2"></div>
         <span class='heading-title'>投稿一覧</span>
       </h3>
-      <table class="table border-bottom table-hover table-inverse mx-4">
-        <thead>
-          <tr>
-            <th class="text-center">投稿日時</th>
-            <th class="text-center">投稿ユーザー</th>
-            <th class="text-center">ステータス</th>
-            <th class="text-center">住所</th>
-            <th class="text-center">
-              <i class="fa-solid fa-comment"  style="color: #7a7a7a;"></i>
-              コメント数
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td class="text-center">
-                <%= link_to admin_post_path(post.id) do %>
-                  <%= l post.created_at, format: :short %>
-                <% end %>
-              </td>
-              <td class="text-center">
-                <%= link_to admin_user_path(post.user_id) do %>
-                  <%= post.user.name %>
-                <% end %>
-
-              </td>
-              <td class="text-center">
-                <% if post.danger? %>
-                  <span class="text-danger font-weight-bold">
-                    <%= post.status_i18n %>
-                  </span>
-                <% elsif post.safety? %>
-                  <span class="text-success font-weight-bold">
-                    <%= post.status_i18n %>
-                  </span>
-                <% end %>
-              </td>
-              <td class="text-center">
-                <%= post.prefecture_address %>
-                <%= post.city_address %>
-                <%= post.block_address %>
-              </td>
-              <td class="text-center">
-                <%= post.post_comments.count %>件
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render "admin/homes/postindex", posts: @posts %>
       <!--ページネーション表示-->
       <div class="d-flex justify-content-center">
         <%= paginate @posts, theme: 'bootstrap-5'%>

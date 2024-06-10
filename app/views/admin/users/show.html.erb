@@ -52,7 +52,7 @@
       <!--ユーザの投稿一覧-->
       <div class="row my-5 mr-4">
         <h3 class="mx-5"><%= @user.name %>さんの投稿一覧</h3>
-        <%= render "admin/posts/index", posts: @posts %>
+        <%= render "admin/posts/userpostindex", posts: @posts %>
         <div class="col-9"></div>
         <div class="col-3 text-right">
           <!--4件以上ないと表示されない-->
