@@ -33,11 +33,14 @@
           <%= f.label :introduction, "メッセージ", class: "col-3 my-2" %>
           <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-4 my-2" %>
         </div>
+        <!--booleanのラジオボタン-->
         <div class="row form-group justify-content-center">
           <%= f.label :status, "ステータス", class: "col-3 my-2" %>
           <div class="col-4 my-2 p-0">
-            <%= f.radio_button :is_active, true, class: "col-1" %> 有効
-            <%= f.radio_button :is_active, false, class: "col-1" %> 退会
+            <%= f.radio_button :is_active, true, class: "col-1" %>
+            <%= f.label "有効", class: "text-primary font-weight-bold" %>
+            <%= f.radio_button :is_active, false, class: "col-1" %>
+            <%= f.label "退会", class: "text-secondary font-weight-bold" %>
           </div>
         </div>
         <div class="row form-group justify-content-center">

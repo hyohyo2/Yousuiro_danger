@@ -8,7 +8,7 @@
       <!--ユーザのメッセージ表示-->
       <li class="nav-item">
         <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>　
-        <%= render 'public/users/message', user: current_user%><br><br>
+        <%= render 'public/users/message', user: current_user%><br>
       </li>
       <!--新規投稿ボタン-->
       <li class="nav-item">
@@ -41,6 +41,11 @@
       </li>
       <!--管理者ページでの表示-->
     <% elsif admin_signed_in? %>
+      <li class="nav-item mb-3" style="border: 2px solid #7a7a7a ;" >
+        <h1><i class="fa-solid fa-user-shield" style="color: #7a7a7a;"></i></h1>
+        <strong>管理者ログイン中です</strong>
+      </li>
+      
       <!--投稿一覧-->
       <li class="nav-item">
         <%= link_to admin_root_path do %>
