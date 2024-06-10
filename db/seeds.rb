@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.create!(
+  email: ENV["ADMIN_EMAIL"],
+  password: ENV["ADMIN_PASSWORD"]
+  )
+
 # ユーザ情報
 User.create!(
   email: 'test@test',
@@ -63,3 +68,15 @@ Post.create!(
   detail: 'ここの用水路は学生の通学路ですが柵がありません。水深が深く転落すると非常に危険です。',
   status: 0
 )
+
+PostComment.create!(
+  user_id: User.find_by(id: 3).id,
+  post_id: Post.find_by(id: 1).id,
+  comment: "とてもいい投稿ですね"
+  )
+
+PostComment.create!(
+  user_id: User.find_by(id: 2).id,
+  post_id: Post.find_by(id: 1).id,
+  comment: "気を付けます！！"
+  )

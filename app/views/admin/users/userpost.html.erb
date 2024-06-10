@@ -1,0 +1,17 @@
+<div class="row">
+  <%= render 'layouts/sidebar'%>
+  <div class="col-10">
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <span class='heading-title'><%= @user.name %>さんの投稿一覧</span>
+      <div class="col-6"></div>
+      <%= link_to "戻る", admin_user_path(@user), class: "btn btn-outline-info col-1" %>
+    </h3>
+    <div class="row my-3 mr-4">
+      <%= render "admin/posts/userpostindex", posts: @posts %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= paginate @posts, theme: 'bootstrap-5'%>
+    </div>
+  </div>
+</div>

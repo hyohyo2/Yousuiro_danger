@@ -1,0 +1,65 @@
+<div class="row">
+  <%= render 'layouts/sidebar'%>
+  <div class="col-10">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    <!--ユーザ情報詳細欄-->
+      <h3 class="row my-4">
+        <div class="col-1"></div>
+        <span class='heading-title'>ユーザ登録情報</span>
+      </h3>
+      <!--ユーザ情報-->
+      <div class="col-lg-4 col-sm-6 text-center">
+        <div class="mb-3 text-center">
+          <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
+        </div>
+        <table class="table border-bottom">
+          <tr>
+            <th class="text-center">ユーザー名</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th class="text-center">メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <i class="fa-solid fa-message"></i>
+              メッセージ
+            </th>
+            <td>
+              <!--ユーザのメッセージ-->
+              <%= render 'public/users/message', user: @user%>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">ステータス</th>
+            <td>
+              <% if @user.is_active == true %>
+                <span class="text-primary font-weight-bold">有効</span>
+              <% else %>
+                <span class="text-secondary font-weight-bold">退会</span>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+          <%= link_to edit_admin_user_path(@user.id), class: "btn btn-secondary col-6" do %>
+            <i class="fa-solid fa-sliders"></i>　編集する
+          <% end %>
+      </div>
+      <!--ユーザの投稿一覧-->
+      <div class="row my-5 mr-4">
+        <h3 class="mx-5"><%= @user.name %>さんの投稿一覧</h3>
+        <%= render "admin/posts/userpostindex", posts: @posts %>
+        <div class="col-9"></div>
+        <div class="col-3 text-right">
+          <!--4件以上ないと表示されない-->
+          <% if @user.posts.count > 4 %>
+            <%= link_to "もっと投稿を見る", admin_userpost_path(@user.id), class: "btn btn-outline-info" %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

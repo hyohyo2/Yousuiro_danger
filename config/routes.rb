@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   # 管理者用
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
@@ -31,6 +31,13 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
+    get '/users/:id/userpost' => 'users#userpost', as: 'userpost'
+    get '/search' => 'searches#search'
+
+    resources :posts, only:[:show, :destroy] do
+      resources :post_comments, only:[:destroy]
+    end
+    resources :users, only:[:index, :show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

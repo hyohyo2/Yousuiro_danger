@@ -1,6 +1,6 @@
 <!--ログインユーザ共通欄-->
 <div class="row">
-  <%= render 'public/users/info', current_user: @current_user %>
+  <%= render 'layouts/sidebar', current_user: @current_user %>
   <div class="col-9 p-0">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
@@ -11,7 +11,7 @@
       <!--ページ名表示消す-->
       <span class='heading-title'>タイムライン</span>
     </h3>
-  
+
     <%= render 'public/posts/timeline', posts: @posts %>
     <div class="d-flex justify-content-center">
       <%= paginate @posts, theme: 'bootstrap-5'  %>

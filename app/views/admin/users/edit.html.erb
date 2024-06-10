@@ -1,5 +1,5 @@
 <div class="row">
-  <%= render 'layouts/sidebar', current_user: @current_user %>
+  <%= render 'layouts/sidebar'%>
   <div class="col-10">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
@@ -14,8 +14,8 @@
       <div class="mx-5">
         <%= render 'layouts/errors', obj: @user %>
       </div>
-    
-      <%= form_with model: @user do |f| %>
+
+      <%= form_with model: [:admin, @user] do |f| %>
         <div class="row form-group justify-content-center">
           <%= f.label :profile_image, "プロフィール画像", class: "col-3 my-2" %>
           <%= f.file_field :profile_image, accept: "image/*", class: "col-4 px-0 my-2" %>
@@ -24,7 +24,7 @@
           <%= f.label :name, "ユーザー名", class: "col-3" %>
           <%= f.text_field :name,autofocus: true, class: "col-4" %>
         </div>
-    
+
         <div class="row form-group justify-content-center">
           <%= f.label :email, "メールアドレス", class: "col-3 my-2" %>
           <%= f.email_field :email,  autocomplete: "email", class: "col-4 my-2" %>
@@ -33,15 +33,19 @@
           <%= f.label :introduction, "メッセージ", class: "col-3 my-2" %>
           <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-4 my-2" %>
         </div>
-        
+        <!--booleanのラジオボタン-->
         <div class="row form-group justify-content-center">
-          <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2" %>
-          
+          <%= f.label :status, "ステータス", class: "col-3 my-2" %>
+          <div class="col-4 my-2 p-0">
+            <%= f.radio_button :is_active, true, class: "col-1" %>
+            <%= f.label "有効", class: "text-primary font-weight-bold" %>
+            <%= f.radio_button :is_active, false, class: "col-1" %>
+            <%= f.label "退会", class: "text-secondary font-weight-bold" %>
+          </div>
         </div>
         <div class="row form-group justify-content-center">
-          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-3 mb-3" %>
+          <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2", "data-confirm" => "本当にこの内容に変更しますか？" %>
         </div>
-        
       <% end %>
     </div>
   </div>

@@ -1,0 +1,17 @@
+<div class="row">
+  <%= render 'layouts/sidebar' %>
+  <div class="col-10">
+    <div class="container m-0">
+      <h3 class="row my-4">
+        <div class="col-1"></div>
+        <span class='heading-title'>ユーザー一覧</span>
+      </h3>
+      <!--登録ユーザーの一覧-->
+      <%= render "admin/users/index", users: @users %>
+      <!--ページネーション表示-->
+      <div class="d-flex justify-content-center">
+        <%= paginate @users, theme: 'bootstrap-5'%>
+      </div>
+    </div>
+  </div>
+</div>
