@@ -17,7 +17,12 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "ユーザー情報の更新しました。"
+      if @user.is_active == true
+        flash[:notice] = "ユーザー情報を更新しました。"
+      else
+        flash[:notice] = "ユーザー情報を更新しました。"
+        @user.posts.destroy_all
+      end
       redirect_to admin_user_path(@user.id)
     else
       flash.now[:alert] = "ユーザー情報の更新に失敗しました。"

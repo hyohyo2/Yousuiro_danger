@@ -3,7 +3,7 @@
   <div class="col-9 p-0 my-3 text-center">
     <!--検索結果の表示-->
     <% if @model == 'user' %>
-      <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　ユーザー名<strong>" <%= @content %> "</strong>さんは<%= @records.total_count %>件見つかりました。 </h4>
+      <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　投稿者名<strong>" <%= @content %> "</strong>さんは<%= @records.total_count %>件見つかりました。 </h4>
       <%= render 'admin/users/index', users: @records %>
     <% elsif @model == 'post' %>
       <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　投稿住所<strong>"<%= @content %>"</strong>は<%= @records.total_count %>件見つかりました。</h4>

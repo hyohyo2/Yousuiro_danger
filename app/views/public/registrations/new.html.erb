@@ -14,7 +14,7 @@
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <div class="row form-group justify-content-center">
-          <%= f.label :name, "ユーザーネーム", class: "col-3" %>
+          <%= f.label :name, "ユーザー名", class: "col-3" %>
           <%= f.text_field :name,autofocus: true, class: "col-4" %>
         </div>
 

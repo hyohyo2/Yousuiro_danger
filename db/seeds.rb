@@ -68,3 +68,15 @@ Post.create!(
   detail: 'ここの用水路は学生の通学路ですが柵がありません。水深が深く転落すると非常に危険です。',
   status: 0
 )
+
+PostComment.create!(
+  user_id: User.find_by(id: 3).id,
+  post_id: Post.find_by(id: 1).id,
+  comment: "とてもいい投稿ですね"
+  )
+
+PostComment.create!(
+  user_id: User.find_by(id: 2).id,
+  post_id: Post.find_by(id: 1).id,
+  comment: "気を付けます！！"
+  )
