@@ -15,7 +15,7 @@
         <%= render 'layouts/errors', obj: @user %>
       </div>
 
-      <%= form_with model: @user do |f| %>
+      <%= form_with model: [:admin, @user] do |f| %>
         <div class="row form-group justify-content-center">
           <%= f.label :profile_image, "プロフィール画像", class: "col-3 my-2" %>
           <%= f.file_field :profile_image, accept: "image/*", class: "col-4 px-0 my-2" %>
