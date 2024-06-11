@@ -1,3 +1,4 @@
+<!--コメントフォーム共通ページ-->
 <%= form_with model: [post, post_comment] do |f| %>
   <div class="d-flex">
     <%= f.text_area :comment, placeholder: "20文字以内で入力してください。", class: "w-100" %>
