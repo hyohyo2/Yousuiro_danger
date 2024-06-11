@@ -26,15 +26,15 @@
           <% end %>
         <% end %>
       </div>
-      <% if current_user.guest_user %>
+      <% if @user.guest_user %>
         <div>
           <h4 class="m-3">
             <i class="fa-regular fa-circle-dot"></i>
             ゲストログインで利用可能なサービス
           </h4>
           <p class="m-3">
-            ・登録ユーザーの投稿情報を見ることができます。<br>
-            ・投稿に関してコメントはできます。
+            ・投稿情報を見ることができます。<br>
+            ・投稿に関してコメントができます。
           </p>
           <h4 class="m-3">
             <i class="fa-regular fa-circle-xmark"></i>
