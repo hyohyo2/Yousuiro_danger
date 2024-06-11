@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :user do
+    post '/users/guest_sign_in' => 'public/sessions#guest_sign_in'
+  end
 
   # ユーザ用
   root to: "public/homes#top"
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
   get '/search' => 'public/searches#search', as: 'search'
+
 
   scope module: :public do
     resources :users, only:[:show, :edit, :update]

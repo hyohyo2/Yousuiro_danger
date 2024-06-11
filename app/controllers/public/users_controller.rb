@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
+  before_action :ensure_guest_user, only:[:edit]
   def show
     @current_user = current_user
     @user = User.find(params[:id])
@@ -37,7 +38,8 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
     redirect_to new_user_registration_path
   end
-
+  
+  
   private
 
   def user_params
@@ -48,6 +50,13 @@ class Public::UsersController < ApplicationController
     user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to user_path(current_user.id)
+    end
+  end
+  # ゲストユーザーログイン時アクセスを制限
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      redirect_to user_path(current_user.id), notice: "ゲストユーザーは設定画面へ遷移できません。"
     end
   end
 
