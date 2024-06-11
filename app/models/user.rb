@@ -22,8 +22,12 @@ class User < ApplicationRecord
     profile_image.variant(resize: "#{width}x#{height}!").processed
   end
   
-  # 検索機能(部分検索のみ)
+  # ユーザー用検索機能(部分検索でステータスが有効のみ)
   def self.search_for(content)
+    User.where('name LIKE ?', '%' + content + '%').where(is_active: true)
+  end
+  # 管理者用検索機能(部分検索でステータスが有効・無効どちらでも検索可能)
+  def self.admin_search_for(content)
     User.where('name LIKE ?', '%' + content + '%')
   end
     

@@ -22,6 +22,7 @@ class Admin::UsersController < ApplicationController
       else
         flash[:notice] = "ユーザー情報を更新しました。"
         @user.posts.destroy_all
+        @user.post_comments.destroy_all
       end
       redirect_to admin_user_path(@user.id)
     else
@@ -32,7 +33,7 @@ class Admin::UsersController < ApplicationController
 
   def userpost
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
   end
 
   private

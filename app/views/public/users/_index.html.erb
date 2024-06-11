@@ -11,7 +11,8 @@
         </td>
         <td class="align-middle">
           <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>
-          <%= user.introduction %>
+          <!--ユーザのメッセージ-->
+          <%= render 'public/users/message', user: user %>
         </td>
       </tr>
     <% end %>
