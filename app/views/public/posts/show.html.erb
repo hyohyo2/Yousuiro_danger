@@ -14,6 +14,17 @@
       <div class="row">
         <div class="col-5 text-center">
           <%= image_tag @post.get_image(320,240) %>
+          <% if @post.favorited_by?(current_user) %>
+            <%= link_to post_favorite_path(@post), method: :delete do %>
+              <i class="fa-solid fa-star" style="color: red;"></i>
+              <%= @post.favorites.count %>いいね
+            <% end %>
+          <% else %>
+            <%= link_to post_favorite_path(@post), method: :post do %>
+              <i class="fa-solid fa-star" style="color: #7a7a7a;"></i>
+              <%= @post.favorites.count %>いいね
+            <% end %>
+          <% end %>
         </div>
         <div class="col-1"></div>
         <div class="col-6">
