@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   enum status: { danger: 0, safety: 1 }
 
@@ -18,6 +19,10 @@ class Post < ApplicationRecord
 
   def get_image(width, height)
     image.variant(resize: "#{width}x#{height}!").processed
+  end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user_id)
   end
 
   
