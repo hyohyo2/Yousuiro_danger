@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
+  before_action :ensure_guest_user, except:[:show, :timeline]
   def new
     @post = Post.new
     @current_user = current_user
@@ -71,6 +72,13 @@ class Public::PostsController < ApplicationController
   def is_matching_login_user
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
+      redirect_to timeline_path
+    end
+  end
+  
+
+  def ensure_guest_user
+    if current_user.guest_user
       redirect_to timeline_path
     end
   end
