@@ -1,14 +1,18 @@
+<!--管理者検索結果ページ-->
 <div class="row">
   <%= render 'layouts/sidebar'%>
   <div class="col-9 p-0 mx-auto my-3 text-center">
     <!--検索結果の表示-->
     <% if @model == 'user' %>
+    <!--ユーザー名の検索結果一覧(部分一致)退会も表示される-->
       <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　投稿者名<strong>" <%= @content %> "</strong>さんは<%= @records.total_count %>件見つかりました。 </h4>
       <%= render 'admin/users/index', users: @records %>
     <% elsif @model == 'post' %>
+    <!--投稿住所の検索結果一覧(部分一致)-->
       <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　投稿住所<strong>"<%= @content %>"</strong>は<%= @records.total_count %>件見つかりました。</h4>
       <%= render 'admin/homes/postindex', posts: @records %>
     <% else @model =='post_code' %>
+    <!--郵便番号の検索結果一覧(完全一致)-->
       <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　郵便番号<strong>"〒<%= @content.to_s.insert(3, "-") %>"</strong>は<%= @records.total_count %>件見つかりました。</h4>
       <%= render 'admin/homes/postindex', posts: @records %>
     <% end %>
