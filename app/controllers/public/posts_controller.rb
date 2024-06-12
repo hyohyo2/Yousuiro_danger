@@ -76,7 +76,7 @@ class Public::PostsController < ApplicationController
     end
   end
   
-
+# ゲストログイン時のアクセス制限
   def ensure_guest_user
     if current_user.guest_user
       redirect_to timeline_path

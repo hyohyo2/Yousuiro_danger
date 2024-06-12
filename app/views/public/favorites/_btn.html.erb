@@ -1,0 +1,10 @@
+<!--お気に入り-->
+<% if post.favorited_by?(current_user) %>
+  <%= link_to post_favorite_path(post), method: :delete do %>
+    <i class="fa-solid fa-star" style="color: orange;"></i>
+  <% end %>
+<% else %>
+  <%= link_to post_favorite_path(post), method: :post do %>
+    <i class="fa-solid fa-star" style="color: #7a7a7a;"></i>
+  <% end %>
+<% end %>
