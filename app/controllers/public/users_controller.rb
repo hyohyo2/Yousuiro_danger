@@ -55,7 +55,7 @@ class Public::UsersController < ApplicationController
   # ゲストユーザーログイン時アクセスを制限
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.guest_user?
+    if @user.guest_user
       redirect_to user_path(current_user.id), notice: "ゲストユーザーは設定画面へ遷移できません。"
     end
   end
