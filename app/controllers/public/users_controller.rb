@@ -39,6 +39,11 @@ class Public::UsersController < ApplicationController
     redirect_to new_user_registration_path
   end
   
+  def favorites_
+    
+  end
+  
+  
   
   private
 
