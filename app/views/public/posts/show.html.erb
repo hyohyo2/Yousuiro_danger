@@ -15,7 +15,9 @@
         <div class="col-7"></div>
         <div class="col-2">
           <h3 class="text-center">
-            <%= render "public/favorites/btn", post: @post %>
+            <div id="favorite_btn_<%= @post.id %>">
+              <%= render "public/favorites/btn", post: @post %>
+            </div>
           </h3>
           <div class="text-center">
             <%= render "public/favorites/count", post: @post %>

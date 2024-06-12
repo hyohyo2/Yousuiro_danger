@@ -34,7 +34,9 @@
           </td>
           <td class="align-middle text-center">
             <!--お気に入りボタンの表示-->
-            <%= render "public/favorites/btn", post: post %>
+            <div id="favorite_btn_<%= post.id %>">
+              <%= render "public/favorites/btn", post: post %>
+            </div>
             <!--お気に入り数-->
             <%= render "public/favorites/count", post: post %>
           </td>
@@ -42,7 +44,7 @@
             <!--コメント数の表示-->
             <%= render "public/post_comments/count", post: post %>
           </td>
-          
+
         </tr>
         <% end %>
       <!--投稿がない場合は投稿がありませんと表示される-->

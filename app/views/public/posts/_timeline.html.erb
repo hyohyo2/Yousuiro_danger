@@ -39,7 +39,9 @@
       </td>
       <td class="align-middle text-center">
         <!--お気に入りボタンの表示-->
-        <%= render "public/favorites/btn", post: post %>
+        <div id="favorite_btn_<%= post.id %>">
+          <%= render "public/favorites/btn", post: post %>
+        </div>
         <!--お気に入り数の-->
         <%= render "public/favorites/count", post: post %>
       </td>
