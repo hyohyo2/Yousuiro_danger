@@ -21,10 +21,15 @@ Rails.application.routes.draw do
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
   get '/search' => 'public/searches#search', as: 'search'
+  
 
 
   scope module: :public do
-    resources :users, only:[:show, :edit, :update]
+    resources :users, only:[:show, :edit, :update] do
+      member do
+        get :favorites
+      end
+    end
     resources :posts, only:[:new, :create, :show, :edit, :update, :destroy] do
       resources :post_comments, only:[:create, :destroy]
       resource :favorite, only:[:create, :destroy]

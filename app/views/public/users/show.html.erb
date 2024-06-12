@@ -15,16 +15,27 @@
           <span class='heading-title'>ユーザ登録情報</span>
         <% end %>
       </h3>
-      <!--ユーザ情報-->
-      <div class="col-lg-4 col-sm-6 text-center">
-        <%= render 'public/users/show', user: @user %>
-        <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
-          <% if @user.id == current_user.id %>
-            <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary col-6" do %>
-              <i class="fa-solid fa-sliders"></i>　設定
+      <div class="row">
+        <!--ユーザ情報-->
+        <div class="col-lg-6 col-sm-6 text-center">
+          <%= render 'public/users/show', user: @user %>
+          <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
+            <% if @user.id == current_user.id %>
+              <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary col-6" do %>
+                <i class="fa-solid fa-sliders"></i>　設定
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <!--詳細右側の表示-->
+        <div class="col-lg-3 col-sm-5 text-center">
+          <div class="mt-5">
+            <%= link_to favorites_user_path(@user), class: "btn btn-warning" do %>
+              <i class="fa-solid fa-star"></i>
+              お気に入り一覧
+            <% end %>
+          </div>
+        </div>
       </div>
       <% if @user.guest_user %>
         <div>
