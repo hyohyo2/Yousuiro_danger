@@ -40,7 +40,9 @@
           </td>
           <td class="align-middle text-center">
             <!--コメント数の表示-->
-            <%= render "public/post_comments/count", post: post %>
+            <div id="comment_count">
+              <%= render "public/post_comments/count", post: post %>
+            </div>
           </td>
         </tr>
         <% end %>
