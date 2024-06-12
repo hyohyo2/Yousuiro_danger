@@ -9,6 +9,7 @@
     <div class="text-center">
       <%= render 'public/users/index', users: @users, class: "text-center" %>
     </div>
+    <!--ページネーション-->
     <div class="d-flex justify-content-center">
       <%= paginate @users, theme: 'bootstrap-5'  %>
     </div>

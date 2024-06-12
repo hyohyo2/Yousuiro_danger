@@ -42,20 +42,16 @@
             <!--コメント数の表示-->
             <%= render "public/post_comments/count", post: post %>
           </td>
-
         </tr>
         <% end %>
       <!--投稿がない場合は投稿がありませんと表示される-->
       <% else %>
         <td class="text-center">
           <h4>投稿がありません</h4>
-
         </td>
       <% end %>
     </tbody>
   </table>
-
-
 <!--ページネーション-->
 <div class="d-flex justify-content-center">
   <%= paginate @posts, theme: 'bootstrap-5'%>
