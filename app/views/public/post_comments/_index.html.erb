@@ -1,7 +1,6 @@
 <!--コメント一覧共通ページ-->
 <h5>
-  <i class="fa-solid fa-comment"  style="color: #7a7a7a;"></i>
-  <%= post.post_comments.count %>件のコメント
+  <%= render "public/post_comments/count", post: post %>件のコメント
 </h5>
 <table class="table border-bottom table-hover table-inver">
   <tbody>
@@ -21,7 +20,7 @@
         </td>
         <td class="text-center align-middle" colspan="3">
           <% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger"%>
           <% end %>
         </td>
       </tr>

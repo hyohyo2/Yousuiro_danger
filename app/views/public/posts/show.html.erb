@@ -88,7 +88,11 @@
 
     <div class="row m-5">
       <!--コメント一覧-->
-      <%= render "public/post_comments/index", post: @post %>
+      <div class="col-11">
+        <div id="comment_index">
+          <%= render "public/post_comments/index", post: @post %>
+        </div>
+      </div>
     </div>
     <div class="row m-5">
       <div class="col-3"></div>
