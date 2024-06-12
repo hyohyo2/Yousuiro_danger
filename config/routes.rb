@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
   get '/search' => 'public/searches#search', as: 'search'
+  get '/favorites_post' => 'public/favorites#favorites_post'
 
 
   scope module: :public do
