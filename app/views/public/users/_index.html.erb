@@ -14,6 +14,9 @@
           <!--ユーザのメッセージ-->
           <%= render 'public/users/message', user: user %>
         </td>
+        <td class="align-middle">
+          <%= render "public/relationships/btn", user: user, class: "col-4" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

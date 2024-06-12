@@ -17,13 +17,16 @@
       </h3>
       <div class="row">
         <!--ユーザ情報-->
-        <div class="col-lg-6 col-sm-6 text-center">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4 col-sm-6 text-center">
           <%= render 'public/users/show', user: @user %>
           <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
             <% if @user.id == current_user.id %>
-              <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary col-6" do %>
+              <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary col-4" do %>
                 <i class="fa-solid fa-sliders"></i>　設定
               <% end %>
+            <% else %>
+              <%= render "public/relationships/btn", user: @user, class: "col-4" %>
             <% end %>
           <% end %>
         </div>
@@ -34,6 +37,12 @@
               <i class="fa-solid fa-star"></i>
               お気に入り一覧
             <% end %>
+          </div>
+          <div>
+            フォロー数
+            <%= link_to @user.followings.count, user_followings_path(@user) %>
+            フォロワー
+            <%= link_to @user.followers.count, user_followers_path(@user) %>
           </div>
         </div>
       </div>
