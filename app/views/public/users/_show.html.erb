@@ -1,13 +1,5 @@
-<!--ユーザ画像・名前・メアド・メッセージを表示-->
-<div class="mb-3 text-center">
-  <%= image_tag user.get_profile_image(150,150), class: "rounded-circle" %>
-</div>
 <!--ユーザー詳細の共通テーブル-->
-<table class="table">
-  <tr>
-    <th class="text-center">ユーザー名</th>
-    <td><%= user.name %></td>
-  </tr>
+<table class="table border-bottom">
   <!--ログインユーザのみアドレスを表示-->
   <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
     <% if user == current_user %>
@@ -24,6 +16,23 @@
     <td>
       <!--ユーザのメッセージ-->
       <%= render 'public/users/message', user: user%>
+    </td>
+  </tr>
+  <tr>
+    <th>フォロー中</th>
+    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+  </tr>
+  <tr>
+    <th>フォロワー</th>
+    <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+  </tr>
+  <tr>
+    <th>お気に入り</th>
+    <td>
+      <%= link_to favorites_user_path(user) do %>
+        <i class="fa-solid fa-star"></i>
+        
+      <% end %>
     </td>
   </tr>
 </table>

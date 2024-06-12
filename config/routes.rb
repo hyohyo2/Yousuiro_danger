@@ -29,6 +29,9 @@ Rails.application.routes.draw do
       member do
         get :favorites
       end
+      resource :relationships, only:[:create, :destroy]
+        get 'followings' => 'relationships#followings'
+        get 'followers' => 'relationships#followers'
     end
     resources :posts, only:[:new, :create, :show, :edit, :update, :destroy] do
       resources :post_comments, only:[:create, :destroy]

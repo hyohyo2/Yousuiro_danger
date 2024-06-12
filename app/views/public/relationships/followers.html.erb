@@ -1,0 +1,17 @@
+<div class="row">
+  <%= render 'layouts/sidebar', current_user: @current_user %>
+  <div class="col-9 p-0">
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <!--ページ名表示消す-->
+      <span class='heading-title'>フォロワー</span>
+    </h3>
+    <div class="text-center">
+      <%= render 'public/users/index', users: @users, class: "text-center" %>
+    </div>
+    <!--ページネーション-->
+    <div class="d-flex justify-content-center">
+      <%= paginate @users, theme: 'bootstrap-5'  %>
+    </div>
+  </div>
+</div>

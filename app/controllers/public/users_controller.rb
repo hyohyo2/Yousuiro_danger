@@ -34,6 +34,9 @@ class Public::UsersController < ApplicationController
     # ユーザが退会ステータスになったらユーザの投稿は削除される
     current_user.posts.destroy_all
     current_user.post_comments.destroy_all
+    current_user.favorites.destroy_all
+    current_user.followings.destroy_all
+    current_user.followers.destroy_all
     reset_session
     flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
     redirect_to new_user_registration_path

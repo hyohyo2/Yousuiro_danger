@@ -3,7 +3,7 @@
   <ul class="navbar-nav">
     <% if user_signed_in? %>
       <li class="nav-item">
-        <%= image_tag @current_user.get_profile_image(80,80), class: "rounded-circle" %><br>
+        <%= image_tag current_user.get_profile_image(80,80), class: "rounded-circle" %><br>
         <%= current_user.name %><br>
       </li>
       <!--ユーザのメッセージ表示-->

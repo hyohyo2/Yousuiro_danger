@@ -14,6 +14,14 @@
           <!--ユーザのメッセージ-->
           <%= render 'public/users/message', user: user %>
         </td>
+
+        <td class="align-middle">
+          <% if current_user != user %>
+            <%= render "public/relationships/btn", user: user, class: "col-4" %>
+          <% end %>
+        </td>
+
+
       </tr>
     <% end %>
   </tbody>
