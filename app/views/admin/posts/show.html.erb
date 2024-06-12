@@ -3,10 +3,22 @@
   <%= render 'layouts/sidebar' %>
   <div class="col-10">
     <div class="container m-0">
-      <h3 class="row my-4">
+      <div class="row my-4">
         <div class="col-1"></div>
-        <span class='heading-title'>投稿詳細内容</span>
-      </h3>
+        <h3>
+          <span class='heading-title'>投稿詳細内容</span>
+        </h3>
+        <div class="col-6"></div>
+        <div class="col-2">
+          <!--いいね数の表示-->
+          <h3 class="text-center">
+            <i class="fa-solid fa-star" style="color: orange;"></i>
+          </h3>
+          <div class="text-center">
+            <%= @post.favorites.count %>
+          </div>
+        </div>
+      </div>
       <div class="row mb-3">
         <div class="col-5 text-center">
           <%= image_tag @post.get_image(320,240) %>
@@ -63,34 +75,32 @@
         </div>
       </div>
     </div>
-    <div class="row mt-5">
-      <div class="col-lg-6 col-sm-12">
-        <h5>
-          <i class="fa-solid fa-comment"  style="color: #7a7a7a;"></i>
-          <%= @post.post_comments.count %>件のコメント
-        </h5>
-        <table class="table border-bottom table-hover table-inver">
-          <tbody>
-            <% @post.post_comments.each do |post_comment| %>
-              <tr>
-                <td class="text-center align-middle">
-                  <%= l post_comment.created_at, format: :short %>
-                </td>
-                <td class="text-center">
-                  <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-                  <%= post_comment.user.name %>
-                </td>
-                <td class="text-center align-middle">
-                  <%= post_comment.comment %>
-                </td>
-                <td class="text-center align-middle" colspan="3">
-                  <%= link_to "コメントを削除", admin_post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+    <div class="row m-5">
+      <h5>
+        <i class="fa-solid fa-comment"  style="color: #7a7a7a;"></i>
+        <%= @post.post_comments.count %>件のコメント
+      </h5>
+      <table class="table border-bottom table-hover table-inver">
+        <tbody>
+          <% @post.post_comments.each do |post_comment| %>
+            <tr>
+              <td class="text-center align-middle">
+                <%= l post_comment.created_at, format: :short %>
+              </td>
+              <td class="text-center">
+                <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+                <%= post_comment.user.name %>
+              </td>
+              <td class="text-center align-middle">
+                <%= post_comment.comment %>
+              </td>
+              <td class="text-center align-middle" colspan="3">
+                <%= link_to "コメントを削除", admin_post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
