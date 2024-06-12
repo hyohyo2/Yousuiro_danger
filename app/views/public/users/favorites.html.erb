@@ -1,0 +1,13 @@
+<div class="row">
+  <%= render 'layouts/sidebar', current_user: @current_user %>
+  <div class="col-9">
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <span class='heading-title'>お気に入り投稿一覧</span>
+    </h3>
+    <%= render "public/posts/timeline", posts: @favorite_posts %>
+    <div class="d-flex justify-content-center">
+      <%= paginate @favorite_posts, theme: 'bootstrap-5'  %>
+    </div>
+  </div>
+</div>

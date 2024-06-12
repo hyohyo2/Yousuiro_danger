@@ -39,8 +39,12 @@ class Public::UsersController < ApplicationController
     redirect_to new_user_registration_path
   end
   
-  def favorites_
-    
+  # お気に入りに登録した投稿一覧
+  def favorites
+    @current_user = current_user
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.where(id: favorites).page(params[:page]).per(10).order('id DESC')
   end
   
   
@@ -64,5 +68,6 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user.id), notice: "ゲストユーザーは設定画面へ遷移できません。"
     end
   end
+  
 
 end
