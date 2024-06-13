@@ -30,7 +30,11 @@ async function initMap(){
       const prefectureAddress = item.prefecture_address;
       const cityAddress = item.city_address;
       const blockAddress = item.block_address;
-      const status = item.status;
+      const i18nStatus = {
+        danger: '危険',
+        safety: '安全',
+      };
+      const status = i18nStatus[item.status];
       const postCode = item.post_code;
 
       const userImage = item.user.image;
