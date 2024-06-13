@@ -56,10 +56,17 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
-    @current_user = current_user
-    # 後でフォローしている人と自分の投稿のみ表示にする
-    # 新着順
-    @posts = Post.page(params[:page]).per(10).order('id DESC')
+    respond_to do |format|
+      format.html do 
+        @current_user = current_user
+        # 後でフォローしている人と自分の投稿のみ表示にする
+        # 新着順
+        @posts = Post.page(params[:page]).per(10).order('id DESC')
+      end
+      format.json do
+        @posts = Post.all
+      end
+    end
   end
   
   private
