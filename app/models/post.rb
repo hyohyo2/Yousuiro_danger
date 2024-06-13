@@ -8,24 +8,33 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   # 全角の指定は可能か
-  validates :post_code, presence: true, length: { is: 7 }
+
   validates :prefecture_address, presence: true
   validates :city_address, presence: true
+  validates :block_address, presence: true
   validates :detail, presence: true
-  validates :status, presence: true
+  # validates :status, presence: true
+
+  
+  geocoded_by :full_address
+  after_validation :geocode
+  
+  # 住所の特定はfull_addressで定義している3カラムから必要なため
+  def full_address
+    "#{prefecture_address} #{city_address} #{block_address}"
+  end
 
   has_one_attached :image
-
 
   def get_image(width, height)
     image.variant(resize: "#{width}x#{height}!").processed
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
 
-  
+
   def self.search_for(content, model)
     # 検索機能(部分検索のみ)
     # 都道府県・市区町村・以降の住所どこを検索しても表示される
@@ -36,5 +45,5 @@ class Post < ApplicationRecord
       Post.where('post_code = ?', content)
     end
   end
-  
+
 end

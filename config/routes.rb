@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       resources :post_comments, only:[:create, :destroy]
       resource :favorite, only:[:create, :destroy]
     end
-    resource :maps, only:[:show]
+    resource :map, only:[:show]
   end
 
 
