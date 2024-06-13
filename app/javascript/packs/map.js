@@ -31,11 +31,46 @@ async function initMap(){
       const cityAddress = item.city_address;
       const blockAddress = item.block_address;
       const status = item.status;
+      const postCode = item.post_code;
+
+      const userImage = item.user.image;
+      const userName = item.user.name;
+      const Image = item.image;
+
 
       const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat: latitude, lng: longitude },
         map,
         title: blockAddress,
+      });
+
+      const contentString =`
+        <div class="information container p-0">
+          <div class="mb-3 d-flex align-items-center">
+            <img class="rounded-circle mr-2" src="${userImage}" width="40" height="40">
+            <p class="lead m-0 font-weight-bold">${userName}</p>
+          </div>
+          <div class="mb-3">
+            <img class="thumbnail" src="${Image}" width="400" height="300" loading="lazy">
+          </div>
+          <div>
+            <h1 class="h4 font-weight-bold">${status}</h1>
+            <p class="text-muted">〒${postCode.slice(0, 3)}-${postCode.slice(3)}</p>
+            <p class="text-muted">${prefectureAddress},${cityAddress},${blockAddress}</p>
+          </div>
+        </div>
+      `;
+
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        ariaLabel: blockAddress,
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open({
+          anchor: marker,
+          map,
+        })
       });
 
     });
