@@ -6,7 +6,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @current_user = current_user
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
      @current_user = current_user
   end
-  
+
   def update
     @current_user = current_user
     @post = Post.find(params[:id])
@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -56,9 +56,8 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
-    @current_user = current_user
     respond_to do |format|
-      format.html do 
+      format.html do
         # 後でフォローしている人と自分の投稿のみ表示にする
         # 新着順
         @posts = Post.page(params[:page]).per(10).order('id DESC')
@@ -68,13 +67,13 @@ class Public::PostsController < ApplicationController
       end
     end
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(:image, :post_code, :prefecture_address, :city_address, :block_address, :detail, :status)
   end
-  
+
   # 他ユーザからのアクセスの制限
   def is_matching_login_user
     @post = Post.find(params[:id])
@@ -82,12 +81,12 @@ class Public::PostsController < ApplicationController
       redirect_to timeline_path
     end
   end
-  
+
 # ゲストログイン時のアクセス制限
   def ensure_guest_user
     if current_user.guest_user
       redirect_to timeline_path
     end
   end
-  
+
 end
