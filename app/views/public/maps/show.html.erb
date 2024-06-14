@@ -1,6 +1,7 @@
+<!--マップページ-->
 <div class="row">
   <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-10">
+  <div class="col-lg-10 col-sm-9 mx-auto">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
@@ -9,7 +10,9 @@
       <div class="col-1"></div>
       <span class='heading-title'>マップ</span>
     </h3>
+    <div class="mb-3">
       <div id="map"></div>
+    </div>
   </div>
 </div>
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

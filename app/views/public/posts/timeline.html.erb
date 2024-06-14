@@ -1,7 +1,7 @@
 <!--タイムライン-->
 <div class="row">
   <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-lg-10 col-sm-9 mx-auto p-0">
+  <div class="col-lg-10 col-sm-9 mx-auto">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>

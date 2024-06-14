@@ -1,12 +1,12 @@
 <!--トップページ-->
 <div class="row">
   <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-10 p-0 mb-4">
+  <div class="col-lg-10 col-sm-9 mx-auto p-0">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
     <% end %>
-    <div class="container m-0">
+    <div class="container">
       <div class="row my-3">
         <div class="mx-auto">
           <h1><strong>用水路安全確認マップへようこそ！！</strong></h1>
