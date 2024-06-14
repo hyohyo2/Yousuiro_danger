@@ -1,56 +1,56 @@
 <!--投稿一覧ページ-->
 <h3><%= user.name %>さんの投稿一覧</h3>
-  <table class="table border-bottom table-hover table-inverse mx-4">
-    <tbody>
-      <% if posts.present? %>
-        <% posts.each do |post| %>
-        <tr>
-          <td class="align-middle text-center">
-            <%= l post.created_at, format: :short %><br>
-          </td>
-          <td class="align-middle text-center">
-            <%= image_tag post.get_image(120,90) %>
-          </td>
-          <td class="align-middle text-center" colspan="3">
-            <!--危険だと赤色表示、安全だと緑色表示-->
-            <% if post.danger? %>
-              <span class="text-danger font-weight-bold">
-                <%= post.status_i18n %>
-              </span>
-            <% elsif post.safety? %>
-              <span class="text-success font-weight-bold">
-                <%= post.status_i18n %>
-              </span>
-            <% end %>
-          </td>
-          <td class="align-middle text-center">
-            <%= link_to post_path(post.id) do %>
-              〒<%= post.post_code.to_s.insert(3, "-")%><br>
-              <i class="fa-solid fa-location-dot" style="color: #7a7a7a;"></i>
-              <%= post.prefecture_address %>
-              <%= post.city_address %>
-              <%= post.block_address %>
-            <% end %>
-          </td>
-          <td class="align-middle text-center">
-            <!--お気に入りボタンの表示-->
-            <div id="favorite_btn_<%= post.id %>">
-              <%= render "public/favorites/btn", post: post %>
-            </div>
-          </td>
-          <td class="align-middle text-center">
-            <!--コメント数の表示-->
-            <div id="comment_count">
-              <%= render "public/post_comments/count", post: post %>
-            </div>
-          </td>
-        </tr>
-        <% end %>
-      <!--投稿がない場合は投稿がありませんと表示される-->
-      <% else %>
-        <td class="text-center">
-          <h4>投稿がありません</h4>
+<table class="table border-bottom table-hover table-inverse">
+  <tbody>
+    <% if posts.present? %>
+      <% posts.each do |post| %>
+      <tr>
+        <td class="align-middle text-center">
+          <%= l post.created_at, format: :short %><br>
         </td>
+        <td class="align-middle text-center">
+          <%= image_tag post.get_image(120,90) %>
+        </td>
+        <td class="align-middle text-center" colspan="3">
+          <!--危険だと赤色表示、安全だと緑色表示-->
+          <% if post.danger? %>
+            <span class="text-danger font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% elsif post.safety? %>
+            <span class="text-success font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to post_path(post.id) do %>
+            〒<%= post.post_code.to_s.insert(3, "-")%><br>
+            <i class="fa-solid fa-location-dot" style="color: #7a7a7a;"></i>
+            <%= post.prefecture_address %>
+            <%= post.city_address %>
+            <%= post.block_address %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <!--お気に入りボタンの表示-->
+          <div id="favorite_btn_<%= post.id %>">
+            <%= render "public/favorites/btn", post: post %>
+          </div>
+        </td>
+        <td class="align-middle text-center">
+          <!--コメント数の表示-->
+          <div id="comment_count">
+            <%= render "public/post_comments/count", post: post %>
+          </div>
+        </td>
+      </tr>
       <% end %>
-    </tbody>
-  </table>
+    <!--投稿がない場合は投稿がありませんと表示される-->
+    <% else %>
+      <td class="text-center">
+        <h4>投稿がありません</h4>
+      </td>
+    <% end %>
+  </tbody>
+</table>

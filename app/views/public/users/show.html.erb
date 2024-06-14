@@ -1,7 +1,7 @@
 <!--ユーザー詳細ページ-->
 <div class="row">
-  <%= render 'layouts/sidebar', current_user: @current_user, user: @user %>
-  <div class="col-9">
+  <%= render 'layouts/sidebar'%>
+  <div class="col-lg-10 col-sm-9 mx-auto">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
@@ -19,7 +19,7 @@
         <!--ユーザ情報-->
         <div class="col-lg-1"></div>
         <div class="col-lg-4 col-sm-12 text-center">
-          <div class="mb-3 text-center">
+          <div class="mb-3">
             <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
           </div>
           <h5 class="my-2">
@@ -39,7 +39,7 @@
         </div>
         <!--詳細右側の表示-->
         <div class="col-lg-1"></div>
-        <div class="col-lg-3 col-sm-12 text-center">
+        <div class="col-lg-4 col-sm-12 text-center">
           <%= render 'public/users/show', user: @user %>
         </div>
       </div>
@@ -64,7 +64,7 @@
         </div>
       <% else %>
         <!--ユーザの投稿一覧-->
-        <div class="row mx-auto">
+        <div class="row">
           <%= render 'public/posts/index', posts: @posts, user: @user %>
         </div>
         <!--ページネーション-->
@@ -72,7 +72,7 @@
           <%= paginate @posts, theme: 'bootstrap-5'%>
         </div>
 
-        <div class="row mx-4">
+        <div class="row">
           <%= render "public/users/weekpost", posts: @posts %>
         </div>
       <% end %>
