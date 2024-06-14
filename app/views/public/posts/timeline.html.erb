@@ -1,7 +1,7 @@
 <!--タイムライン-->
 <div class="row">
   <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-9 p-0">
+  <div class="col-lg-10 col-sm-9 mx-auto p-0">
     <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
@@ -11,8 +11,8 @@
       <!--ページ名表示消す-->
       <span class='heading-title'>タイムライン</span>
     </h3>
-
     <%= render 'public/posts/timeline', posts: @posts %>
+    <!--ページネーション-->
     <div class="d-flex justify-content-center">
       <%= paginate @posts, theme: 'bootstrap-5'  %>
     </div>

@@ -52,49 +52,49 @@
       </li>
 
       <!--投稿一覧-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to admin_root_path do %>
           <h1><i class="fa-solid fa-pen-to-square" style="color: #7a7a7a;"></i></h1>
           <p>投稿一覧</p>
         <% end %>
       </li>
       <!--ユーザー一覧-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to admin_users_path do %>
           <h1><i class="fa-solid fa-user" style="color: #7a7a7a;"></i></h1>
           <p>ユーザー一覧</p>
         <% end %>
       </li>
       <!--ログアウトボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to destroy_admin_session_path, method: :delete do %>
           <h1> <i class="fa-solid fa-right-from-bracket" style="color: #7a7a7a;"></i></h1>
           <p>ログアウト</p>
         <% end %>
       </li>
     <% else %>
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to root_path do %>
           <h1> <i class="fa-solid fa-desktop" style="color: #7a7a7a;"></i></h1>
           <p>トップページ</p>
         <% end %>
       </li>
       <!--アバウトページボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to about_path do %>
           <h1><i class="fa-solid fa-link" style="color: #7a7a7a;"></i></h1>
           <p>サイトについて</p>
         <% end %>
       </li>
       <!--ログインボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to new_user_session_path do %>
           <h1><i class="fa-solid fa-right-to-bracket" style="color: #7a7a7a;"></i></h1>
           <p>ログイン</p>
         <% end %>
       </li>
       <!--新規登録ボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to new_user_registration_path do %>
           <h1><i class="fa-solid fa-user-plus" style="color: #7a7a7a;"></i></h1>
           <p>新規登録</p>

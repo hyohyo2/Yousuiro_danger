@@ -1,5 +1,5 @@
 <!--タイムラインの投稿一覧ページ-->
-<table class="table border-bottom table-hover table-inverse mx-4">
+<table class="table border-bottom table-hover table-inverse">
   <tbody>
     <% posts.each do |post| %>
     <tr>
@@ -49,7 +49,7 @@
           <%= render "public/post_comments/count", post: post %>
         </div>
       </td>
-      
+
     </tr>
     <% end %>
   </tbody>
