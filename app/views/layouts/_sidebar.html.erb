@@ -1,37 +1,44 @@
 <!--サイドバー-->
-<div class="user-info col-1 text-center">
+<div class="user-info col-lg-1 col-sm-2 text-center">
   <ul class="navbar-nav">
     <% if user_signed_in? %>
       <!--新規投稿ボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to new_post_path do %>
           <h1><i class="fa-regular fa-square-plus" style="color: #7a7a7a;"></i></h1>
           <p>新規投稿</p>
         <% end %>
       </li>
       <!--タイムラインボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to timeline_path do %>
           <h1><i class="fa-solid fa-house" style="color: #7a7a7a;"></i></i></h1>
           <p>タイムライン</p>
         <% end %>
       </li>
       <!--マップ-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to map_path do %>
           <h1><i class="fa-solid fa-map-location-dot" style="color: #7a7a7a;"></i></h1>
           <p>マップ</p>
         <% end %>
       </li>
       <!--マイページボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to user_path(current_user.id) do %>
-          <h1><i class="fa-solid fa-user" style="color: #7a7a7a;"></i></h1>
+          <h1><i class="fa-solid fa-user-gear" style="color: #7a7a7a;"></i></h1>
           <p>マイページ</p>
         <% end %>
       </li>
+      <!--アバウトページ-->
+      <li class="nav-item my-2">
+        <%= link_to about_path do %>
+          <h1><i class="fa-solid fa-link" style="color: #7a7a7a;"></i></h1>
+          <p>サイトについて</p>
+        <% end %>
+      </li>
       <!--ログアウトボタン-->
-      <li class="nav-item">
+      <li class="nav-item my-2">
         <%= link_to destroy_user_session_path, method: :delete do %>
           <h1> <i class="fa-solid fa-right-from-bracket" style="color: #7a7a7a;"></i></h1>
           <p>ログアウト</p>
@@ -43,7 +50,7 @@
         <h1><i class="fa-solid fa-user-shield"></i></h1>
         <strong>管理者ログイン中です</strong>
       </li>
-      
+
       <!--投稿一覧-->
       <li class="nav-item">
         <%= link_to admin_root_path do %>
