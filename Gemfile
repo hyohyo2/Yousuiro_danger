@@ -61,6 +61,7 @@ gem 'bootstrap5-kaminari-views','~> 0.0.1'
 gem 'enum_help'
 
 gem 'dotenv-rails'
+gem 'geocoder'
 group :production do
   gem 'mysql2'
 end

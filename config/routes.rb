@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
   get '/search' => 'public/searches#search', as: 'search'
-  
-
 
   scope module: :public do
     resources :users, only:[:show, :edit, :update] do
@@ -37,7 +35,7 @@ Rails.application.routes.draw do
       resources :post_comments, only:[:create, :destroy]
       resource :favorite, only:[:create, :destroy]
     end
-    resource :maps, only:[:show]
+    resource :map, only:[:show]
   end
 
 

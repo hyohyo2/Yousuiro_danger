@@ -1,3 +1,15 @@
-<h1>Public::Maps#show</h1>
-<p>Find me in app/views/public/maps/show.html.erb</p>
-  
+<div class="row">
+  <%= render 'layouts/sidebar', current_user: @current_user %>
+  <div class="col-10">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    <h3 class="row my-4">
+      <div class="col-1"></div>
+      <span class='heading-title'>マップ</span>
+    </h3>
+      <div id="map"></div>
+  </div>
+</div>
+<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
