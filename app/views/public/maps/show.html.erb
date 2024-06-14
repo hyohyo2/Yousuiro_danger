@@ -1,13 +1,11 @@
 <div class="row">
   <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-9">
+  <div class="col-10">
     <h3 class="row my-4">
       <div class="col-1"></div>
       <span class='heading-title'>マップ</span>
     </h3>
-    <div class="container">
       <div id="map"></div>
-    </div>
   </div>
 </div>
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

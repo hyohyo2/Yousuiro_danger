@@ -30,17 +30,18 @@ async function initMap(){
       const prefectureAddress = item.prefecture_address;
       const cityAddress = item.city_address;
       const blockAddress = item.block_address;
+      // ステータス(enum)の日本語表記
       const i18nStatus = {
         danger: '危険',
         safety: '安全',
       };
       const status = i18nStatus[item.status];
       const postCode = item.post_code;
+      const detail = item.detail
 
       const userImage = item.user.image;
       const userName = item.user.name;
       const Image = item.image;
-
 
       const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat: latitude, lng: longitude },
@@ -58,9 +59,10 @@ async function initMap(){
             <img class="thumbnail" src="${Image}" width="400" height="300" loading="lazy">
           </div>
           <div>
-            <h1 class="h4 font-weight-bold">${status}</h1>
+            <h1 class="h4 font-weight-bold" style="color: ${status === '危険' ? 'red' : 'green'}">${status}</h1>
             <p class="text-muted">〒${postCode.slice(0, 3)}-${postCode.slice(3)}</p>
             <p class="text-muted">${prefectureAddress},${cityAddress},${blockAddress}</p>
+            <p class="text-muted">${detail}</p>
           </div>
         </div>
       `;
