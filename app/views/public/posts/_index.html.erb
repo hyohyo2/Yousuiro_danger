@@ -1,5 +1,5 @@
 <!--投稿一覧ページ-->
-<h3 class="mx-5"><%= user.name %>さんの投稿一覧</h3>
+<h3><%= user.name %>さんの投稿一覧</h3>
   <table class="table border-bottom table-hover table-inverse mx-4">
     <tbody>
       <% if posts.present? %>
@@ -54,7 +54,3 @@
       <% end %>
     </tbody>
   </table>
-<!--ページネーション-->
-<div class="d-flex justify-content-center">
-  <%= paginate @posts, theme: 'bootstrap-5'%>
-</div>

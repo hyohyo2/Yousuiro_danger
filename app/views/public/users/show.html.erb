@@ -64,8 +64,16 @@
         </div>
       <% else %>
         <!--ユーザの投稿一覧-->
-        <div class="row my-5">
+        <div class="row mx-auto">
           <%= render 'public/posts/index', posts: @posts, user: @user %>
+        </div>
+        <!--ページネーション-->
+        <div class="row d-flex justify-content-center">
+          <%= paginate @posts, theme: 'bootstrap-5'%>
+        </div>
+
+        <div class="row mx-4">
+          <%= render "public/users/weekpost", posts: @posts %>
         </div>
       <% end %>
   </div>
