@@ -64,8 +64,36 @@
         </div>
       <% else %>
         <!--ユーザの投稿一覧-->
-        <div class="row my-5">
+        <div class="row mx-auto">
           <%= render 'public/posts/index', posts: @posts, user: @user %>
+        </div>
+        <!--ページネーション-->
+        <div class="row d-flex justify-content-center">
+          <%= paginate @posts, theme: 'bootstrap-5'%>
+        </div>
+
+        <div class="row mx-4">
+          <h4>１週間の投稿数</h4>
+          <table class="table table-bordered ">
+            <tr>
+              <th>6日前</th>
+              <th>5日前</th>
+              <th>4日前</th>
+              <th>3日前</th>
+              <th>2日前</th>
+              <th>1日前</th>
+              <th>今日</th>
+            </tr>
+            <tr>
+              <td><%= @posts.created_6day_ago.count %></td>
+              <td><%= @posts.created_5day_ago.count %></td>
+              <td><%= @posts.created_4day_ago.count %></td>
+              <td><%= @posts.created_3day_ago.count %></td>
+              <td><%= @posts.created_2day_ago.count %></td>
+              <td><%= @posts.created_yesterday.count %></td>
+              <td><%= @posts.created_today.count %></td>
+            </tr>
+          </table>
         </div>
       <% end %>
   </div>
