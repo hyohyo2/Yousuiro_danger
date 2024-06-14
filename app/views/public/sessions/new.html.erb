@@ -1,32 +1,34 @@
 <!--ログインページ-->
 <div class="row">
    <%= render 'layouts/sidebar'%>
-  <div class="col-10">
-    <div class="container m-0">
-      <h3 class="row my-4">
-        <div class="col-2"></div>
+  <div class="col-lg-10 col-sm-9 mx-auto">
+    <!--フラッシュメッセージ-->
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    <div class="container my-4">
+      <h3 class="row mb-4">
+        <div class="col-1"></div>
         <span class='heading-title'>ユーザーログイン</span>
       </h3>
       <%= form_with model: @user, url: user_session_path do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        <%= alert %>
         <div class="row form-group justify-content-center">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "col-4" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "col-lg-4 col-sm-6" %>
         </div>
-        
+
         <div class="row form-group justify-content-center">
-          <%= f.password_field :password, autocomplete: "current-password",placeholder: "パスワード", class: "col-4" %>
+          <%= f.password_field :password, autocomplete: "current-password",placeholder: "パスワード", class: "col-lg-4 col-sm-6" %>
         </div>
-      
+
         <% if devise_mapping.rememberable? %>
           <div class="row form-group justify-content-center">
             <%= f.check_box :remember_me, class: "mr-1" %>
             <%= f.label :remember_me %>
           </div>
         <% end %>
-      
+
         <div class="row form-group justify-content-center">
-          <%= f.submit "ログイン", class: "btn btn-success col-2 " %>
+          <%= f.submit "ログイン", class: "btn btn-success col-lg-2 col-sm-4" %>
         </div>
       <% end %>
       <div class="row form-group justify-content-center">
