@@ -53,11 +53,12 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
+    
     respond_to do |format|
       format.html do
         # 後でフォローしている人と自分の投稿のみ表示にする
         # 新着順
-        @posts = Post.page(params[:page]).per(10).order('id DESC')
+        @posts = Post.where(user_id: [current_user.id] + current_user.followings.pluck(:id)).page(params[:page]).per(10).order('id DESC')
       end
       format.json do
         @posts = Post.all

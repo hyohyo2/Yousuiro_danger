@@ -23,13 +23,13 @@ class Public::SessionsController < Devise::SessionsController
 
   # 遷移先をマップへ変更すること
   def after_sign_in_path_for(resource)
-    map_path
+    user_path(current_user.id)
   end
 
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
   # ゲストログイン機能
   def guest_sign_in
     user = User.guest
@@ -48,7 +48,7 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_user_registration_path, notice: '退会済みのため、再度新規登録が必要です。'
     end
   end
-  
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
