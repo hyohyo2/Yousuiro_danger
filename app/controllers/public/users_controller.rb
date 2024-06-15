@@ -3,14 +3,12 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only:[:edit, :update]
   before_action :ensure_guest_user, only:[:edit]
   def show
-    @current_user = current_user
     @user = User.find(params[:id])
     # 新着順
     @posts = @user.posts.page(params[:page]).per(8).order('id DESC')
   end
 
   def edit
-    @current_user = current_user
     @user = current_user
   end
 
@@ -26,7 +24,6 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
-    @current_user = current_user
   end
 
   def withdraw
@@ -41,17 +38,16 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
     redirect_to new_user_registration_path
   end
-  
+
   # お気に入りに登録した投稿一覧
   def favorites
-    @current_user = current_user
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites).page(params[:page]).per(10).order('id DESC')
   end
-  
-  
-  
+
+
+
   private
 
   def user_params
@@ -71,6 +67,6 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user.id), notice: "ゲストユーザーは設定画面へ遷移できません。"
     end
   end
-  
+
 
 end

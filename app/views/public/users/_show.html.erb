@@ -27,11 +27,10 @@
     <td><%= link_to user.followers.count, user_followers_path(user) %></td>
   </tr>
   <tr>
-    <th>お気に入り</th>
+    <th><i class="fa-solid fa-star"></i>お気に入り</th>
     <td>
       <%= link_to favorites_user_path(user) do %>
-        <i class="fa-solid fa-star"></i>
-        
+        <%= user.favorites.count %>
       <% end %>
     </td>
   </tr>

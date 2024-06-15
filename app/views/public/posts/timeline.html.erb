@@ -1,20 +1,18 @@
 <!--タイムライン-->
-<div class="row">
-  <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-9 p-0">
-    <!--フラッシュメッセージ-->
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-    <h3 class="row my-4">
-      <div class="col-1"></div>
-      <!--ページ名表示消す-->
-      <span class='heading-title'>タイムライン</span>
-    </h3>
-
+<div class="container my-3">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <h3 class="row mb-4">
+    <!--ページ名表示消す-->
+    <span class='heading-title'>タイムライン</span>
+  </h3>
+  <div class="mx-5">
     <%= render 'public/posts/timeline', posts: @posts %>
-    <div class="d-flex justify-content-center">
-      <%= paginate @posts, theme: 'bootstrap-5'  %>
-    </div>
+  </div>
+  <!--ページネーション-->
+  <div class="d-flex justify-content-center">
+    <%= paginate @posts, theme: 'bootstrap-5'  %>
   </div>
 </div>

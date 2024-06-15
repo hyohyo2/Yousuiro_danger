@@ -1,49 +1,38 @@
 <!--ユーザー編集ページ-->
-<div class="row">
-  <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-10">
-    <!--フラッシュメッセージ-->
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-    <div class="container m-0">
-      <h3 class="row my-4">
-        <div class="col-1"></div>
-        <span class='heading-title'>ユーザー情報編集</span>
-      </h3>
-      <!--バリデーションエラーメッセージ-->
-      <div class="mx-5">
-        <%= render 'layouts/errors', obj: @user %>
-      </div>
-    
-      <%= form_with model: @user do |f| %>
-        <div class="row form-group justify-content-center">
-          <%= f.label :profile_image, "プロフィール画像", class: "col-3 my-2" %>
-          <%= f.file_field :profile_image, accept: "image/*", class: "col-4 px-0 my-2" %>
-        </div>
-        <div class="row form-group justify-content-center">
-          <%= f.label :name, "ユーザー名", class: "col-3" %>
-          <%= f.text_field :name,autofocus: true, class: "col-4" %>
-        </div>
-    
-        <div class="row form-group justify-content-center">
-          <%= f.label :email, "メールアドレス", class: "col-3 my-2" %>
-          <%= f.email_field :email,  autocomplete: "email", class: "col-4 my-2" %>
-        </div>
-        <div class="row form-group justify-content-center">
-          <%= f.label :introduction, "メッセージ", class: "col-3 my-2" %>
-          <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-4 my-2" %>
-        </div>
-        
-        <div class="row form-group justify-content-center">
-          <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2" %>
-          
-        </div>
-        <div class="row form-group justify-content-center">
-          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-3 mb-3" %>
-        </div>
-        
-      <% end %>
+<div class="container my-3">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <h3 class="row my-4">
+    <div class="col-1"></div>
+    <span class='heading-title'>ユーザー情報編集</span>
+  </h3>
+  <!--バリデーションエラーメッセージ-->
+  <div><%= render 'layouts/errors', obj: @user %></div>
+  <%= form_with model: @user do |f| %>
+    <div class="row form-group justify-content-center">
+      <%= f.label :profile_image, "プロフィール画像", class: "col-lg-3 col-sm-4 my-2" %>
+      <%= f.file_field :profile_image, accept: "image/*", class: "col-lg-4 col-sm-5 px-0" %>
     </div>
-  </div>
+    <div class="row form-group justify-content-center">
+      <%= f.label :name, "ユーザー名", class: "col-lg-3 col-sm-4 my-2" %>
+      <%= f.text_field :name,autofocus: true, class: "form-control col-lg-4 col-sm-5" %>
+    </div>
+    <div class="row form-group justify-content-center">
+      <%= f.label :email, "メールアドレス", class: "col-lg-3 col-sm-4 my-2" %>
+      <%= f.email_field :email,  autocomplete: "email", class: "form-control col-lg-4 col-sm-5" %>
+    </div>
+    <div class="row form-group justify-content-center">
+      <%= f.label :introduction, "メッセージ", class: "col-lg-3 col-sm-4 my-2" %>
+      <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "form-control col-lg-4 col-sm-5" %>
+    </div>
+    <div class="row form-group justify-content-center">
+      <%= f.submit "編集内容を保存", class: "btn btn-success col-lg-3 col-sm-4 my-2" %>
+
+    </div>
+    <div class="row form-group justify-content-center">
+      <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-lg-3 col-sm-4 mb-3" %>
+    </div>
+  <% end %>
 </div>

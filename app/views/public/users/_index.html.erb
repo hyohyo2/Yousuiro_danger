@@ -1,11 +1,11 @@
 <!--ユーザー一覧共通ページ-->
-<table class="table border-bottom table-hover table-inverse mx-4">
+<table class="table border-bottom table-hover table-inverse">
   <tbody>
     <% users.each do |user| %>
       <tr>
         <td>
           <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+            <%= image_tag user.get_profile_image(75,75), class: "rounded-circle" %><br>
             <%= user.name %>
           <% end %>
         </td>
@@ -20,8 +20,6 @@
             <%= render "public/relationships/btn", user: user, class: "col-4" %>
           <% end %>
         </td>
-
-
       </tr>
     <% end %>
   </tbody>
