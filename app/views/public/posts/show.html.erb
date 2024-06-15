@@ -1,105 +1,98 @@
 <!--投稿詳細ページ-->
-<div class="row">
-  <%= render 'layouts/sidebar', current_user: @current_user %>
-  <div class="col-10">
-    <!--フラッシュメッセージ-->
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-    <div class="container m-0">
-      <div class="row my-4">
-        <div class="col-1"></div>
-        <h3>
-          <span class='heading-title'>投稿内容</span>
-        </h3>
-        <div class="col-7"></div>
-        <div class="col-2">
-          <h3 class="text-center">
-            <div id="favorite_btn_<%= @post.id %>">
-              <%= render "public/favorites/btn", post: @post %>
-            </div>
-          </h3>
+<div class="container my-3">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="row mt-3">
+    <div class="col-1"></div>
+    <!--タイトル削除-->
+    <h3>
+      <span class='heading-title'>投稿内容</span>
+    </h3>
+    <div class="col-lg-7 col-sm-5"></div>
+    <div class="col-2">
+      <!--お気に入りボタン-->
+      <h3 class="text-center">
+        <div id="favorite_btn_<%= @post.id %>">
+          <%= render "public/favorites/btn", post: @post %>
         </div>
-      </tr>
-      </div>
-      <div class="row">
-        <div class="col-5 text-center">
-          <div class="my-3">
-            <%= image_tag @post.get_image(320,240) %>
-          </div>
-
-        </div>
-        <div class="col-1"></div>
-        <div class="col-6">
-          <table class="table border-bottom">
-            <tr>
-              <th class="text-center col-3">投稿日時</th>
-              <td class="col-9"><%= l @post.created_at%></td>
-            </tr>
-            <tr>
-              <th class="align-middle text-center col-3">投稿者名</th>
-              <td class="col-9">
-                <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
-                <%= @post.user.name %>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle col-3 text-center">状況</th>
-              <td class="col-9">
-                <!--危険だと赤色表示、安全だと緑色表示-->
-                <% if @post.danger? %>
-                  <span class="status-size text-danger font-weight-bold">
-                    <%= @post.status_i18n %>
-                  </span>
-                <% elsif @post.safety? %>
-                  <span class="status-size text-success font-weight-bold">
-                    <%= @post.status_i18n %>
-                  </span>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th class="col-3 text-center">郵便番号</th>
-              <td class="col-9">〒<%= @post.post_code.to_s.insert(3, "-") %></td>
-            </tr>
-            <tr>
-              <th class="align-middle text-center col-3">住所</th>
-              <td class="col-9">
-                <%= @post.prefecture_address %>
-                <%= @post.city_address %>
-                <%= @post.block_address %>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle text-center col-3">詳細</th>
-              <td class="col-9"><%= @post.detail %></td>
-            </tr>
-          </table>
-          <div class="text-center">
-            <% if @post.user == current_user %>
-              <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary col-4" %>
-              <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
-            <% else %>
-              <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-secondary col-4" %>
+      </h3>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-lg-5 col-sm-12 py-5 text-center">
+      <%= image_tag @post.get_image(320,240) %>
+    </div>
+    <div class="col-lg-6 col-sm-12 text-center">
+      <table class="table border-bottom">
+        <tr>
+          <th class="text-center col-3">投稿日時</th>
+          <td class="col-9"><%= l @post.created_at%></td>
+        </tr>
+        <tr>
+          <th class="align-middle text-center col-3">投稿者名</th>
+          <td class="col-9">
+            <%= link_to user_path(@post.user_id) do %>
+              <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= @post.user.name %>
             <% end %>
-          </div>
-        </div>
-      </div>
-
-    <div class="row m-5">
-      <!--コメント一覧-->
-      <div class="col-11">
-        <div id="comment_index">
-          <%= render "public/post_comments/index", post: @post %>
-        </div>
+          </td>
+        </tr>
+        <tr>
+          <th class="align-middle col-3 text-center">状況</th>
+          <td class="col-9">
+            <!--危険だと赤色表示、安全だと緑色表示-->
+            <% if @post.danger? %>
+              <span class="status-size text-danger font-weight-bold">
+                <%= @post.status_i18n %>
+              </span>
+            <% elsif @post.safety? %>
+              <span class="status-size text-success font-weight-bold">
+                <%= @post.status_i18n %>
+              </span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="col-3 text-center">郵便番号</th>
+          <td class="col-9">〒<%= @post.post_code.to_s.insert(3, "-") %></td>
+        </tr>
+        <tr>
+          <th class="align-middle text-center col-3">住所</th>
+          <td class="col-9">
+            <%= @post.prefecture_address %>
+            <%= @post.city_address %>
+            <%= @post.block_address %>
+          </td>
+        </tr>
+        <tr>
+          <th class="align-middle text-center col-3">詳細</th>
+          <td class="col-9"><%= @post.detail %></td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <% if @post.user == current_user %>
+          <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary col-4" %>
+          <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
+        <% else %>
+          <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-secondary col-4" %>
+        <% end %>
       </div>
     </div>
-    <div class="row m-5">
-      <div class="col-3"></div>
-      <!--コメントフォーム-->
-      <div class="col-9">
-        <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+  </div>
+  <div class="row">
+    <!--コメント一覧-->
+    <div class="col-lg-11 col-sm-12">
+      <div id="comment_index">
+        <%= render "public/post_comments/index", post: @post %>
       </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <!--コメントフォーム-->
+    <div class="col-12">
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>
 </div>

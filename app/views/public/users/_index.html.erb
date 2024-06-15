@@ -5,7 +5,7 @@
       <tr>
         <td>
           <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+            <%= image_tag user.get_profile_image(75,75), class: "rounded-circle" %><br>
             <%= user.name %>
           <% end %>
         </td>
@@ -20,8 +20,6 @@
             <%= render "public/relationships/btn", user: user, class: "col-4" %>
           <% end %>
         </td>
-
-
       </tr>
     <% end %>
   </tbody>

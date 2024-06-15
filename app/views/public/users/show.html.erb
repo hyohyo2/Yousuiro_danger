@@ -1,80 +1,75 @@
-<!--ユーザー詳細ページ-->
-<div class="row">
-  <%= render 'layouts/sidebar'%>
-  <div class="col-lg-10 col-sm-9 mx-auto">
-    <!--フラッシュメッセージ-->
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
+<div class="container my-3">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+<!--ユーザ情報詳細欄-->
+  <h3 class="row my-4">
+    <div class="col-1"></div>
+    <% if @user.id == current_user.id %>
+      <span class='heading-title'>マイページ</span>
+    <% else %>
+      <span class='heading-title'>ユーザ登録情報</span>
     <% end %>
-    <!--ユーザ情報詳細欄-->
-      <h3 class="row my-4">
-        <div class="col-1"></div>
-        <% if @user.id == current_user.id %>
-          <span class='heading-title'>マイページ</span>
-        <% else %>
-          <span class='heading-title'>ユーザ登録情報</span>
-        <% end %>
-      </h3>
-      <div class="row">
-        <!--ユーザ情報-->
-        <div class="col-lg-1"></div>
-        <div class="col-lg-4 col-sm-12 text-center">
-          <div class="mb-3">
-            <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
-          </div>
-          <h5 class="my-2">
-            <strong><%= @user.name %></strong>
-          </h5>
-          <div class="my-3">
-            <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
-              <% if @user.id == current_user.id %>
-                <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary col-4" do %>
-                  <i class="fa-solid fa-sliders"></i>　設定
-                <% end %>
-              <% else %>
-                <%= render "public/relationships/btn", user: @user, class: "col-4" %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-        <!--詳細右側の表示-->
-        <div class="col-lg-1"></div>
-        <div class="col-lg-4 col-sm-12 text-center">
-          <%= render 'public/users/show', user: @user %>
-        </div>
+  </h3>
+  <div class="row">
+    <!--ユーザ情報-->
+    <div class="col-lg-1"></div>
+    <div class="col-lg-4 col-sm-12 text-center">
+      <div class="mb-3">
+        <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
       </div>
-      <% if @user.guest_user %>
-        <div>
-          <h4 class="m-3">
-            <i class="fa-regular fa-circle-dot"></i>
-            ゲストログインで利用可能なサービス
-          </h4>
-          <p class="m-3">
-            ・投稿情報を見ることができます。<br>
-            ・投稿に関してコメントができます。
-          </p>
-          <h4 class="m-3">
-            <i class="fa-regular fa-circle-xmark"></i>
-            ゲストログイン時の注意点
-          </h4>
-          <p class="m-3">
-          ・新規投稿の利用はできません。<br>
-          ・ユーザー情報の編集はできません。
-          </p>
-        </div>
-      <% else %>
-        <!--ユーザの投稿一覧-->
-        <div class="row">
-          <%= render 'public/posts/index', posts: @posts, user: @user %>
-        </div>
-        <!--ページネーション-->
-        <div class="row d-flex justify-content-center">
-          <%= paginate @posts, theme: 'bootstrap-5'%>
-        </div>
-
-        <div class="row">
-          <%= render "public/users/weekpost", posts: @posts %>
-        </div>
-      <% end %>
+      <h5 class="my-2">
+        <strong><%= @user.name %></strong>
+      </h5>
+      <div class="my-3">
+        <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
+          <% if @user.id == current_user.id %>
+            <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary" do %>
+              <i class="fa-solid fa-sliders"></i>　設定
+            <% end %>
+          <% else %>
+            <%= render "public/relationships/btn", user: @user, class: "col-4" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <!--詳細右側の表示-->
+    <div class="col-lg-6 col-sm-12 text-center">
+      <%= render 'public/users/show', user: @user %>
+    </div>
   </div>
+  <% if @user.guest_user %>
+    <div>
+      <h4 class="m-3">
+        <i class="fa-regular fa-circle-dot"></i>
+        ゲストログインで利用可能なサービス
+      </h4>
+      <p class="m-3">
+        ・投稿情報を見ることができます。<br>
+        ・投稿に関してコメントができます。
+      </p>
+      <h4 class="m-3">
+        <i class="fa-regular fa-circle-xmark"></i>
+        ゲストログイン時の注意点
+      </h4>
+      <p class="m-3">
+      ・新規投稿の利用はできません。<br>
+      ・ユーザー情報の編集はできません。
+      </p>
+    </div>
+  <% else %>
+    <!--ユーザの投稿一覧-->
+    <div class="row">
+      <%= render 'public/posts/index', posts: @posts, user: @user %>
+    </div>
+    <!--ページネーション-->
+    <div class="row d-flex justify-content-center">
+      <%= paginate @posts, theme: 'bootstrap-5'%>
+    </div>
+
+    <div class="row">
+      <%= render "public/users/weekpost", posts: @posts %>
+    </div>
+  <% end %>
 </div>

@@ -1,14 +1,14 @@
-<div class="row">
-  <%= render 'layouts/sidebar'%>
-  <div class="col-lg-10 col-sm-9 mx-auto">
-    <h3 class="row my-4">
-      <div class="col-1"></div>
-      <span class='heading-title'>お気に入り一覧</span>
-    </h3>
+<!--お気に入り投稿一覧-->
+<div class="container my-3">
+  <h3 class="row my-4">
+    <span class='heading-title'>お気に入り一覧</span>
+  </h3>
+  <div class="mx-5">
     <%= render "public/posts/timeline", posts: @favorite_posts %>
-    <!--ページネーション-->
-    <div class="d-flex justify-content-center">
-      <%= paginate @favorite_posts, theme: 'bootstrap-5'  %>
-    </div>
+  </div>
+  <!--ページネーション-->
+  <div class="d-flex justify-content-center">
+    <%= paginate @favorite_posts, theme: 'bootstrap-5'  %>
   </div>
 </div>
+

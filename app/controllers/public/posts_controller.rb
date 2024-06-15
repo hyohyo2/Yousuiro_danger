@@ -4,7 +4,6 @@ class Public::PostsController < ApplicationController
   before_action :ensure_guest_user, except:[:show, :timeline]
   def new
     @post = Post.new
-    @current_user = current_user
   end
 
   def create
@@ -21,7 +20,6 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @current_user = current_user
     # コメント機能の記述
     @post_comment = PostComment.new
     @post_comments = PostComment.all
@@ -29,7 +27,6 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-     @current_user = current_user
   end
 
   def update

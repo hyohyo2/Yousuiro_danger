@@ -20,7 +20,7 @@
         </td>
         <td class="text-center align-middle" colspan="3">
           <% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？"%>
+            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
           <% end %>
         </td>
       </tr>

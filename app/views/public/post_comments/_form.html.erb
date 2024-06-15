@@ -1,5 +1,5 @@
 <!--コメントフォーム-->
 <%= form_with model: [post, post_comment], local: false do |f| %>
-    <%= f.text_area :comment, placeholder: "20文字以内で入力してください。", class: "w-100 col-6", id: "comment_textarea" %>
-    <%= f.submit "送信", class: "btn btn-success ml-5 col-2" %>
+    <%= f.text_area :comment, placeholder: "40文字以内で入力してください。", class: " w-100 col-6", id: "comment_textarea" %>
+    <%= f.submit "送信", class: "btn btn-success ml-5 col-1" %>
 <% end %>
