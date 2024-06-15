@@ -19,7 +19,6 @@
       <%= f.label :name, "ユーザー名", class: "col-lg-3 col-sm-4 my-2" %>
       <%= f.text_field :name,autofocus: true, class: "form-control col-lg-4 col-sm-5" %>
     </div>
-
     <div class="row form-group justify-content-center">
       <%= f.label :email, "メールアドレス", class: "col-lg-3 col-sm-4 my-2" %>
       <%= f.email_field :email,  autocomplete: "email", class: "form-control col-lg-4 col-sm-5" %>
@@ -28,7 +27,6 @@
       <%= f.label :introduction, "メッセージ", class: "col-lg-3 col-sm-4 my-2" %>
       <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "form-control col-lg-4 col-sm-5" %>
     </div>
-
     <div class="row form-group justify-content-center">
       <%= f.submit "編集内容を保存", class: "btn btn-success col-lg-3 col-sm-4 my-2" %>
 

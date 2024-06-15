@@ -34,16 +34,17 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light btn-text-dark btn-block'%>
           </li>
         <% elsif admin_signed_in? %>
+          <!--投稿一覧へ-->
           <li class="nav-item mx-3">
             <%= link_to "投稿一覧", admin_root_path, class: "btn btn-outline-light btn-text-dark btn-block" %>
           </li>
-          <!--Aboutページへ-->
+          <!--ユーザー一覧ページへ-->
           <li class="nav-item mx-3">
             <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
           </li>
-          <!--新規登録ページへ-->
+          <!--ログアウトページへ-->
           <li class="nav-item mx-3">
-            <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete ,class: 'btn btn-outline-light btn-text-dark btn-block' %>
           </li>
         <% else %>
           <!--Topへ-->

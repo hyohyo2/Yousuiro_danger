@@ -30,8 +30,7 @@
     <th><i class="fa-solid fa-star"></i>お気に入り</th>
     <td>
       <%= link_to favorites_user_path(user) do %>
-        一覧表示
-
+        <%= user.favorites.count %>
       <% end %>
     </td>
   </tr>
