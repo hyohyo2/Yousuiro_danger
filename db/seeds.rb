@@ -36,30 +36,30 @@ end
 # 投稿画像を変更すること
 post = taro.posts.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
-  post_code: '7008544',
+  post_code: '7000913',
   prefecture_address: '岡山県',
   city_address: '岡山市北区',
-  block_address: '大供１－１',
+  block_address: '大供〇－〇',
   detail: 'ここは柵がなくて危険です！近くを通るときはお気を付けください。',
   status: 0
 )
 
 hanako.posts.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
-  post_code: '7000023',
+  post_code: '7000024',
   prefecture_address: '岡山県',
   city_address: '岡山市北区',
-  block_address: '駅元町１－１',
+  block_address: '駅元町〇－〇',
   detail: 'ここは柵がなく危険でしたが、昨日柵が設置されました！',
   status: 1
 )
 
 jiro.posts.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/default-image.jpg")),filename: 'default-image.jpg'),
-  post_code: '7038544',
+  post_code: '7100833',
   prefecture_address: '岡山県',
-  city_address: '岡山市中区',
-  block_address: '浜三丁目７番１５号',
+  city_address: '倉敷市',
+  block_address: '西中新田〇－〇',
   detail: 'ここの用水路は学生の通学路ですが柵がありません。水深が深く転落すると非常に危険です。',
   status: 0
 )
