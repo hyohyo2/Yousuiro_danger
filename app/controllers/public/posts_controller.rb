@@ -83,7 +83,7 @@ class Public::PostsController < ApplicationController
 # ゲストログイン時のアクセス制限
   def ensure_guest_user
     if current_user.guest_user
-      redirect_to timeline_path
+      redirect_to user_path(current_user.id), alert: "ゲストユーザーはご利用できません。"
     end
   end
 

@@ -37,6 +37,9 @@
               <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= @post.user.name %>
             <% end %>
+            <% if current_user != @post.user %>
+              <%= render "public/relationships/btn", user: @post.user, class: "col-3" %>
+            <% end %>
           </td>
         </tr>
         <tr>

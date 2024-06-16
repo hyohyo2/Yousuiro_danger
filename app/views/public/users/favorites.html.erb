@@ -2,9 +2,15 @@
 <div class="container my-3">
   <h3 class="row my-4">
     <span class='heading-title'>お気に入り一覧</span>
+    <div class="col-lg-7 col-sm-6"></div>
+    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
   </h3>
   <div class="mx-5">
-    <%= render "public/posts/timeline", posts: @favorite_posts %>
+    <% if @favorite_posts.count == 0 %>
+      <h3 class="py-5 text-center">ここにお気に入りに登録した投稿が表示されます。</h3>
+    <% else %>
+      <%= render "public/posts/timeline", posts: @favorite_posts %>
+    <% end %>
   </div>
   <!--ページネーション-->
   <div class="d-flex justify-content-center">
