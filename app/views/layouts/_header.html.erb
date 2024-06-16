@@ -1,9 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a59ea4; ">
   <div class="container py-2">
-    <!--リンク先マップへ修正すること-->
+    <% if user_signed_in? %>
     <a class="navbar-brand pb-3" href="/map">
-      <span><%= image_tag "logo.png", size: '150x60' %></span>
+      <span><%= image_tag "logo.png", size: '200x60' %></span>
     </a>
+    <% elsif admin_signed_in? %>
+    <a class="navbar-brand pb-3" href="/admin">
+      <span><%= image_tag "logo.png", size: '200x60' %></span>
+    </a>
+    <% else %>
+    <a class="navbar-brand pb-3" href="/">
+      <span><%= image_tag "logo.png", size: '200x60' %></span>
+    </a>
+    <% end %>
     <!--ロゴを記述すること-->
     <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-target=#navbarNavDropdown
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +62,7 @@
           </li>
           <!--Aboutページへ-->
           <li class="nav-item mx-3">
-            <%= link_to "About", about_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+            <%= link_to "サイトについて", about_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
           </li>
           <!--ログインページへ-->
           <li class="nav-item mx-3">

@@ -40,26 +40,8 @@
       <%= render 'public/users/show', user: @user %>
     </div>
   </div>
-  <% if @user.guest_user %>
-    <div>
-      <h4 class="m-3">
-        <i class="fa-regular fa-circle-dot"></i>
-        ゲストログインで利用可能なサービス
-      </h4>
-      <p class="m-3">
-        ・投稿情報を見ることができます。<br>
-        ・投稿に関してコメントができます。
-      </p>
-      <h4 class="m-3">
-        <i class="fa-regular fa-circle-xmark"></i>
-        ゲストログイン時の注意点
-      </h4>
-      <p class="m-3">
-      ・新規投稿の利用はできません。<br>
-      ・ユーザー情報の編集はできません。
-      </p>
-    </div>
-  <% else %>
+  <!--ゲストユーザー以外に表示-->
+  <% unless @user.guest_user %>
     <!--ユーザの投稿一覧-->
     <div class="row">
       <%= render 'public/posts/index', posts: @posts, user: @user %>
