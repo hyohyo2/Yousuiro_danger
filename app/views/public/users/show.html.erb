@@ -30,7 +30,9 @@
               <i class="fa-solid fa-sliders"></i>　編集する
             <% end %>
           <% else %>
-            <%= render "public/relationships/btn", user: @user, class: "col-4" %>
+            <div id="follow-ajax_<%= @user.id %>">
+              <%= render "public/relationships/btn", user: @user, class: "col-4" %>
+            </div>
           <% end %>
         <% end %>
       </div>

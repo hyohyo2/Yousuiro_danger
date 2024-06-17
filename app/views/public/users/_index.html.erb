@@ -17,7 +17,9 @@
 
         <td class="align-middle">
           <% if current_user != user %>
-            <%= render "public/relationships/btn", user: user, class: "col-4" %>
+            <div id="follow-ajax_<%= user.id %>">
+              <%= render "public/relationships/btn", user: user, class: "col-4" %>
+            </div>
           <% end %>
         </td>
       </tr>
