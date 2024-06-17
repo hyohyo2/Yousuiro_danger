@@ -4,8 +4,6 @@
     <div class="col-1"></div>
     <!--ページ名表示消す-->
     <span class='heading-title'>フォロー中</span>
-    <div class="col-lg-7 col-sm-6"></div>
-    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
   </h3>
   <div class="text-center">
     <% if @users.count == 0 %>
@@ -17,5 +15,9 @@
   <!--ページネーション-->
   <div class="d-flex justify-content-center">
     <%= paginate @users, theme: 'bootstrap-5'  %>
+  </div>
+  <div class="row my-4">
+    <div class="col-10"></div>
+    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
   </div>
 </div>

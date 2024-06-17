@@ -1,9 +1,7 @@
 <!--お気に入り投稿一覧-->
 <div class="container my-3">
   <h3 class="row my-4">
-    <span class='heading-title'>お気に入り一覧</span>
-    <div class="col-lg-7 col-sm-6"></div>
-    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
+    <span class='heading-title'><%= @user.name %>さんのお気に入り一覧</span>
   </h3>
   <div class="mx-5">
     <% if @favorite_posts.count == 0 %>
@@ -15,6 +13,10 @@
   <!--ページネーション-->
   <div class="d-flex justify-content-center">
     <%= paginate @favorite_posts, theme: 'bootstrap-5'  %>
+  </div>
+  <div class="row my-4">
+    <div class="col-10"></div>
+    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
   </div>
 </div>
 
