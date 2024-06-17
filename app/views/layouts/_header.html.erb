@@ -2,15 +2,24 @@
   <div class="container py-2">
     <% if user_signed_in? %>
     <a class="navbar-brand pb-3" href="/map">
-      <span><%= image_tag "logo.png", size: '200x60' %></span>
+      <span class="logo">
+        用水路安全確認マップ
+        <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
+      </span>
     </a>
     <% elsif admin_signed_in? %>
     <a class="navbar-brand pb-3" href="/admin">
-      <span><%= image_tag "logo.png", size: '200x60' %></span>
+      <span class="logo">
+        用水路安全確認マップ
+        <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
+      </span>
     </a>
     <% else %>
     <a class="navbar-brand pb-3" href="/">
-      <span><%= image_tag "logo.png", size: '200x60' %></span>
+      <span class="logo">
+        用水路安全確認マップ
+        <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
+      </span>
     </a>
     <% end %>
     <!--ロゴを記述すること-->
