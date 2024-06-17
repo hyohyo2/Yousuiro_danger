@@ -38,8 +38,13 @@
               <%= @post.user.name %>
             <% end %>
             <% if current_user != @post.user %>
-              <%= render "public/relationships/btn", user: @post.user, class: "col-3" %>
+              <span id="follow-ajax_<%= @post.user_id %>">
+                <%= render "public/relationships/btn", user: @post.user, class: "col-3" %>
+              </span>
             <% end %>
+          </td>
+          <td>
+
           </td>
         </tr>
         <tr>
