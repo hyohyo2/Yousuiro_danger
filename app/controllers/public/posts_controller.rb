@@ -53,7 +53,6 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
-    
     respond_to do |format|
       format.html do
         # 後でフォローしている人と自分の投稿のみ表示にする
@@ -76,14 +75,14 @@ class Public::PostsController < ApplicationController
   def is_matching_login_user
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
-      redirect_to timeline_path
+      redirect_to post_path(@post.id)
     end
   end
 
 # ゲストログイン時のアクセス制限
   def ensure_guest_user
     if current_user.guest_user
-      redirect_to timeline_path
+      redirect_to user_path(current_user.id), alert: "ゲストユーザーはご利用できません。"
     end
   end
 

@@ -9,7 +9,11 @@
     <span class='heading-title'>タイムライン</span>
   </h3>
   <div class="mx-5">
+    <% if @posts.count == 0 %>
+    <h3 class="py-5 text-center">投稿はありません。</h3>
+    <% else %>
     <%= render 'public/posts/timeline', posts: @posts %>
+    <% end %>
   </div>
   <!--ページネーション-->
   <div class="d-flex justify-content-center">

@@ -8,6 +8,8 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order('id DESC').limit(4)
+
+
   end
 
   def edit
@@ -23,6 +25,9 @@ class Admin::UsersController < ApplicationController
         flash[:notice] = "ユーザー情報を更新しました。"
         @user.posts.destroy_all
         @user.post_comments.destroy_all
+        @user.favorites.destroy_all
+        @user.followings.destroy_all
+        @user.followers.destroy_all
       end
       redirect_to admin_user_path(@user.id)
     else

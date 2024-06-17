@@ -30,18 +30,13 @@
     <div class="col-lg-6 col-sm-12 text-center">
       <table class="table border-bottom">
         <tr>
-          <th class="text-center">メールアドレス</th>
+          <th>メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th class="text-center">
-            <i class="fa-solid fa-message"></i>
-            メッセージ
-          </th>
-          <td>
-            <!--ユーザのメッセージ-->
-            <%= render 'public/users/message', user: @user%>
-          </td>
+          <th><i class="fa-solid fa-message"></i>メッセージ</th>
+          <!--ユーザのメッセージ-->
+          <td><%= render 'public/users/message', user: @user%></td>
         </tr>
         <!--フォロー・お気に入り一覧-->
         <tr>
@@ -54,9 +49,7 @@
         </tr>
         <tr>
           <th><i class="fa-solid fa-star"></i>お気に入り</th>
-          <td>
-            <%= @user.favorites.count %>
-          </td>
+          <td><%= @user.favorites.count %></td>
         </tr>
         <tr>
           <th class="text-center">ステータス</th>
@@ -75,8 +68,8 @@
   <div class="row my-5 mr-4">
     <h3 class="mx-5"><%= @user.name %>さんの投稿一覧</h3>
       <%= render "admin/posts/userpostindex", posts: @posts %>
-    <div class="col-9"></div>
-    <div class="col-3 text-right">
+    <div class="col-8"></div>
+    <div class="col-4 text-right">
       <!--4件以上ないと表示されない-->
       <% if @user.posts.count > 4 %>
         <%= link_to "もっと投稿を見る", admin_userpost_path(@user.id), class: "btn btn-outline-info" %>

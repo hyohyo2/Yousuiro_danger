@@ -4,12 +4,12 @@
   <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
     <% if user == current_user %>
       <tr>
-        <th class="text-center">メールアドレス</th>
+        <th>メールアドレス</th>
         <td><%= user.email %></td>
       </tr>
     <% end %>
   <% end %>
-    <th class="text-center">
+    <th>
       <i class="fa-solid fa-message"></i>
       メッセージ
     </th>

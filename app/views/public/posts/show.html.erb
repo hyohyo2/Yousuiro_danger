@@ -37,6 +37,9 @@
               <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= @post.user.name %>
             <% end %>
+            <% if current_user != @post.user %>
+              <%= render "public/relationships/btn", user: @post.user, class: "col-3" %>
+            <% end %>
           </td>
         </tr>
         <tr>
@@ -75,8 +78,6 @@
         <% if @post.user == current_user %>
           <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary col-4" %>
           <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
-        <% else %>
-          <%= link_to "ユーザページへ", user_path(@post.user_id), class: "btn btn-secondary col-4" %>
         <% end %>
       </div>
     </div>

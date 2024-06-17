@@ -6,6 +6,7 @@
 <!--ユーザ情報詳細欄-->
   <h3 class="row my-4">
     <div class="col-1"></div>
+    <!--削除？-->
     <% if @user.id == current_user.id %>
       <span class='heading-title'>マイページ</span>
     <% else %>
@@ -26,7 +27,7 @@
         <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
           <% if @user.id == current_user.id %>
             <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary" do %>
-              <i class="fa-solid fa-sliders"></i>　設定
+              <i class="fa-solid fa-sliders"></i>　編集する
             <% end %>
           <% else %>
             <%= render "public/relationships/btn", user: @user, class: "col-4" %>
@@ -39,28 +40,10 @@
       <%= render 'public/users/show', user: @user %>
     </div>
   </div>
-  <% if @user.guest_user %>
-    <div>
-      <h4 class="m-3">
-        <i class="fa-regular fa-circle-dot"></i>
-        ゲストログインで利用可能なサービス
-      </h4>
-      <p class="m-3">
-        ・投稿情報を見ることができます。<br>
-        ・投稿に関してコメントができます。
-      </p>
-      <h4 class="m-3">
-        <i class="fa-regular fa-circle-xmark"></i>
-        ゲストログイン時の注意点
-      </h4>
-      <p class="m-3">
-      ・新規投稿の利用はできません。<br>
-      ・ユーザー情報の編集はできません。
-      </p>
-    </div>
-  <% else %>
+  <!--ゲストユーザー以外に表示-->
+  <% unless @user.guest_user %>
     <!--ユーザの投稿一覧-->
-    <div class="row">
+    <div class="row my-4">
       <%= render 'public/posts/index', posts: @posts, user: @user %>
     </div>
     <!--ページネーション-->

@@ -6,10 +6,18 @@
     <span class='heading-title'>フォロワー</span>
   </h3>
   <div class="text-center">
-    <%= render 'public/users/index', users: @users, class: "text-center" %>
+    <% if @users.count == 0 %>
+      <h3 class="py-5 text-center">ここにフォロワーが表示されます。</h3>
+    <% else %>
+      <%= render 'public/users/index', users: @users, class: "text-center" %>
+    <% end %>
   </div>
   <!--ページネーション-->
   <div class="d-flex justify-content-center">
     <%= paginate @users, theme: 'bootstrap-5'  %>
+  </div>
+  <div class="row my-4">
+    <div class="col-10"></div>
+    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
   </div>
 </div>

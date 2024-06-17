@@ -1,6 +1,10 @@
 <!--ユーザー新規登録ページ-->
 <div class="container my-4">
-  <h3 class="row mb-4">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <h3 class="row my-4">
     <div class="col-1"></div>
     <span class='heading-title'>新規ユーザ登録</span>
   </h3>

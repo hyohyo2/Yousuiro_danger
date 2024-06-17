@@ -2,11 +2,13 @@
 <div class="container my-3">
   <h3 class="row mb-4">
     <span class='heading-title'><%= @user.name %>さんの投稿一覧</span>
-    <div class="col-6"></div>
-    <%= link_to "戻る", admin_user_path(@user), class: "btn btn-outline-info col-1" %>
   </h3>
   <%= render "admin/posts/userpostindex", posts: @posts %>
   <div class="d-flex justify-content-center">
     <%= paginate @posts, theme: 'bootstrap-5'%>
+  </div>
+  <div class="row my-4">
+    <div class="col-10"></div>
+    <%= link_to "戻る", admin_user_path(@user), class: "btn btn-outline-info col-1" %>
   </div>
 </div>
