@@ -34,4 +34,14 @@
       <% end %>
     </td>
   </tr>
+  <tr>
+    <th class="align-middle">DM</th>
+    <td>
+      <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+        <%= link_to chat_path(@user.id), class: "btn btn-outline-info" do %>
+          <i class="fa-regular fa-envelope"></i>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
 </table>

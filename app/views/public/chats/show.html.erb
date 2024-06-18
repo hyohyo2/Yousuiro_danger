@@ -1,2 +1,19 @@
-<h1>Public::Chats#show</h1>
-<p>Find me in app/views/public/chats/show.html.erb</p>
+<h2><%= @user.name %>さん</h2>
+
+<div>
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <%= render "public/chats/chat", chat: chat %>
+    <% else %>
+      <div class="left-container d-flex">
+        <%= image_tag @user.get_profile_image(30,30), class: "rounded-circle" %>
+        <%= chat.message %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <%= render "layouts/errors", obj: @chat %>
+</div>
+
