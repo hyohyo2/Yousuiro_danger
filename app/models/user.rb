@@ -13,6 +13,12 @@ class User < ApplicationRecord
   # フォロワーの関連付け・取得
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+  # DM機能
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  # (中間テーブル)
+  has_many :rooms, through: :user_rooms
+ 
   
   has_one_attached :profile_image
 

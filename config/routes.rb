@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       resources :post_comments, only:[:create, :destroy]
       resource :favorite, only:[:create, :destroy]
     end
+    resources :chats, only:[:show, :create, :destroy]
     resource :map, only:[:show]
   end
 
