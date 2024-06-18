@@ -16,6 +16,8 @@ ja:
         city_address: "市区町村"
         block_address: "以降の住所"
         detail: "詳細"
+      chat:
+        message: "メッセージ"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
