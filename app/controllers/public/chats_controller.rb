@@ -1,6 +1,7 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
   before_action :block_non_related_users, only:[:show]
+  before_action :ensure_guest_user
 
   def show
     @user = User.find(params[:id])
@@ -48,5 +49,9 @@ class Public::ChatsController < ApplicationController
       redirect_to user_path(user), alert: "相互フォローでないのでDM機能はご利用できません"
     end
   end
-
+  def ensure_guest_user
+    if current_user.guest_user
+      redirect_to user_path(current_user.id)
+    end
+  end
 end

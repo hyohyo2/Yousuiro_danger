@@ -1,24 +1,37 @@
-<h2><%= @user.name %>さん</h2>
+<div class="container my-3">
 
-<div id="message">
-  <% @chats.each do |chat| %>
-    <% if chat.user_id == current_user.id %>
-      <%= render "public/chats/chat", chat: chat %>
-    <% else %>
-      <div class="left-container d-flex">
-        <%= image_tag @user.get_profile_image(30,30), class: "rounded-circle" %>
-        <%= chat.message %>
-      </div>
+  <h3 class="text-center">
+    <%= link_to  user_path(@user.id) do %>
+      <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
     <% end %>
-  <% end %>
+    <strong><%= @user.name %>さん</strong>
+  </h3>
+  <div id="message">
+    <% @chats.each do |chat| %>
+      <% if chat.user_id == current_user.id %>
+        <%= render "public/chats/chat", chat: chat %>
+      <% else %>
+        <div class="left-container d-flex my-2">
+          <%= image_tag @user.get_profile_image(50,50), class: "rounded-circle" %>
+          <p class="ml-3" style="background-color: #DDDDDD; padding: 5px; border-radius: 10px;" >
+            <%= chat.message %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-8 ">
+      <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <div class="d-flex">
+        <%= f.text_area :message, rows: 2, placeholder: "60文字以内で入力してください。", class: "form-control mr-3" %>
+        <%= f.submit "送信", class: "btn btn-outline-dark btn-sm" %>
+        </div>
+        <%= f.hidden_field :room_id %>
+      <% end %>
+    </div>
+  </div>
+  <div id="errors">
+    <%= render "layouts/errors", obj: @chat %>
+  </div>
 </div>
-
-<div id="errors">
-  <%= render "layouts/errors", obj: @chat %>
-</div>
-
-<%= form_with model: @chat, data: {remote: true} do |f| %>
-  <%= f.text_field :message %>
-  <%= f.submit "送信", class: "btn btn-dark btn-sm" %>
-  <%= f.hidden_field :room_id %>
-<% end %>

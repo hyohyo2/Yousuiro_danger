@@ -35,13 +35,12 @@
     </td>
   </tr>
   <tr>
-    <th class="align-middle">DM</th>
-    <td>
-      <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
-        <%= link_to chat_path(@user.id), class: "btn btn-outline-info" do %>
-          <i class="fa-regular fa-envelope"></i>
-        <% end %>
-      <% end %>
-    </td>
+    <!--DM表示される条件：相互フォロー、ゲストユーザーでない-->
+    <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) && @user.email != ENV["GUEST_USER_EMAIL"] && current_user.email != ENV["GUEST_USER_EMAIL"] %>
+      <th class="align-middle">DM</th>
+      <td>
+        <%= render "public/chats/btn", user: user %>
+      </td>
+<% end %>
   </tr>
 </table>

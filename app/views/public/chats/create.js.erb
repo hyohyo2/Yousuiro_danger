@@ -1,2 +1,2 @@
 $('#message').append('<%= j(render "public/chats/chat", chat: @chat) %>');
-$('input[type=text]').val("");
+$('textarea[name="chat[message]"]').val("");
