@@ -55,4 +55,12 @@ class Post < ApplicationRecord
   scope :created_4day_ago, -> { where(created_at: 4.day.ago.all_day) }
   scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) }
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) }
+
+  # 通知機能
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
+  end
+
 end

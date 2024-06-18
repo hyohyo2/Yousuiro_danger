@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       resource :favorite, only:[:create, :destroy]
     end
     resources :chats, only:[:show, :create, :destroy]
+    resources :notifications, only: [:update]
     resource :map, only:[:show]
   end
 
