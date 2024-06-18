@@ -1,6 +1,6 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :block_non_related_users, only:[:show]
+  before_action :block_non_related_users, only:[:show]
 
   def show
     @user = User.find(params[:id])
@@ -26,12 +26,12 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
 
-    render :varidate unless @chat.save
+    render :validate unless @chat.save
 
   end
 
   def destroy
-    @chat = curren_user.chats.find(params[:id])
+    @chat = current_user.chats.find(params[:id])
     @chat.destroy
   end
 

@@ -1,6 +1,6 @@
 <h2><%= @user.name %>さん</h2>
 
-<div>
+<div id="message">
   <% @chats.each do |chat| %>
     <% if chat.user_id == current_user.id %>
       <%= render "public/chats/chat", chat: chat %>
@@ -13,7 +13,12 @@
   <% end %>
 </div>
 
-<div class="errors">
+<div id="errors">
   <%= render "layouts/errors", obj: @chat %>
 </div>
 
+<%= form_with model: @chat, data: {remote: true} do |f| %>
+  <%= f.text_field :message %>
+  <%= f.submit "送信", class: "btn btn-dark btn-sm" %>
+  <%= f.hidden_field :room_id %>
+<% end %>
