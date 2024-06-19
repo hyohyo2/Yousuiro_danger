@@ -1,6 +1,9 @@
 <div class="container my-3">
-
-  <h3 class="text-center">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <h3 class="my-4 text-center">
     <%= link_to  user_path(@user.id) do %>
       <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
     <% end %>

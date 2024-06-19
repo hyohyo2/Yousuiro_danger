@@ -1,4 +1,8 @@
 <div class="container my-4">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
   <div class="text-center">
     <h3 class="my-5"><strong>本当に退会しますか？</strong></h3>
     <p>退会するとユーザ登録情報やこれまでの投稿内容などは閲覧できなくなります。</p>
