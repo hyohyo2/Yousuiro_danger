@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   enum status: { danger: 0, safety: 1 }
 
-  # validates :image, presence: true
+  validates :image, presence: true
   # 全角の指定は可能か
 
   validates :prefecture_address, presence: true

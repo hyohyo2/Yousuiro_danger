@@ -23,26 +23,6 @@
     </a>
     <% end %>
   </div>
-  <!--通知-->
-  <div class="dropdown mr-3">
-    <% if user_signed_in? %>
-      <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa-solid fa-bell"></i>
-        <span class="mx-2"><%= current_user.notifications.where(read: false).count %></span>
-      </dutton>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <% if current_user.notifications.where(read: false).any? %>
-          <small class="dropdown-item disabled">最新の5件の未読を表示</small>
-          <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
-            <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
-          <% end %>
-        <% else %>
-          <span class="dropdown-item disabled">通知はありません</span>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
   <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-target=#navbarNavDropdown
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -66,6 +46,13 @@
         <!--マップページへ→後で通知ボタンに変える-->
         <li class="nav-item mr-3">
           <%= link_to "マップ", map_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+        </li>
+
+        <li class="nav-item mr-3">
+          <%= link_to notifications_path, class: 'btn btn-outline-light btn-text-dark btn-block' do %>
+            <i class="fa-solid fa-bell"></i>
+            <span class="mx-2"><%= current_user.notifications.where(read: false).count %></span>
+          <% end %>
         </li>
         <!--ログアウトリンク-->
         <li class="nav-item mr-3">
