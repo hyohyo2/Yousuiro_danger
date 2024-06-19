@@ -17,6 +17,9 @@
         <td>
           <%= link_to notification_message(notification), notification_path(notification), method: :patch %>
         </td>
+        <td>
+          <%= time_ago_in_words(notification.created_at) %>前
+        </td>
       </tr>
       <% end %>
     </table>
