@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
   # (中間テーブル)
   has_many :rooms, through: :user_rooms
+  has_many :notifications, dependent: :destroy
  
   
   has_one_attached :profile_image

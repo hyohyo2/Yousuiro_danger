@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   enum status: { danger: 0, safety: 1 }
 
@@ -15,10 +16,10 @@ class Post < ApplicationRecord
   validates :detail, presence: true
   # validates :status, presence: true
 
-  
+
   geocoded_by :full_address
   after_validation :geocode
-  
+
   # 住所の特定はfull_addressで定義している3カラムから必要なため
   def full_address
     "#{prefecture_address} #{city_address} #{block_address}"
@@ -45,7 +46,7 @@ class Post < ApplicationRecord
       Post.where('post_code = ?', content)
     end
   end
-  
+
   # 投稿数
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
@@ -54,4 +55,12 @@ class Post < ApplicationRecord
   scope :created_4day_ago, -> { where(created_at: 4.day.ago.all_day) }
   scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) }
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) }
+
+  # 通知機能
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
+  end
+
 end

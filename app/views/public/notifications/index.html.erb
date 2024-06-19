@@ -1,0 +1,39 @@
+<!--通知一覧-->
+<div class="container my-3">
+  <h3 class="row mb-4">
+    <span class='heading-title'>通知一覧</span>
+  </h3>
+  <div class="mx-5">
+    <% if @notifications.count == 0 %>
+      <h3 class="py-5 text-center">ここに通知が表示されます。</h3>
+    <% else %>
+      <table class="table border-bottom table-hover table-inverse">
+        <% @notifications.each do |notification| %>
+        <tr>
+          <td class="text-center">
+            <% if notification.read == true %>
+              <span class="text-secondary font-weight-bold">既読済</span>
+            <% else %>
+              <span class="text-danger font-weight-bold">未読</span>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= link_to notification_message(notification), notification_path(notification), method: :patch %>
+          </td>
+          <td class="text-center">
+            <%= time_ago_in_words(notification.created_at) %>前
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+  <!--ページネーション-->
+  <div class="d-flex justify-content-center">
+    <%= paginate @notifications, theme: 'bootstrap-5'  %>
+  </div>
+  <div class="row my-4">
+    <div class="col-10"></div>
+    <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
+  </div>
+</div>
