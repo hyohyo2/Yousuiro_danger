@@ -47,10 +47,14 @@
         <li class="nav-item mr-3">
           <%= link_to "マップ", map_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>
-
+        <!--通知ボタン-->
         <li class="nav-item mr-3">
           <%= link_to notifications_path, class: 'btn btn-outline-light btn-text-dark btn-block' do %>
-            <i class="fa-solid fa-bell"></i>
+            <% if current_user.notifications.where(read: false).present? %>
+              <i class="fa-solid fa-bell" style="color: #FFD43B;"></i>
+            <% else %>
+              <i class="fa-solid fa-bell"></i>
+            <% end %>
             <span class="mx-2"><%= current_user.notifications.where(read: false).count %></span>
           <% end %>
         </li>
