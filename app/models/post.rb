@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   # 全角の指定は可能か
-
+  validates :post_code, presence: true, format: {with: /\A[0-9]+\z/, message: 'には半角数字を入力してください'}
   validates :prefecture_address, presence: true
   validates :city_address, presence: true
   validates :block_address, presence: true
@@ -62,5 +62,6 @@ class Post < ApplicationRecord
       notifications.create(user_id: follower.id)
     end
   end
+
 
 end

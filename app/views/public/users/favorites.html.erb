@@ -1,5 +1,9 @@
 <!--お気に入り投稿一覧-->
 <div class="container my-3">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
   <h3 class="row my-4">
     <span class='heading-title'><%= @user.name %>さんのお気に入り一覧</span>
   </h3>

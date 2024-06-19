@@ -1,6 +1,10 @@
 <!--フォロー一覧-->
 <div class="container my-3">
-  <h3 class="row mb-4">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <h3 class="row my-4">
     <div class="col-1"></div>
     <!--ページ名表示消す-->
     <span class='heading-title'>フォロー中</span>
