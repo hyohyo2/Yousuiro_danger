@@ -4,7 +4,7 @@ module Public::NotificationsHelper
     when "Post"
       "フォローしている#{notification.notifiable.user.name}さんが#{notification.notifiable.title}を投稿しました。"
     when "Favorite"
-      "#{notification.notifiable.user.name}さんにいいねされました。"
+      "#{notification.notifiable.post.status}の#{notification.notifiable.post.prefecture_address}#{notification.notifiable.post.city_address}#{notification.notifiable.post.block_address}の投稿が#{notification.notifiable.user.name}さんにいいねされました。"
     else
       "#{notification.notifiable.user.name}さんがコメントをしました"
     end

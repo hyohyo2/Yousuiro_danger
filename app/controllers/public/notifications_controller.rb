@@ -8,9 +8,9 @@ class Public::NotificationsController < ApplicationController
     when "Post"
       redirect_to timeline_path(notification.notifiable)
     when "Favorite"
-      redirect_to user_path(notification.notifiable.user)
+      redirect_to post_path(notification.notifiable.user)
     else
-      redirect_to user_path(notification.notifiable.user)
+      redirect_to post_path(notification.notifiable.user)
     end
   end
 end

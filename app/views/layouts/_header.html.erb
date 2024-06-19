@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a59ea4; ">
-  <div class="container py-2">
+
     <% if user_signed_in? %>
     <a class="navbar-brand pb-3" href="/map">
       <span class="logo">
@@ -22,7 +22,25 @@
       </span>
     </a>
     <% end %>
-    <!--ロゴを記述すること-->
+    <div class="dropdown mr-3">
+      <button class="btn btn-outline-light dropdown-toggle"type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        通知
+        <span class="badge badge-warnig"><%= current_user.notifications.where(read: false).count %></span>
+      </dutton>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% if current_user.notifications.where(read: false).any? %>
+          <small class="dropdown-item disabled">最新の5件の未読を表示</small>
+          <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+            <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
+          <% end %>
+        <% else %>
+          <span class="dropdown-item disabled">通知はありません</span>
+        <% end %>
+      </div>
+    </li>
+
+  </div>
+
     <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-target=#navbarNavDropdown
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,24 +49,24 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <!--新規投稿へ-->
-          <li class="nav-item mx-3">
+          <li class="nav-item mr-3">
             <%= link_to "新規投稿", new_post_path , class: 'btn btn-outline-light btn-text-dark btn-block'%>
           </li>
           <!--マイページへ-->
-          <li class="nav-item mx-3">
+          <li class="nav-item mr-3">
             <%= link_to "マイページ", user_path(current_user.id) , class: 'btn btn-outline-light btn-text-dark btn-block'%>
           </li>
           <!--タイムラインへ-->
-          <li class="nav-item mx-3">
+          <li class="nav-item mr-3">
             <%= link_to "タイムライン", timeline_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
 
           </li>
           <!--マップページへ→後で通知ボタンに変える-->
-          <li class="nav-item mx-3">
+          <li class="nav-item mr-3">
             <%= link_to "マップ", map_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
           </li>
           <!--ログアウトリンク-->
-          <li class="nav-item mx-3">
+          <li class="nav-item mr-3">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light btn-text-dark btn-block'%>
           </li>
         <% elsif admin_signed_in? %>
@@ -84,5 +102,7 @@
         <% end %>
       </ul>
     </div>
+
   </div>
+
 </nav>
