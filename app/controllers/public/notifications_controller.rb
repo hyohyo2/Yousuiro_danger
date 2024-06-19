@@ -6,7 +6,7 @@ class Public::NotificationsController < ApplicationController
     notification.update(read: true)
     case notification.notifiable_type
     when "Post"
-      redirect_to timeline_path(notification.notifiable)
+      redirect_to post_path(notification.notifiable)
     when "Favorite"
       redirect_to post_path(notification.notifiable.user)
     else
