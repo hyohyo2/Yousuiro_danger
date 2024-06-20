@@ -22,7 +22,7 @@
           <% end %>
         </div>
       <% elsif admin_signed_in? %>
-      <div class="col-lg-5 col-sm-4 d-flex align-items-center justify-content-center">
+      <div class="col-lg-5 col-sm-12 d-flex align-items-center justify-content-center">
           <ul class="navbar-nav">
               <li class="nav-item">
                 <h5>
@@ -32,7 +32,7 @@
               </li>
           </ul>
         </div>
-        <div class="col-6 d-flex align-items-center">
+        <div class="col-lg-6 col-sm-12  d-flex align-items-center justify-content-center">
           <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
             <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
             <%= f.text_field :content, :size => "25",  placeholder: "ユーザー名・住所・〒を検索" %>

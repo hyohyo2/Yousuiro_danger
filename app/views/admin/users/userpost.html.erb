@@ -1,8 +1,13 @@
 <!--管理者用ユーザー毎の投稿一覧ページ-->
 <div class="container my-3">
-  <h3 class="row mb-4">
-    <span class='heading-title'><%= @user.name %>さんの投稿一覧</span>
-  </h3>
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="text-center my-4">
+    <h3><strong><%= @user.name %></strong></h3>
+    <p><%= @posts.count %>件の投稿</p>
+  </div>
   <%= render "admin/posts/userpostindex", posts: @posts %>
   <div class="d-flex justify-content-center">
     <%= paginate @posts, theme: 'bootstrap-5'%>

@@ -1,11 +1,11 @@
 <!--管理者投稿詳細ページ-->
 <div class="container my-3">
-  <div class="row mt-3">
-    <div class="col-1"></div>
-    <h3>
-      <span class='heading-title'>投稿詳細内容</span>
-    </h3>
-    <div class="col-lg-6 col-sm-5"></div>
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="row my-3">
+    <div class="col-lg-9 col-sm-5"></div>
     <div class="col-2">
       <!--いいね数の表示-->
       <h3 class="text-center">
@@ -27,8 +27,10 @@
         <tr>
           <th class="align-middle col-3">投稿者名</th>
           <td class="col-9">
-            <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
-            <%= @post.user.name %>
+            <%= link_to admin_user_path(@post.user_id) do %>
+              <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= @post.user.name %>
+            <% end %>
           </td>
         </tr>
         <tr>
@@ -71,9 +73,11 @@
   <div class="row">
     <!--コメント一覧-->
     <div class="col-lg-11 col-sm-12">
-      <div id="comment_index">
-        <%= render "public/post_comments/index", post: @post %>
-      </div>
+      <% if @post.post_comments.count != 0 %>
+        <div id="comment_index">
+          <%= render "public/post_comments/index", post: @post %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

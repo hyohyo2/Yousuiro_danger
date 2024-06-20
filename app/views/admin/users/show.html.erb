@@ -4,14 +4,8 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <!--ユーザ情報詳細欄-->
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <span class='heading-title'>ユーザ登録情報</span>
-  </h3>
   <!--ユーザ情報-->
-  <div class="row">
-  <!--ユーザ情報-->
+  <div class="row my-4">
     <div class="col-lg-1"></div>
     <div class="col-lg-4 col-sm-12 text-center">
       <div class="mb-3">
@@ -21,7 +15,7 @@
         <strong><%= @user.name %></strong>
       </h5>
       <div class="my-3">
-        <%= link_to edit_admin_user_path(@user.id), class: "btn btn-secondary col-6" do %>
+        <%= link_to edit_admin_user_path(@user.id), class: "btn btn-secondary col-lg-6 col-sm-3" do %>
           <i class="fa-solid fa-sliders"></i>　編集する
         <% end %>
       </div>
@@ -41,15 +35,17 @@
         <!--フォロー・お気に入り一覧-->
         <tr>
           <th>フォロー中</th>
-          <td><%= @user.followings.count %></td>
+          <td>
+            <%= link_to @user.followings.count, admin_followings_path %>
+          </td>
         </tr>
         <tr>
           <th>フォロワー</th>
-          <td><%= @user.followers.count %></td>
+          <td><%= link_to @user.followers.count, admin_followers_path %></td>
         </tr>
         <tr>
           <th><i class="fa-solid fa-star"></i>お気に入り</th>
-          <td><%= @user.favorites.count %></td>
+          <td><%= link_to @user.favorites.count, admin_favorite_path %></td>
         </tr>
         <tr>
           <th class="text-center">ステータス</th>
