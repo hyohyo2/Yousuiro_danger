@@ -4,12 +4,11 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="row my-4">
-    <span class='heading-title'>投稿一覧</span>
-  </h3>
-  <div class="mx-5">
-  <%= render "admin/homes/postindex", posts: @posts %>
+  <div class="text-center my-3">
+    <h3><strong>投稿一覧</strong></h3>
+    <p><%= @posts.count %>件</p>
   </div>
+  <%= render "admin/homes/postindex", posts: @posts %>
   <!--ページネーション表示-->
   <div class="d-flex justify-content-center">
     <%= paginate @posts, theme: 'bootstrap-5'%>

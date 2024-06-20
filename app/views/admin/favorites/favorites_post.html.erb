@@ -1,12 +1,15 @@
 <!--管理者フォロー一覧ページ-->
 <div class="container my-3">
-  <h3 class="row mb-4">
-    <span class='heading-title'><%= @user.name %>さんのお気に入り一覧</span>
-  </h3>
-  <!--登録ユーザーの一覧-->
-  <div class="mx-5">
-    <%= render "admin/homes/postindex", posts: @favorite_posts %>
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="text-center my-3">
+    <h3><strong><%= @user.name %></strong></h3>
+    <p><%= @user.favorites.count %>件のお気に入り</p>
   </div>
+  <!--登録ユーザーの一覧-->
+  <%= render "admin/homes/postindex", posts: @favorite_posts %>
   <!--ページネーション表示-->
   <div class="d-flex justify-content-center">
     <%= paginate @favorite_posts, theme: 'bootstrap-5'%>

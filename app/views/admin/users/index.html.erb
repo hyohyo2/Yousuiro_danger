@@ -1,8 +1,13 @@
 <!--管理者ユーザー一覧ページ-->
 <div class="container my-3">
-  <h3 class="row mb-4">
-    <span class='heading-title'>ユーザー一覧</span>
-  </h3>
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="text-center my-3">
+    <h3><strong>ユーザー一覧</strong></h3>
+    <p>（<%= @users.count %>件）</p>
+  </div>
   <!--登録ユーザーの一覧-->
   <div class="mx-5">
     <%= render "admin/users/index", users: @users %>

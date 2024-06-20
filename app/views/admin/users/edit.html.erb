@@ -4,33 +4,32 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <span class='heading-title'>ユーザー情報編集</span>
+  <h3 class="text-center my-4">
+    <span><strong>ユーザー編集</strong></span>
   </h3>
   <!--バリデーションエラーメッセージ-->
   <div><%= render 'layouts/errors', obj: @user %></div>
   <%= form_with model: [:admin, @user] do |f| %>
     <div class="row form-group justify-content-center">
-      <%= f.label :profile_image, "プロフィール画像", class: "col-3 my-2" %>
-      <%= f.file_field :profile_image, accept: "image/*", class: "col-4 px-0 my-2" %>
+      <%= f.label :profile_image, "プロフィール画像", class: "col-lg-3 col-sm-5 my-2" %>
+      <%= f.file_field :profile_image, accept: "image/*", class: "col-lg-4 col-sm-5 px-0 my-2" %>
     </div>
     <div class="row form-group justify-content-center">
-      <%= f.label :name, "ユーザー名", class: "col-3" %>
-      <%= f.text_field :name,autofocus: true, class: "col-4" %>
+      <%= f.label :name, "ユーザー名", class: "col-lg-3 col-sm-5" %>
+      <%= f.text_field :name,autofocus: true, class: "col-lg-4 col-sm-5" %>
     </div>
     <div class="row form-group justify-content-center">
-      <%= f.label :email, "メールアドレス", class: "col-3 my-2" %>
-      <%= f.email_field :email,  autocomplete: "email", class: "col-4 my-2" %>
+      <%= f.label :email, "メールアドレス", class: "col-lg-3 col-sm-5 my-2" %>
+      <%= f.email_field :email,  autocomplete: "email", class: "col-lg-4 col-sm-5 my-2" %>
     </div>
     <div class="row form-group justify-content-center">
-      <%= f.label :introduction, "メッセージ", class: "col-3 my-2" %>
-      <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-4 my-2" %>
+      <%= f.label :introduction, "メッセージ", class: "col-lg-3 col-sm-5 my-2" %>
+      <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-lg-4 col-sm-5 my-2" %>
     </div>
     <!--booleanのラジオボタン-->
     <div class="row form-group justify-content-center">
-      <%= f.label :status, "ステータス", class: "col-3 my-2" %>
-      <div class="col-4 my-2 p-0">
+      <%= f.label :status, "ステータス", class: "col-lg-3 col-sm-5 my-2" %>
+      <div class="col-lg-4 col-sm-5 my-2 p-0">
         <%= f.radio_button :is_active, true, class: "col-1" %>
         <%= f.label "有効", class: "text-primary font-weight-bold" %>
         <%= f.radio_button :is_active, false, class: "col-1" %>
