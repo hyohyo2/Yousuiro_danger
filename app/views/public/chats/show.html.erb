@@ -26,9 +26,9 @@
   <div class="row justify-content-center mt-3">
     <div class="col-8 ">
       <%= form_with model: @chat, data: {remote: true} do |f| %>
-        <div class="d-flex">
-        <%= f.text_area :message, rows: 2, placeholder: "60文字以内で入力してください。", class: "form-control mr-3" %>
-        <%= f.submit "送信", class: "btn btn-outline-dark btn-sm" %>
+        <div class="d-flex align-items-center">
+          <%= f.text_area :message, rows: 2, placeholder: "60文字以内で入力してください。", class: "form-control mr-3" %>
+          <%= f.submit "送信", class: "btn btn-outline-dark btn-sm" %>
         </div>
         <%= f.hidden_field :room_id %>
       <% end %>

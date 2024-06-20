@@ -1,0 +1,15 @@
+<h3>DM一覧</h3>
+<table class="table">
+  <% @rooms.each do |room| %>
+    <% user_rooms = room.user_rooms.where.not(user_id: current_user.id) %>
+      <% user_rooms.each do |user_room| %>
+      <tr>
+        <td>
+          <%= link_to chat_path(user_room.user_id), class: "btn btn-outline-info" do %>
+            <i class="fa-regular fa-envelope"></i><%= user_room.user.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

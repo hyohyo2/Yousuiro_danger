@@ -35,12 +35,22 @@
     </td>
   </tr>
   <tr>
-    <!--DM表示される条件：相互フォロー、ゲストユーザーでない-->
-    <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) && @user.email != ENV["GUEST_USER_EMAIL"] && current_user.email != ENV["GUEST_USER_EMAIL"] %>
+    <% unless user.guest_user %>
       <th class="align-middle">DM</th>
+    <% end %>
+    <!--DM表示される条件：相互フォロー、ゲストユーザーでない-->
+    <% if current_user.following?(user) && user.following?(current_user) && !user.guest_user %>
       <td>
         <%= render "public/chats/btn", user: user %>
       </td>
-<% end %>
+    <% end %>
+    <!--ログインユーザーのページのみ表示(ゲストユーザーは非表示)-->
+    <% if user == current_user && !user.guest_user %>
+      <td>
+        <%= link_to rooms_path, class: "btn btn-outline-danger" do %>
+          <i class="fa-regular fa-envelope"></i>
+        <% end %>
+      </td>
+    <% end %>
   </tr>
 </table>

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       resource :favorite, only:[:create, :destroy]
     end
     resources :chats, only:[:show, :create, :destroy]
+    resources :rooms, only:[:index]
     resources :notifications, only:[:index, :destroy, :update]
     resource :map, only:[:show]
   end
