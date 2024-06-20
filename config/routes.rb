@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get '/about' => 'public/homes#about'
   get '/users/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
+  get '/users/:id/userpost' => 'public/users#userpost', as: 'userpost'
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
   get '/search' => 'public/searches#search', as: 'search'

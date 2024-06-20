@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # 新着順
-    @posts = @user.posts.page(params[:page]).per(8).order('id DESC')
+    @posts = @user.posts.order('id DESC').limit(4)
   end
 
   def edit
@@ -44,6 +44,12 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites).page(params[:page]).per(10).order('id DESC')
+  end
+
+  # ユーザーの全投稿一覧
+  def userpost
+    @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
   end
 
 
