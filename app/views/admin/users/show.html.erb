@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <th><i class="fa-solid fa-star"></i>お気に入り</th>
-          <td><%= @user.favorites.count %></td>
+          <td><%= link_to @user.favorites.count, admin_favorite_path %></td>
         </tr>
         <tr>
           <th class="text-center">ステータス</th>
