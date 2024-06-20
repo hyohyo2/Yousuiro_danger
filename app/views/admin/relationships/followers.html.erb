@@ -1,2 +1,18 @@
-<h1>Admin::Relationships#followers</h1>
-<p>Find me in app/views/admin/relationships/followers.html.erb</p>
+<!--管理者フォロワー一覧ページ-->
+<div class="container my-3">
+  <h3 class="row mb-4">
+    <span class='heading-title'><%= @user.name %>さんのフォロワー一覧</span>
+  </h3>
+  <!--登録ユーザーの一覧-->
+  <div class="mx-5">
+    <%= render "admin/users/index", users: @users %>
+  </div>
+  <!--ページネーション表示-->
+  <div class="d-flex justify-content-center">
+    <%= paginate @users, theme: 'bootstrap-5'%>
+  </div>
+  <div class="row my-4">
+    <div class="col-10"></div>
+    <%= link_to "戻る", admin_user_path(@user.id), class: "btn btn-outline-info col-1" %>
+  </div>
+</div>

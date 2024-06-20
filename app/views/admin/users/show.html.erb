@@ -41,11 +41,13 @@
         <!--フォロー・お気に入り一覧-->
         <tr>
           <th>フォロー中</th>
-          <td><%= @user.followings.count %></td>
+          <td>
+            <%= link_to @user.followings.count, admin_followings_path %>
+          </td>
         </tr>
         <tr>
           <th>フォロワー</th>
-          <td><%= @user.followers.count %></td>
+          <td><%= link_to @user.followers.count, admin_followers_path %></td>
         </tr>
         <tr>
           <th><i class="fa-solid fa-star"></i>お気に入り</th>

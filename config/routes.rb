@@ -46,8 +46,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/users/:id/userpost' => 'users#userpost', as: 'userpost'
     get '/search' => 'searches#search'
-    get '/followings' => 'realtionships#followings'
-    get '/followers' => 'relationships#followers'
+    get '/users/:id/followings' => 'relationships#followings', as: 'followings'
+    get '/users/:id/followers' => 'relationships#followers', as: 'followers'
 
     resources :posts, only:[:show, :destroy] do
       resources :post_comments, only:[:destroy]
