@@ -45,14 +45,16 @@
   <!--ゲストユーザー以外に表示-->
   <% unless @user.guest_user %>
     <!--ユーザの投稿一覧-->
-    <div class="row my-4">
+    <div class="my-4">
+      <h4 class="text-center">ポスト</h4>
       <%= render 'public/posts/index', posts: @posts, user: @user %>
     </div>
-    <!--ページネーション-->
-    <div class="row d-flex justify-content-center">
-      <%= paginate @posts, theme: 'bootstrap-5'%>
+    <div class="text-right">
+      <!--4件以上ないと表示されない-->
+      <% if @user.posts.count > 4 %>
+        <%= link_to "もっと投稿を見る", userpost_path(@user.id), class: "btn btn-outline-info" %>
+      <% end %>
     </div>
-
     <div class="row">
       <%= render "public/users/weekpost", posts: @posts %>
     </div>
