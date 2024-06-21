@@ -19,7 +19,7 @@
         <tr>
           <td>
             <%= link_to chat_path(user_room.user_id) do %>
-            <%= image_tag user_room.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= image_tag user_room.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= user_room.user.name %>
             <% end %>
           </td>

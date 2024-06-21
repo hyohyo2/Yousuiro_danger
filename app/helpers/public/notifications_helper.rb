@@ -5,8 +5,10 @@ module Public::NotificationsHelper
       "#{notification.notifiable.user.name}さんが[#{notification.notifiable.status_i18n}]”#{notification.notifiable.prefecture_address}#{notification.notifiable.city_address}#{notification.notifiable.block_address}”を投稿しました。"
     when "Favorite"
       "#{notification.notifiable.user.name}さんが[#{notification.notifiable.post.status_i18n}]”#{notification.notifiable.post.prefecture_address}#{notification.notifiable.post.city_address}#{notification.notifiable.post.block_address}”にいいねしました。"
-    else
+    when "PostComment"
       "#{notification.notifiable.user.name}さんが[#{notification.notifiable.post.status_i18n}]”#{notification.notifiable.post.prefecture_address}#{notification.notifiable.post.city_address}#{notification.notifiable.post.block_address}”にコメントをしました"
+    else
+      "#{notification.notifiable.follower.name}さんからフォローされました。"
     end
   end
 end
