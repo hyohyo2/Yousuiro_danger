@@ -4,10 +4,11 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <span class='heading-title'>ユーザーログイン</span>
-  </h3>
+  <div class="text-center my-4">
+    <h3 class="my-3"><strong>ログイン</strong></h3>
+    <p>メールアドレスとパスワードを入力してください。</p>
+  </div>
+
   <%= form_with model: @user, url: user_session_path do |f| %>
     <div class="row form-group justify-content-center">
       <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "col-lg-4 col-sm-6" %>

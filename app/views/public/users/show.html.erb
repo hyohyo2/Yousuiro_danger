@@ -3,20 +3,10 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-<!--ユーザ情報詳細欄-->
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <!--削除？-->
-    <% if @user.id == current_user.id %>
-      <span class='heading-title'>マイページ</span>
-    <% else %>
-      <span class='heading-title'>ユーザ登録情報</span>
-    <% end %>
-  </h3>
-  <div class="row">
+  <div class="row align-items-center my-4">
     <!--ユーザ情報-->
     <div class="col-lg-1"></div>
-    <div class="col-lg-4 col-sm-12 text-center">
+    <div class="col-lg-4 col-sm-12 text-center ">
       <div class="mb-3">
         <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
       </div>
@@ -55,6 +45,7 @@
         <%= link_to "もっと投稿を見る", userpost_path(@user.id), class: "btn btn-outline-info" %>
       <% end %>
     </div>
+    <!--週の投稿数を-->
     <div class="row">
       <%= render "public/users/weekpost", posts: @posts %>
     </div>

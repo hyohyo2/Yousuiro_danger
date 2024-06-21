@@ -5,7 +5,7 @@
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
   <!--ユーザ情報-->
-  <div class="row my-4">
+  <div class="row align-items-center my-4">
     <div class="col-lg-1"></div>
     <div class="col-lg-4 col-sm-12 text-center">
       <div class="mb-3">
@@ -61,19 +61,18 @@
     </div>
   </div>
   <!--ユーザの投稿一覧-->
-  <div class="row my-5 mr-4">
-    <h3 class="mx-5"><%= @user.name %>さんの投稿一覧</h3>
-      <%= render "admin/posts/userpostindex", posts: @posts %>
-    <div class="col-8"></div>
-    <div class="col-4 text-right">
-      <!--4件以上ないと表示されない-->
-      <% if @user.posts.count > 4 %>
-        <%= link_to "もっと投稿を見る", admin_userpost_path(@user.id), class: "btn btn-outline-info" %>
-      <% end %>
-    </div>
+  <div class="my-4">
+    <h4 class="text-center">ポスト</h4>
+    <%= render "admin/posts/userpostindex", posts: @posts %>
+  </div>
+  <div class="text-right">
+    <!--4件以上ないと表示されない-->
+    <% if @user.posts.count > 4 %>
+      <%= link_to "もっと投稿を見る", admin_userpost_path(@user.id), class: "btn btn-outline-info" %>
+    <% end %>
   </div>
   <!--週の投稿数の表示-->
-  <div class="row mx-4">
+  <div class="row">
       <%= render "public/users/weekpost", posts: @posts %>
   </div>
 </div>

@@ -4,10 +4,10 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <span class='heading-title'>新規ユーザ登録</span>
-  </h3>
+  <div class="text-center my-4">
+    <h3 class="my-3"><strong>新規登録</strong></h3>
+    <p>以下の項目を入力してください。</p>
+  </div>
   <%= form_with model: @user, url: user_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
     <%= alert %>

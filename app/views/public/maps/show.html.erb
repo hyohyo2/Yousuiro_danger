@@ -3,10 +3,6 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <span class='heading-title'>マップ</span>
-  </h3>
   <div id="map"></div>
 </div>
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

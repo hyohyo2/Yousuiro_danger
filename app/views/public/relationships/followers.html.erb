@@ -4,11 +4,15 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="row my-4">
-    <div class="col-1"></div>
-    <!--ページ名表示消す-->
-    <span class='heading-title'>フォロワー</span>
-  </h3>
+  <div class="text-center my-3">
+    <h3>
+      <%= link_to  user_path(@user.id) do %>
+        <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+      <% end %>
+      <strong><%= @user.name %></strong>
+    </h3>
+      <p>フォロワー<%= @user.followers.count %></p>
+  </div>
   <div class="text-center">
     <% if @users.count == 0 %>
       <h3 class="py-5 text-center">ここにフォロワーが表示されます。</h3>
@@ -19,9 +23,5 @@
   <!--ページネーション-->
   <div class="d-flex justify-content-center">
     <%= paginate @users, theme: 'bootstrap-5'  %>
-  </div>
-  <div class="row my-4">
-    <div class="col-10"></div>
-    <%= link_to "戻る", user_path(@user.id), class: "btn btn-outline-info col-1" %>
   </div>
 </div>
