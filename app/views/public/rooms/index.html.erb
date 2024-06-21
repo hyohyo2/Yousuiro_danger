@@ -1,15 +1,30 @@
-<h3>DM一覧</h3>
-<table class="table">
-  <% @rooms.each do |room| %>
-    <% user_rooms = room.user_rooms.where.not(user_id: current_user.id) %>
-      <% user_rooms.each do |user_room| %>
-      <tr>
-        <td>
-          <%= link_to chat_path(user_room.user_id), class: "btn btn-outline-info" do %>
-            <i class="fa-regular fa-envelope"></i><%= user_room.user.name %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+<div class="container my-3">
+  <!--フラッシュメッセージ-->
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-</table>
+  <div class="text-center my-3">
+    <h3>
+      <%= link_to  user_path(current_user) do %>
+        <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+      <% end %>
+      <strong>DM一覧</strong>
+    </h3>
+    <p><%= @rooms.count %>件のDM</p>
+  </div>
+  <table class="table border-bottom text-center">
+    <% @rooms.each do |room| %>
+      <% user_rooms = room.user_rooms.where.not(user_id: current_user.id) %>
+        <% user_rooms.each do |user_room| %>
+        <tr>
+          <td>
+            <%= link_to chat_path(user_room.user_id) do %>
+            <%= image_tag user_room.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= user_room.user.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
