@@ -45,7 +45,7 @@
         <%= link_to "もっと投稿を見る", userpost_path(@user.id), class: "btn btn-outline-info" %>
       <% end %>
     </div>
-    <!--週の投稿数を-->
+    <!--週の投稿数-->
     <div class="row">
       <%= render "public/users/weekpost", posts: @posts %>
     </div>
