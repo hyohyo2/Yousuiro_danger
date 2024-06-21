@@ -13,13 +13,12 @@
     </h3>
     <p><%= @user.favorites.count %>件のお気に入り</p>
   </div>
-  <div class="mx-5">
-    <% if @favorite_posts.count == 0 %>
-      <h3 class="py-5 text-center">ここにお気に入りに登録した投稿が表示されます。</h3>
-    <% else %>
-      <%= render "public/posts/timeline", posts: @favorite_posts %>
-    <% end %>
-  </div>
+  <!--お気に入り投稿-->
+  <% if @favorite_posts.count == 0 %>
+    <h3 class="py-5 text-center">ここにお気に入りに登録した投稿が表示されます。</h3>
+  <% else %>
+    <%= render "public/posts/timeline", posts: @favorite_posts %>
+  <% end %>
   <!--ページネーション-->
   <div class="d-flex justify-content-center">
     <%= paginate @favorite_posts, theme: 'bootstrap-5'  %>
