@@ -19,8 +19,8 @@ class User < ApplicationRecord
   # (中間テーブル)
   has_many :rooms, through: :user_rooms
   has_many :notifications, dependent: :destroy
- 
-  
+
+
   has_one_attached :profile_image
 
   validates :name, presence: true
@@ -35,16 +35,16 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize: "#{width}x#{height}!").processed
   end
-  
+
   # フォロー関係
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
-  
+
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
   end
-  
+
   def following?(user)
     followings.include?(user)
   end
@@ -56,7 +56,7 @@ class User < ApplicationRecord
       user.password = ENV["GUEST_USER_PASSWORD"]
     end
   end
-  
+
   def guest_user
     email == ENV["GUEST_USER_EMAIL"]
   end
