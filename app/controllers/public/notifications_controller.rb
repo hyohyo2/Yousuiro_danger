@@ -13,8 +13,12 @@ class Public::NotificationsController < ApplicationController
       redirect_to post_path(notification.notifiable)
     when "Favorite"
       redirect_to post_path(notification.notifiable.post)
-    else
+    when "PostComment"
       redirect_to post_path(notification.notifiable.post)
+    when "Relationship"
+      redirect_to user_path(notification.notifiable.follower)
+    else
+      redirect_to chat_path(notification.notifiable.user)
     end
   end
   # 通知の全削除

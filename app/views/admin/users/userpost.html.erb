@@ -5,15 +5,16 @@
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
   <div class="text-center my-4">
-    <h3><strong><%= @user.name %></strong></h3>
+    <h3>
+      <%= link_to admin_user_path(@user.id) do %>
+        <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+      <% end %>
+      <strong><%= @user.name %></strong>
+    </h3>
     <p><%= @posts.count %>件の投稿</p>
   </div>
   <%= render "admin/posts/userpostindex", posts: @posts %>
   <div class="d-flex justify-content-center">
     <%= paginate @posts, theme: 'bootstrap-5'%>
-  </div>
-  <div class="row my-4">
-    <div class="col-10"></div>
-    <%= link_to "戻る", admin_user_path(@user), class: "btn btn-outline-info col-1" %>
   </div>
 </div>

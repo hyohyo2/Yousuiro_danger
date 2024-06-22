@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'favorites/favorites_post'
-  end
   # ユーザ用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -53,7 +50,7 @@ Rails.application.routes.draw do
     get '/search' => 'searches#search'
     get '/users/:id/followings' => 'relationships#followings', as: 'followings'
     get '/users/:id/followers' => 'relationships#followers', as: 'followers'
-    get '/posts/:id/favorites_post' => 'favorites#favorites_post', as: 'favorite'
+    get '/users/:id/favorites' => 'users#favorites', as: 'favorite'
 
     resources :posts, only:[:show, :destroy] do
       resources :post_comments, only:[:destroy]
