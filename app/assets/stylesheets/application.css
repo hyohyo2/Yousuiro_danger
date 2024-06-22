@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+.top-image{
+  background-image: url("Top.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  height: 900px;
+  width: 100%;
+}
+
+.about-image{
+  background-image: url("about.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 80%;
+}
