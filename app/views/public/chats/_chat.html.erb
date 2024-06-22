@@ -3,7 +3,7 @@
     <%= chat.message %>
   </p>
   <%= button_to "削除", chat_path(chat), method: :delete, class: "btn btn-outline-danger btn-sm ml-2", "data-confirm" => "本当に削除しますか？", remote: true, id: "delete_chat_#{chat.id}" %>
-  <div class="time ml-2">
+  <div class="time ml-2" id="chat_time_<%= chat.id %>">
     <%= l chat.created_at, format: :short %>
   </div>
 </div>
