@@ -15,7 +15,6 @@
         <%= render "public/chats/chat", chat: chat %>
       <% else %>
         <div class="left-container d-flex align-items-center my-2">
-
             <%= image_tag @user.get_profile_image(50,50), class: "rounded-circle" %>
             <p class="ml-3 mb-0" style="background-color: #DDDDDD; padding: 5px; border-radius: 10px;" >
               <%= chat.message %>
