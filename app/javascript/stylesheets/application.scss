@@ -11,6 +11,7 @@
   font-size: 30px;
 }
 
+// フラッシュメッセージ
 .flash-message {
   border-radius: 5px;
   padding: 16px 24px;
@@ -29,11 +30,13 @@
   border: solid 1px #cc3366;
 }
 
+// マップ
 #map{
   width: 100%;
   height: calc(100vh - 88px - 179px);
 }
 
+// DMチャットの時間表示
 .time{
   font-size: 10px;
 }

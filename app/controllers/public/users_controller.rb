@@ -2,16 +2,19 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
   before_action :ensure_guest_user, only:[:edit]
+  # ユーザー詳細
   def show
     @user = User.find(params[:id])
     # 新着順
     @posts = @user.posts.order('id DESC').limit(4)
   end
 
+  # ユーザー編集
   def edit
     @user = current_user
   end
 
+  # ユーザー情報更新
   def update
     @user = current_user
     if @user.update(user_params)
@@ -23,22 +26,32 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  # 退会確認
   def unsubscribe
   end
 
+  # 退会処理
   def withdraw
+    # ユーザが退会ステータスになったらユーザの以下のデータは削除される
     current_user.update(is_active: false)
-    # ユーザが退会ステータスになったらユーザの投稿は削除される
+    # 投稿
     current_user.posts.destroy_all
+    # コメント
     current_user.post_comments.destroy_all
+    # お気に入り一覧
     current_user.favorites.destroy_all
+    # フォローユーザー
     current_user.followings.destroy_all
+    # フォロワー
     current_user.followers.destroy_all
+    # チャットルーム(ユーザーと相手ユーザー)
     current_user.user_rooms.each do |user_room|
       user_room.room.destroy
     end
     current_user.user_rooms.destroy_all
+    # チャット内容
     current_user.chats.destroy_all
+    # 通知
     current_user.notifications.destroy_all
     reset_session
     flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
@@ -58,13 +71,12 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
   end
 
-
-
   private
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :email, :introduction)
   end
+
   # 他ユーザからのアクセスの制限
   def is_matching_login_user
     user = User.find(params[:id])
@@ -72,6 +84,7 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user.id)
     end
   end
+
   # ゲストユーザーログイン時アクセスを制限
   def ensure_guest_user
     @user = User.find(params[:id])
@@ -79,6 +92,4 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user.id), alert: "ゲストユーザーはご利用できません。"
     end
   end
-
-
 end

@@ -2,10 +2,13 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
   before_action :ensure_guest_user, except:[:show, :timeline]
+  
+  # 新規投稿
   def new
     @post = Post.new
   end
-
+  
+  # 投稿の保存
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -17,18 +20,21 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
-
+  
+  # 投稿詳細
   def show
     @post = Post.find(params[:id])
     # コメント機能の記述
     @post_comment = PostComment.new
     @post_comments = PostComment.all
   end
-
+  
+  # 投稿編集
   def edit
     @post = Post.find(params[:id])
   end
-
+  
+  # データの更新
   def update
     @current_user = current_user
     @post = Post.find(params[:id])
@@ -41,6 +47,7 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # 投稿の削除
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -52,6 +59,7 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # タイムライン表示(ログインユーザーとフォローユーザーのみ表示)
   def timeline
     respond_to do |format|
       format.html do
@@ -85,5 +93,4 @@ class Public::PostsController < ApplicationController
       redirect_to user_path(current_user.id), alert: "ゲストユーザーはご利用できません。"
     end
   end
-
 end

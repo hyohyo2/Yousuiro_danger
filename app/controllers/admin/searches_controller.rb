@@ -1,5 +1,6 @@
 class Admin::SearchesController < ApplicationController
   before_action :authenticate_admin!
+  # 検索機能
   def search
     @model = params[:model]
     @content = params[:content]

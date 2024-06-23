@@ -13,7 +13,9 @@
     </h3>
     <p><%= @posts.count %>件の投稿</p>
   </div>
+  <!--投稿一覧-->
   <%= render "public/posts/index", posts: @posts %>
+  <!--ページネーション-->
   <div class="d-flex justify-content-center">
     <%= paginate @posts, theme: 'bootstrap-5'%>
   </div>

@@ -3,6 +3,7 @@ class Public::ChatsController < ApplicationController
   before_action :block_non_related_users, only:[:show]
   before_action :ensure_guest_user
 
+  # チャットページ
   def show
     # チャット相手を取得
     @user = User.find(params[:id])
@@ -31,14 +32,14 @@ class Public::ChatsController < ApplicationController
     @chat = Chat.new(room_id: @room.id)
 
   end
-
+  
+  # チャットを送信
   def create
     @chat = current_user.chats.new(chat_params)
-
     render :validate unless @chat.save
-
   end
-
+  
+  # チャットを削除
   def destroy
     @chat = current_user.chats.find(params[:id])
     @chat.destroy
@@ -49,14 +50,17 @@ class Public::ChatsController < ApplicationController
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
-
+  
+  # チャット相手以外の利用制限
   def block_non_related_users
     user = User.find(params[:id])
-
+    # 相互フォロー以外はメッセージを表示
     unless current_user.following?(user) && user.following?(current_user)
       redirect_to user_path(user), alert: "相互フォローでないのでDM機能は利用できません"
     end
   end
+  
+  # ゲストユーザーの利用制限
   def ensure_guest_user
     if current_user.guest_user
       redirect_to user_path(current_user.id), alert: "ゲストユーザーはDM機能を利用できません"

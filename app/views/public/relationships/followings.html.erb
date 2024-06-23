@@ -14,10 +14,11 @@
     <p>フォロー中<%= @user.followings.count %></p>
   </div>
   <div class="text-center">
-    <% if @users.count == 0 %>
-      <h3 class="py-5 text-center">ここにフォロ中ーのユーザーが表示されます。</h3>
-    <% else %>
+    <% if @users.present? %>
+      <!--フォロー一覧-->
       <%= render 'public/users/index', users: @users %>
+    <% else %>
+      <h3 class="py-5 text-center">ここにフォロ中ーのユーザーが表示されます。</h3>
     <% end %>
   </div>
   <!--ページネーション-->

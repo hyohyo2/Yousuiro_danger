@@ -27,10 +27,10 @@
 - 危険な用水路に対して柵の設置など安全策が取られたことを確認したいとき。
 ​
 ## 設計書
-UI flows：
-ER図：
-テーブル定義書：https://docs.google.com/spreadsheets/d/1fRSA3XEbFIdUtnC2txnp3PhowAbjoiFuHv5vUK5BVYQ/edit?usp=sharing
-アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1BsOuHHqLaxmVjB671dxxIgf9kfoycptCehEwiUI5J3c/edit?usp=sharing
+- UI flows：
+- ER図：
+- テーブル定義書：https://docs.google.com/spreadsheets/d/1fRSA3XEbFIdUtnC2txnp3PhowAbjoiFuHv5vUK5BVYQ/edit?usp=sharing
+- アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1BsOuHHqLaxmVjB671dxxIgf9kfoycptCehEwiUI5J3c/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)

@@ -1,11 +1,14 @@
+<!--チャットページ-->
 <div class="container my-3">
   <!--フラッシュメッセージ-->
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
+  <!--フォーム入力エラー表示-->
   <div id="errors">
     <%= render "layouts/errors", obj: @chat %>
   </div>
+  <!--チャットページ-->
   <div class="mt-4 p-3" style="background-color: #FFFAF0;">
     <h3 class="text-center">
       <%= link_to  user_path(@user.id) do %>
@@ -13,23 +16,28 @@
       <% end %>
       <strong><%= @user.name %></strong>
     </h3>
+    <!--チャット表示-->
     <div id="message">
       <% @chats.each do |chat| %>
         <% if chat.user_id == current_user.id %>
+          <!--ログインユーザー送信内容表示-->
           <%= render "public/chats/chat", chat: chat %>
         <% else %>
+          <!--チャット相手送信内容表示-->
           <div class="left-container d-flex align-items-center my-2">
-              <%= image_tag @user.get_profile_image(50,50), class: "rounded-circle" %>
-              <p class="ml-3 mb-0" style="background-color: #DDDDDD; padding: 5px; border-radius: 10px;" >
-                <%= chat.message %>
-              </p>
-              <div class="time ml-2">
+            <%= image_tag @user.get_profile_image(50,50), class: "rounded-circle" %>
+            <p class="ml-3 mb-0" style="background-color: #DDDDDD; padding: 5px; border-radius: 10px;" >
+              <%= chat.message %>
+            </p>
+            <!--時間表示-->
+            <div class="time ml-2">
               <%= l chat.created_at, format: :short, class: "time ml-2" %>
-              </div>
+            </div>
           </div>
         <% end %>
       <% end %>
     </div>
+    <!--チャット入力フォーム-->
     <div class="row justify-content-center mt-3">
       <div class="col-8 ">
         <%= form_with model: @chat, data: {remote: true} do |f| %>

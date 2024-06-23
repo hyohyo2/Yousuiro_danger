@@ -12,9 +12,9 @@
   </h3>
   <!--バリデーションエラーメッセージ-->
   <%= render 'layouts/errors', obj: @post %>
-
+  <!--編集フォーム-->
   <%= form_with model: [@post] do |f| %>
-  <!--enumのラジオボタン-->
+    <!--enumのラジオボタン-->
     <div class="row d-flex justify-content-center align-items-center">
       <%= f.label :status, "状況", class: "col-lg-2 col-sm-3" %>
       <div class="status-size col-5 p-0 d-flex justify-content-left">
@@ -52,6 +52,7 @@
       <%= f.label :detail, "詳細", class: "col-lg-2 col-sm-3" %>
       <%= f.text_area :detail, rows: 5, placeholder: "どのような状況か詳しく教えてください。", class: "form-control col-5" %>
     </div>
+    <!--更新ボタン-->
     <div class="row form-group d-flex justify-content-center">
       <%= f.submit "更新する",class: "btn btn-success  col-2" %>
     </div>

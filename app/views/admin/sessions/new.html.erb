@@ -8,6 +8,7 @@
     <h3 class="my-3"><strong>管理者ログイン</strong></h3>
     <p>メールアドレスとパスワードを入力してください。</p>
   </div>
+  <!--入力フォーム-->
   <%= form_with model: @admin, url: admin_session_path do |f| %>
     <div class="row form-group justify-content-center">
       <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "col-lg-4 col-sm-6" %>
@@ -23,7 +24,7 @@
         <%= f.label :remember_me, "ログインを記憶する" %>
       </div>
     <% end %>
-
+    <!--ログインボタン-->
     <div class="row form-group justify-content-center">
       <%= f.submit "ログイン", class: "btn btn-success col-lg-2 col-sm-4" %>
     </div>

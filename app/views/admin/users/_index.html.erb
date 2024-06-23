@@ -11,17 +11,13 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td class="text-center">
-          <%= user.id %>
-        </td>
+        <td class="text-center"><%= user.id %></td>
         <td class="text-center">
           <%= link_to admin_user_path(user.id) do %>
             <%= user.name %>
           <% end %>
         </td>
-        <td class="text-center">
-          <%= user.email %>
-        </td>
+        <td class="text-center"><%= user.email %></td>
         <td class="text-center">
           <% if user.is_active == true %>
             <span class="text-primary font-weight-bold">有効</span>

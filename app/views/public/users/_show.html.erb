@@ -1,55 +1,59 @@
 <!--ユーザー詳細の共通テーブル-->
 <table class="table border-bottom">
-  <!--ログインユーザのみアドレスを表示-->
-  <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
-    <% if user == current_user %>
-      <tr>
-        <th>メールアドレス</th>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
-  <% end %>
-    <th>
-      <i class="fa-solid fa-message"></i>
-      メッセージ
-    </th>
-    <td>
-      <!--ユーザのメッセージ-->
-      <%= render 'public/users/message', user: user%>
-    </td>
-  </tr>
-  <tr>
-    <th>フォロー中</th>
-    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
-  </tr>
-  <tr>
-    <th>フォロワー</th>
-    <td><%= link_to user.followers.count, user_followers_path(user) %></td>
-  </tr>
-  <tr>
-    <th><i class="fa-solid fa-star"></i>お気に入り</th>
-    <td>
-      <%= link_to favorites_user_path(user) do %>
-        <%= user.favorites.count %>
+  <tbody>
+    <!--ログインユーザのみアドレスを表示(ゲストユーザーは非表示)-->
+    <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
+      <% if user == current_user %>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= user.email %></td>
+        </tr>
       <% end %>
-    </td>
-  </tr>
-  <tr>
-    <!--DM表示される条件：相互フォロー、ゲストユーザーでない-->
-    <% if current_user.following?(user) && user.following?(current_user) && !user.guest_user %>
-      <th class="align-middle">DM</th>
-      <td>
-        <%= render "public/chats/btn", user: user %>
-      </td>
     <% end %>
-    <!--ログインユーザーのページのみ表示(ゲストユーザーは非表示)-->
-    <% if user == current_user && !user.guest_user %>
-      <th class="align-middle">DM</th>
+    <!--メッセージ表示-->
+    <tr>
+      <th><i class="fa-solid fa-message"></i>メッセージ</th>
+      <!--ユーザのメッセージ-->
+      <td> <%= render 'public/users/message', user: user%></td>
+    </tr>
+    <!--フォロー数表示-->
+    <tr>
+      <th>フォロー中</th>
+      <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+    </tr>
+    <!--フォロワー数表示-->
+    <tr>
+      <th>フォロワー</th>
+      <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+    </tr>
+    <!--お気に入り投稿数表示-->
+    <tr>
+      <th><i class="fa-solid fa-star"></i>お気に入り</th>
       <td>
-        <%= link_to rooms_path, class: "btn btn-outline-danger" do %>
-          <i class="fa-regular fa-envelope"></i>
+        <%= link_to favorites_user_path(user) do %>
+          <%= user.favorites.count %>
         <% end %>
       </td>
-    <% end %>
-  </tr>
+    </tr>
+    <tr>
+      <!--DM表示される条件：相互フォロー、ゲストユーザーでない→チャットページへ-->
+      <% if current_user.following?(user) && user.following?(current_user) && !user.guest_user %>
+        <th class="align-middle">DM</th>
+        <td>
+          <%= link_to chat_path(user.id), class: "btn btn-outline-info" do %>
+            <i class="fa-regular fa-envelope"></i>
+          <% end %>
+        </td>
+      <% end %>
+      <!--ログインユーザーのページのみ表示(ゲストユーザーは非表示)→DM一覧-->
+      <% if user == current_user && !user.guest_user %>
+        <th class="align-middle">DM</th>
+        <td>
+          <%= link_to rooms_path, class: "btn btn-outline-danger" do %>
+            <i class="fa-regular fa-envelope"></i>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
 </table>

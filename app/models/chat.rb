@@ -10,6 +10,7 @@ class Chat < ApplicationRecord
 
   private
 
+  # 通知機能(DM)
   def create_notification
     # 送信先のユーザーに通知を作成する
     self.room.users.where.not(id: self.user_id).each do |recipient|

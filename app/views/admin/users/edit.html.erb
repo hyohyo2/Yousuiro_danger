@@ -9,6 +9,7 @@
   </h3>
   <!--バリデーションエラーメッセージ-->
   <div><%= render 'layouts/errors', obj: @user %></div>
+  <!--入力フォーム-->
   <%= form_with model: [:admin, @user] do |f| %>
     <div class="row form-group justify-content-center">
       <%= f.label :profile_image, "プロフィール画像", class: "col-lg-3 col-sm-5 my-2" %>

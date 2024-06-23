@@ -14,10 +14,11 @@
       <p>フォロワー<%= @user.followers.count %></p>
   </div>
   <div class="text-center">
-    <% if @users.count == 0 %>
-      <h3 class="py-5 text-center">ここにフォロワーが表示されます。</h3>
-    <% else %>
+    <% if @users.present? %>
+      <!--フォロワー一覧-->
       <%= render 'public/users/index', users: @users, class: "text-center" %>
+    <% else %>
+      <h3 class="py-5 text-center">ここにフォロワーが表示されます。</h3>
     <% end %>
   </div>
   <!--ページネーション-->

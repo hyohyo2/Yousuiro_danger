@@ -4,10 +4,10 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
+  <!--お気に入りボタン-->
   <div class="row my-3">
     <div class="col-lg-9 col-sm-5"></div>
     <div class="col-2">
-      <!--お気に入りボタン-->
       <h3 class="text-center">
         <div id="favorite_btn_<%= @post.id %>">
           <%= render "public/favorites/btn", post: @post %>
@@ -15,10 +15,12 @@
       </h3>
     </div>
   </div>
+  <!--投稿内容-->
   <div class="row mb-5">
     <div class="col-lg-5 col-sm-12 py-5 text-center">
       <%= image_tag @post.get_image(320,240) %>
     </div>
+    <!--投稿詳細(右側)-->
     <div class="col-lg-6 col-sm-12 text-center">
       <table class="table border-bottom">
         <tr>
@@ -32,6 +34,7 @@
               <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= @post.user.name %>
             <% end %>
+            <!--ログインユーザー以外にフォローするボタンを表示-->
             <% if current_user != @post.user %>
               <span id="follow-ajax_<%= @post.user_id %>">
                 <%= render "public/relationships/btn", user: @post.user, class: "col-3" %>
@@ -71,24 +74,25 @@
           <td class="col-9"><%= @post.detail %></td>
         </tr>
       </table>
-      <div class="text-center">
-        <% if @post.user == current_user %>
+      <!--ログインユーザーの投稿のみに表示-->
+      <% if @post.user == current_user %>
+        <div class="text-center">
           <%= link_to "編集する", edit_post_path(@post), class: "btn btn-secondary col-4" %>
           <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
+  <!--コメント一覧-->
   <div class="row">
-    <!--コメント一覧-->
     <div class="col-lg-11 col-sm-12">
       <div id="comment_index">
         <%= render "public/post_comments/index", post: @post %>
       </div>
     </div>
   </div>
+  <!--コメントフォーム-->
   <div class="row justify-content-center">
-    <!--コメントフォーム-->
     <div class="col-8">
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
