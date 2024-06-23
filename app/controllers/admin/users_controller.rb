@@ -28,6 +28,12 @@ class Admin::UsersController < ApplicationController
         @user.favorites.destroy_all
         @user.followings.destroy_all
         @user.followers.destroy_all
+        @user.user_rooms.each do |user_room|
+          user_room.room.destroy
+        end
+        @user.user_rooms.destroy_all
+        @user.chats.destroy_all
+        @user.notifications.destroy_all
       end
       redirect_to admin_user_path(@user.id)
     else

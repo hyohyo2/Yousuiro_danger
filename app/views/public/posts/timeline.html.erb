@@ -9,7 +9,7 @@
   </div>
   <!--タイムラインの表示-->
   <% if @posts.count == 0 %>
-    <h3 class="py-5 text-center">投稿はありません。</h3>
+    <h3 class="py-5 text-center">投稿がありません。</h3>
   <% else %>
     <%= render 'public/posts/timeline', posts: @posts %>
   <% end %>

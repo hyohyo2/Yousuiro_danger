@@ -34,7 +34,7 @@
       <div class="col-8 ">
         <%= form_with model: @chat, data: {remote: true} do |f| %>
           <div class="d-flex align-items-center">
-            <%= f.text_area :message, rows: 2, placeholder: "60文字以内で入力してください。", class: "form-control mr-3" %>
+            <%= f.text_area :message, rows: 2, placeholder: "140文字以内で入力してください。", class: "form-control mr-3" %>
             <%= f.submit "送信", class: "btn btn-dark btn-sm" %>
           </div>
           <%= f.hidden_field :room_id %>
