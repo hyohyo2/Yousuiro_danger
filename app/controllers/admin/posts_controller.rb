@@ -1,9 +1,10 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
+  # 投稿詳細
   def show
     @post = Post.find(params[:id])
   end
-
+  # 投稿削除
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
