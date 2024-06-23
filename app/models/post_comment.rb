@@ -6,7 +6,7 @@ class PostComment < ApplicationRecord
 
   validates :comment, presence: true, length: { maximum: 40 }
 
-  # 通知機能(投稿したユーザーへ通知を行う)
+  # 通知機能(コメントされたら投稿したユーザーへ通知)
   after_create do
     create_notification(user_id: post.user_id)
   end

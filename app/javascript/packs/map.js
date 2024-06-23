@@ -10,6 +10,7 @@ async function initMap(){
   const { Map } = await google.maps.importLibrary("maps");
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
 
+  // デフォルト中心表示「岡山駅」 
   map = new Map(document.getElementById("map"), {
     center: { lat:34.666536, lng:133.9180779 },
     zoom: 8,

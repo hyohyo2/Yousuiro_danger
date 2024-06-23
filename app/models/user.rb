@@ -36,15 +36,17 @@ class User < ApplicationRecord
     profile_image.variant(resize: "#{width}x#{height}!").processed
   end
 
-  # フォロー関係
+  # 指定ユーザーのフォロー
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
 
+  # 指定ユーザーのフォロー解除
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
   end
 
+  # 指定ユーザーがフォローされているか確認
   def following?(user)
     followings.include?(user)
   end
@@ -69,5 +71,4 @@ class User < ApplicationRecord
   def self.admin_search_for(content)
     User.where('name LIKE ?', '%' + content + '%')
   end
-
 end
