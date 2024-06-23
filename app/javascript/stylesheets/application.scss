@@ -40,3 +40,22 @@
 .time{
   font-size: 10px;
 }
+
+/*トップページ画像*/
+.top-image{
+  background-image: url("../images/Top.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  height: 900px;
+  width: 100%;
+}
+
+/*aboutページ画像*/
+.about-image{
+  background-image: url("../images/about.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 80%;
+}
