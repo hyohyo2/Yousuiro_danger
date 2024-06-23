@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2024_06_18_084208) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
-    t.string "message"
+    t.string "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2024_06_18_084208) do
     t.string "post_code", null: false
     t.string "prefecture_address", null: false
     t.string "city_address", null: false
-    t.string "block_address"
+    t.string "block_address", null: false
     t.text "detail", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false

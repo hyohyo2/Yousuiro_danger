@@ -41,8 +41,10 @@
   <div class="d-flex justify-content-center">
     <%= paginate @notifications, theme: 'bootstrap-5'  %>
   </div>
+  <% if @notifications.count != 0 %>
   <div class="row my-4">
     <div class="col-10"></div>
     <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
   </div>
+  <% end %>
 </div>

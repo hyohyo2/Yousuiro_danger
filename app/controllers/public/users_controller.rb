@@ -34,6 +34,12 @@ class Public::UsersController < ApplicationController
     current_user.favorites.destroy_all
     current_user.followings.destroy_all
     current_user.followers.destroy_all
+    current_user.user_rooms.each do |user_room|
+      user_room.room.destroy
+    end
+    current_user.user_rooms.destroy_all
+    current_user.chats.destroy_all
+    current_user.notifications.destroy_all
     reset_session
     flash[:notice] = "退会処理をしました。ご利用ありがとうございました。"
     redirect_to new_user_registration_path
