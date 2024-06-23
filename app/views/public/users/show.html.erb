@@ -1,3 +1,4 @@
+<!--ユーザー詳細-->
 <div class="container my-3">
   <!--フラッシュメッセージ-->
   <% flash.each do |message_type, message| %>
@@ -14,16 +15,19 @@
         <strong><%= @user.name %></strong>
       </h5>
       <div class="my-3">
-        <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
-          <% if @user.id == current_user.id %>
+        <!--ログインユーザーのみ表示-->
+        <% if @user.id == current_user.id %>
+          <!--(ゲストユーザーは非表示)-->
+          <% unless @user.guest_user %>
             <%= link_to edit_user_path(current_user.id), class: "btn btn-secondary" do %>
               <i class="fa-solid fa-sliders"></i>　編集する
             <% end %>
-          <% else %>
-            <div id="follow-ajax_<%= @user.id %>">
-              <%= render "public/relationships/btn", user: @user, class: "col-4" %>
-            </div>
           <% end %>
+        <!--ログインユーザー以外にフォローボタンを表示-->
+        <% else %>
+          <div id="follow-ajax_<%= @user.id %>">
+            <%= render "public/relationships/btn", user: @user, class: "col-4" %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -40,14 +44,15 @@
       <%= render 'public/posts/index', posts: @posts, user: @user %>
     </div>
     <div class="text-right">
-      <!--4件以上ないと表示されない-->
+      <!--4件より多くないと表示されない-->
       <% if @user.posts.count > 4 %>
         <%= link_to "もっと投稿を見る", userpost_path(@user.id), class: "btn btn-outline-info" %>
       <% end %>
     </div>
     <!--週の投稿数-->
-    <div class="row">
-      <%= render "public/users/weekpost", posts: @posts %>
+    <div class="my-4">
+      <h4 class="text-center">１週間の投稿数</h4>
+        <%= render "public/users/weekpost", posts: @posts %>
     </div>
   <% end %>
 </div>

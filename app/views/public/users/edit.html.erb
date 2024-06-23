@@ -9,6 +9,7 @@
   </h3>
   <!--バリデーションエラーメッセージ-->
   <div><%= render 'layouts/errors', obj: @user %></div>
+  <!--ユーザー編集フォーム-->
   <%= form_with model: @user do |f| %>
     <div class="row form-group justify-content-center">
       <%= f.label :profile_image, "プロフィール画像", class: "col-lg-3 col-sm-5 my-2" %>
@@ -26,10 +27,11 @@
       <%= f.label :introduction, "メッセージ", class: "col-lg-3 col-sm-5 my-2" %>
       <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "form-control col-lg-4 col-sm-5" %>
     </div>
+    <!--更新ボタン-->
     <div class="row form-group justify-content-center">
       <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2" %>
-
     </div>
+    <!--退会ボタン-->
     <div class="row form-group justify-content-center">
       <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-3 mb-3" %>
     </div>

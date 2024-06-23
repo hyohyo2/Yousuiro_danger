@@ -7,21 +7,21 @@
   <div class="text-center my-3">
     <h3>
       <%= link_to admin_user_path(@user.id) do %>
-        <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+        <i class="fa-solid fa-circle-chevron-left" style="color: #7a7a7a;"></i>
       <% end %>
       <strong><%= @user.name %></strong>
     </h3>
     <p>フォロワー<%= @user.followers.count %></p>
   </div>
-  <!--登録ユーザーの一覧-->
+  <!--フォロワーユーザーの一覧-->
   <div class="text-center">
-    <% if @users.count == 0 %>
-      <h3 class="py-5 text-center">ここにフォロワーが表示されます。</h3>
-    <% else %>
+    <% if @users.present? %>
       <%= render "admin/users/index", users: @users %>
+    <!--フォロワー数0だと表示-->
+    <% else %>
+      <h3 class="py-5 text-center">ここにフォロワーが表示されます。</h3>
     <% end %>
   </div>
-
   <!--ページネーション表示-->
   <div class="d-flex justify-content-center">
     <%= paginate @users, theme: 'bootstrap-5'%>

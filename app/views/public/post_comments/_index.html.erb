@@ -16,13 +16,16 @@
               <%= post_comment.user.name %>
             <% end %>
           <% elsif admin_signed_in? %>
-            <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-            <%= post_comment.user.name %>
+            <%= link_to admin_user_path(post_comment.user) do %>
+              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+              <%= post_comment.user.name %>
+            <% end %>
           <% end %>
         </td>
         <td class="text-center align-middle">
           <%= post_comment.comment %>
         </td>
+        <!--削除ボタン-->
         <td class="text-center align-middle" colspan="3">
           <% if post_comment.user == current_user || admin_signed_in? %>
             <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>

@@ -9,7 +9,7 @@
   </h3>
   <!--バリデーションエラーメッセージ-->
   <%= render 'layouts/errors', obj: @post %>
-
+  <!--投稿入力フォーム-->
   <%= form_with model: [@post] do |f| %>
     <div class="row d-flex justify-content-center align-items-center">
       <%= f.label :status, "状況", class: "col-lg-2 col-sm-3" %>
@@ -48,7 +48,7 @@
       <%= f.label :detail, "詳細", class: "col-lg-2 col-sm-3" %>
       <%= f.text_area :detail, rows: 5, placeholder: "どのような状況か詳しく教えてください。", class: "form-control col-5" %>
     </div>
-
+    <!--投稿ボタン-->
     <div class="row form-group d-flex justify-content-center">
       <%= f.submit "投稿",class: "btn btn-success  col-3" %>
     </div>

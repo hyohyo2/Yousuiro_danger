@@ -1,6 +1,6 @@
 class Public::NotificationsController < ApplicationController
   before_action :authenticate_user!
-  
+
   # 通知一覧
   def index
     @notifications = current_user.notifications.order(created_at: :desc).page(params[:page]).per(20)
@@ -28,7 +28,7 @@ class Public::NotificationsController < ApplicationController
       redirect_to chat_path(notification.notifiable.user)
     end
   end
-  
+
   # 通知の全削除
   def destroy
     @notifications = current_user.notifications.destroy_all

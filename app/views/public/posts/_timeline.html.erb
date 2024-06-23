@@ -2,55 +2,54 @@
 <table class="table border-bottom table-hover table-inverse">
   <tbody>
     <% posts.each do |post| %>
-    <tr>
-      <!--ユーザ画像とユーザー名をクリックすると-->
-      <td class="align-middle text-center">
-        <%= link_to user_path(post.user_id) do %>
-          <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-          <%= post.user.name %>
-        <% end %>
-      </td>
-      <td class="align-middle text-center">
-        <%= l post.created_at, format: :short %>
-      </td>
-      <td class="align-middle text-center">
-        <%= image_tag post.get_image(90,60) %>
-      </td>
-      <td class="align-middle text-center" colspan="3">
-        <!--危険だと赤色表示、安全だと緑色表示-->
-        <% if post.danger? %>
-          <span class="text-danger font-weight-bold">
-            <%= post.status_i18n %>
-          </span>
-        <% elsif post.safety? %>
-          <span class="text-success font-weight-bold">
-            <%= post.status_i18n %>
-          </span>
-        <% end %>
-      </td>
-      <td class="align-middle text-center">
-        <%= link_to post_path(post.id) do %>
-          〒<%= post.post_code.to_s.insert(3, "-")%><br>
-          <i class="fa-solid fa-location-dot" style="color: #7a7a7a;"></i>
-          <%= post.prefecture_address %>
-          <%= post.city_address %>
-          <%= post.block_address %>
-        <% end %>
-      </td>
-      <td class="align-middle text-center">
-        <!--お気に入りボタンの表示-->
-        <div id="favorite_btn_<%= post.id %>">
-          <%= render "public/favorites/btn", post: post %>
-        </div>
-      </td>
-      <td class="align-middle text-center">
-        <!--コメント数の表示-->
-        <div id="comment_count">
-          <%= render "public/post_comments/count", post: post %>
-        </div>
-      </td>
-
-    </tr>
+      <tr>
+        <!--ユーザ画像とユーザー名をクリックすると-->
+        <td class="align-middle text-center">
+          <%= link_to user_path(post.user_id) do %>
+            <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+            <%= post.user.name %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <%= l post.created_at, format: :short %>
+        </td>
+        <td class="align-middle text-center">
+          <%= image_tag post.get_image(90,60) %>
+        </td>
+        <td class="align-middle text-center" colspan="3">
+          <!--危険だと赤色表示、安全だと緑色表示-->
+          <% if post.danger? %>
+            <span class="text-danger font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% elsif post.safety? %>
+            <span class="text-success font-weight-bold">
+              <%= post.status_i18n %>
+            </span>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to post_path(post.id) do %>
+            〒<%= post.post_code.to_s.insert(3, "-")%><br>
+            <i class="fa-solid fa-location-dot" style="color: #7a7a7a;"></i>
+            <%= post.prefecture_address %>
+            <%= post.city_address %>
+            <%= post.block_address %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <!--お気に入りボタンの表示-->
+          <div id="favorite_btn_<%= post.id %>">
+            <%= render "public/favorites/btn", post: post %>
+          </div>
+        </td>
+        <td class="align-middle text-center">
+          <!--コメント数の表示-->
+          <div id="comment_count">
+            <%= render "public/post_comments/count", post: post %>
+          </div>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

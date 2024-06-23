@@ -1,5 +1,6 @@
-<!--お気に入り-->
+<!--お気に入りボタン-->
 <% if post.favorited_by?(current_user) %>
+  <!--お気に入り登録するとオレンジになる-->
   <%= link_to post_favorite_path(post), method: :delete, remote: true do %>
     <i class="fa-solid fa-star" style="color: orange;"></i>
     <%= post.favorites.count %>

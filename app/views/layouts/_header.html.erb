@@ -1,34 +1,40 @@
+<!--ヘッダー-->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a59ea4; ">
   <div class="mx-4 py-3">
+    <!--ユーザーログイン時ロゴ押下時のページ遷移先→「マップ」-->
     <% if user_signed_in? %>
-    <a class="navbar-brand pb-3" href="/map">
-      <span class="logo">
-        用水路安全確認マップ
-        <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
-      </span>
-    </a>
+      <a class="navbar-brand pb-3" href="/map">
+        <span class="logo">
+          用水路安全確認マップ
+          <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
+        </span>
+      </a>
+    <!--管理者ログイン時ロゴ押下時のページ遷移先→「投稿一覧」-->
     <% elsif admin_signed_in? %>
-    <a class="navbar-brand pb-3" href="/admin">
-      <span class="logo">
-        用水路安全確認マップ
-        <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
-      </span>
-    </a>
+      <a class="navbar-brand pb-3" href="/admin">
+        <span class="logo">
+          用水路安全確認マップ
+          <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
+        </span>
+      </a>
+    <!--ログアウト時ロゴ押下時のページ遷移先→「トップ」-->
     <% else %>
-    <a class="navbar-brand pb-3" href="/">
-      <span class="logo">
-        用水路安全確認マップ
-        <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
-      </span>
-    </a>
+      <a class="navbar-brand pb-3" href="/">
+        <span class="logo">
+          用水路安全確認マップ
+          <i class="fa-solid fa-map-pin" style="color: #ffadbe;"></i>
+        </span>
+      </a>
     <% end %>
   </div>
+  <!--ナビげーションメニュー、ハンバーガーメニュー-->
   <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-target=#navbarNavDropdown
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
+      <!--ユーザーログイン時-->
       <% if user_signed_in? %>
         <!--新規投稿へ-->
         <li class="nav-item mr-3">
@@ -41,20 +47,21 @@
         <!--タイムラインへ-->
         <li class="nav-item mr-3">
           <%= link_to "タイムライン", timeline_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
-
         </li>
-        <!--マップページへ→後で通知ボタンに変える-->
+        <!--マップ-->
         <li class="nav-item mr-3">
           <%= link_to "マップ", map_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>
         <!--通知ボタン-->
         <li class="nav-item mr-3">
           <%= link_to notifications_path, class: 'btn btn-outline-light btn-text-dark btn-block' do %>
+            <!--未読通知があればベルの色を黄色で表示-->
             <% if current_user.notifications.where(read: false).present? %>
               <i class="fa-solid fa-bell" style="color: #FFD43B;"></i>
             <% else %>
               <i class="fa-solid fa-bell"></i>
             <% end %>
+            <!--通知未読数の表示-->
             <span class="mx-2"><%= current_user.notifications.where(read: false).count %></span>
           <% end %>
         </li>
@@ -62,33 +69,35 @@
         <li class="nav-item mr-3">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light btn-text-dark btn-block'%>
         </li>
+      <!--管理者ログイン時-->
       <% elsif admin_signed_in? %>
         <!--投稿一覧へ-->
         <li class="nav-item mx-3">
           <%= link_to "投稿一覧", admin_root_path, class: "btn btn-outline-light btn-text-dark btn-block" %>
         </li>
-        <!--ユーザー一覧ページへ-->
+        <!--ユーザー一覧へ-->
         <li class="nav-item mx-3">
           <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>
-        <!--ログアウトページへ-->
+        <!--ログアウトへ-->
         <li class="nav-item mx-3">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete ,class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>
+      <!--ログアウト表示-->
       <% else %>
         <!--Topへ-->
         <li class="nav-item mx-3">
           <%= link_to "トップページ", root_path, class: "btn btn-outline-light btn-text-dark btn-block" %>
         </li>
-        <!--Aboutページへ-->
+        <!--Aboutへ-->
         <li class="nav-item mx-3">
           <%= link_to "サイトについて", about_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>
-        <!--ログインページへ-->
+        <!--ログインへ-->
         <li class="nav-item mx-3">
           <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>
-        <!--新規登録ページへ-->
+        <!--新規登録へ-->
         <li class="nav-item mx-3">
           <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
         </li>

@@ -13,38 +13,41 @@
     </h3>
   </div>
   <div class="mx-5">
-    <% if @notifications.count == 0 %>
-      <h3 class="py-5 text-center">ここに通知が表示されます。</h3>
-    <% else %>
+    <!--通知があると通知一覧を表示-->
+    <% if @notifications.present? %>
       <table class="table border-bottom table-hover table-inverse">
         <% @notifications.each do |notification| %>
-        <tr>
-          <td class="text-center">
-            <% if notification.read == true %>
-              <span class="text-secondary font-weight-bold">既読</span>
-            <% else %>
-              <span class="text-danger font-weight-bold">未読</span>
-            <% end %>
-          </td>
-          <td class="text-center">
-            <%= link_to notification_message(notification), notification_path(notification), method: :patch %>
-          </td>
-          <td class="text-center">
-            <%= time_ago_in_words(notification.created_at) %>前
-          </td>
-        </tr>
+          <tr>
+            <!--既読・未読の表示-->
+            <td class="text-center">
+              <% if notification.read == true %>
+                <span class="text-secondary font-weight-bold">既読</span>
+              <% else %>
+                <span class="text-danger font-weight-bold">未読</span>
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to notification_message(notification), notification_path(notification), method: :patch %>
+            </td>
+            <!--通知時間の表示-->
+            <td class="text-center">
+              <%= time_ago_in_words(notification.created_at) %>前
+            </td>
+          </tr>
         <% end %>
       </table>
+      <!--ページネーション-->
+      <div class="d-flex justify-content-center">
+        <%= paginate @notifications, theme: 'bootstrap-5'  %>
+      </div>
+      <!--通知があれば全削除ボタンを表示-->
+      <div class="row my-4">
+        <div class="col-10"></div>
+        <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
+      </div>
+    <!--通知が0だと表示-->
+    <% else %>
+      <h3 class="py-5 text-center">ここに通知が表示されます。</h3>
     <% end %>
   </div>
-  <!--ページネーション-->
-  <div class="d-flex justify-content-center">
-    <%= paginate @notifications, theme: 'bootstrap-5'  %>
-  </div>
-  <% if @notifications.count != 0 %>
-  <div class="row my-4">
-    <div class="col-10"></div>
-    <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
-  </div>
-  <% end %>
 </div>

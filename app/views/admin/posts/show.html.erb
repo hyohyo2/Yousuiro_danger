@@ -4,66 +4,69 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
+  <!--いいね数の表示-->
   <div class="row my-3">
     <div class="col-lg-9 col-sm-5"></div>
     <div class="col-2">
-      <!--いいね数の表示-->
       <h3 class="text-center">
         <i class="fa-solid fa-star" style="color: orange;"></i>
         <%= @post.favorites.count %>
       </h3>
     </div>
   </div>
+  <!--投稿情報-->
   <div class="row mb-5">
     <div class="col-lg-5 col-sm-12 py-5 text-center">
       <%= image_tag @post.get_image(320,240) %>
     </div>
     <div class="col-lg-6 col-sm-12 text-center">
       <table class="table border-bottom">
-        <tr>
-          <th class="col-3">投稿日時</th>
-          <td class="col-9"><%= l @post.created_at%></td>
-        </tr>
-        <tr>
-          <th class="align-middle col-3">投稿者名</th>
-          <td class="col-9">
-            <%= link_to admin_user_path(@post.user_id) do %>
-              <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
-              <%= @post.user.name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th class="align-middle col-3">状況</th>
-          <td class="col-9">
-            <!--危険だと赤色表示、安全だと緑色表示-->
-            <% if @post.danger? %>
-              <span class="status-size text-danger font-weight-bold">
-                <%= @post.status_i18n %>
-              </span>
-            <% elsif @post.safety? %>
-              <span class="status-size text-success font-weight-bold">
-                <%= @post.status_i18n %>
-              </span>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th class="col-3">郵便番号</th>
-          <td class="col-9">〒<%= @post.post_code.to_s.insert(3, "-") %></td>
-        </tr>
-        <tr>
-          <th class="align-middle col-3">住所</th>
-          <td class="col-9">
-            <%= @post.prefecture_address %>
-            <%= @post.city_address %>
-            <%= @post.block_address %>
-          </td>
-        </tr>
-        <tr>
-          <th class="align-middle col-3">詳細</th>
-          <td class="col-9"><%= @post.detail %></td>
-        </tr>
+        <tbody>
+          <tr>
+            <th class="col-3">投稿日時</th>
+            <td class="col-9"><%= l @post.created_at%></td>
+          </tr>
+          <tr>
+            <th class="align-middle col-3">投稿者名</th>
+            <td class="col-9">
+              <%= link_to admin_user_path(@post.user_id) do %>
+                <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+                <%= @post.user.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th class="align-middle col-3">状況</th>
+            <td class="col-9">
+              <!--危険だと赤色表示、安全だと緑色表示-->
+              <% if @post.danger? %>
+                <span class="status-size text-danger font-weight-bold">
+                  <%= @post.status_i18n %>
+                </span>
+              <% elsif @post.safety? %>
+                <span class="status-size text-success font-weight-bold">
+                  <%= @post.status_i18n %>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th class="col-3">郵便番号</th>
+            <td class="col-9">〒<%= @post.post_code.to_s.insert(3, "-") %></td>
+          </tr>
+          <tr>
+            <th class="align-middle col-3">住所</th>
+            <td class="col-9">
+              <%= @post.prefecture_address %>
+              <%= @post.city_address %>
+              <%= @post.block_address %>
+            </td>
+          </tr>
+          <tr>
+            <th class="align-middle col-3">詳細</th>
+            <td class="col-9"><%= @post.detail %></td>
+          </tr>
+        </tbody>
       </table>
       <div class="text-center">
         <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-danger col-4", "data-confirm" => "本当に削除しますか？" %>
@@ -73,11 +76,9 @@
   <div class="row">
     <!--コメント一覧-->
     <div class="col-lg-11 col-sm-12">
-      <% if @post.post_comments.count != 0 %>
-        <div id="comment_index">
-          <%= render "public/post_comments/index", post: @post %>
-        </div>
-      <% end %>
+      <div id="comment_index">
+        <%= render "public/post_comments/index", post: @post %>
+      </div>
     </div>
   </div>
 </div>
