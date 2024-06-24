@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   enum status: { danger: 0, safety: 1 }
 
   validates :image, presence: true
-  validates :post_code, presence: true, format: {with: /\A[0-9]+\z/, message: 'には半角数字を入力してください'}
+  validates :post_code, presence: true, length: { is: 7 }, format: {with: /\A[0-9]+\z/, message: 'には半角数字を入力してください'}
   validates :prefecture_address, presence: true
   validates :city_address, presence: true
   validates :block_address, presence: true
@@ -39,7 +39,6 @@ class Post < ApplicationRecord
 
   # 検索機能(部分検索のみ)
   def self.search_for(content, model)
-
     # 都道府県・市区町村・以降の住所どこを検索しても表示される
     if model == "post"
       Post.where('prefecture_address LIKE ? OR city_address LIKE ? OR block_address LIKE ?', '%' + content + '%', '%' + content + '%', '%' + content + '%')

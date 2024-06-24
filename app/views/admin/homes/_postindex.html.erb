@@ -7,6 +7,8 @@
       <th class="text-center">ステータス</th>
       <th class="text-center">郵便番号</th>
       <th class="text-center">住所</th>
+      <th class="text-center"><i class="fa-solid fa-star" style="color: orange;"></i></th>
+      <th class="text-center"><i class="fa-solid fa-comment" style="color: #7a7a7a;"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -40,6 +42,12 @@
           <%= post.prefecture_address %>
           <%= post.city_address %>
           <%= post.block_address %>
+        </td>
+        <td class="text-center">
+          <%= post.favorites.count %>件
+        </td>
+        <td class="text-center">
+          <%= post.post_comments.count %>件
         </td>
       </tr>
     <% end %>

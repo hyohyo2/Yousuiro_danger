@@ -21,11 +21,13 @@
       <th>フォロー中</th>
       <td><%= link_to user.followings.count, user_followings_path(user) %></td>
     </tr>
-    <!--フォロワー数表示-->
-    <tr>
-      <th>フォロワー</th>
-      <td><%= link_to user.followers.count, user_followers_path(user) %></td>
-    </tr>
+    <!--フォロワー数表示(ゲストユーザーフォローできないので)-->
+    <% unless user.guest_user %>
+      <tr>
+        <th>フォロワー</th>
+        <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+      </tr>
+    <% end %>
     <!--お気に入り投稿数表示-->
     <tr>
       <th><i class="fa-solid fa-star"></i>お気に入り</th>
