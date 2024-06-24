@@ -2,12 +2,12 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
   before_action :ensure_guest_user, except:[:show, :timeline]
-  
+
   # 新規投稿
   def new
     @post = Post.new
   end
-  
+
   # 投稿の保存
   def create
     @post = Post.new(post_params)
@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
-  
+
   # 投稿詳細
   def show
     @post = Post.find(params[:id])
@@ -28,12 +28,12 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
     @post_comments = PostComment.all
   end
-  
+
   # 投稿編集
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   # データの更新
   def update
     @current_user = current_user
@@ -83,7 +83,7 @@ class Public::PostsController < ApplicationController
   def is_matching_login_user
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post.id), alert: "指定のページはご利用できません"
     end
   end
 
