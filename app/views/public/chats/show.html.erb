@@ -5,8 +5,11 @@
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
   <!--フォーム入力エラー表示-->
-  <div id="errors">
-    <%= render "layouts/errors", obj: @chat %>
+
+  <div class="text-center">
+    <div id="errors">
+      <%= render "layouts/errors", obj: @chat %>
+    </div>
   </div>
   <!--チャットページ-->
   <div class="mt-4 p-3" style="background-color: #FFFAF0;">
