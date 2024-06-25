@@ -70,6 +70,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
   end
+  
 
   private
 

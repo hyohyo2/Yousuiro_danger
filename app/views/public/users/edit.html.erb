@@ -8,7 +8,9 @@
     <span><strong>ユーザー編集</strong></span>
   </h3>
   <!--バリデーションエラーメッセージ-->
-  <div><%= render 'layouts/errors', obj: @user %></div>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @user %>
+  </div>
   <!--ユーザー編集フォーム-->
   <%= form_with model: @user do |f| %>
     <div class="row form-group justify-content-center">
