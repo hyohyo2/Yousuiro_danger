@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/posts/timeline' => 'public/posts#timeline', as: 'timeline'
   patch 'users/withdraw' => 'public/users#withdraw', as: 'withdraw'
   get '/search' => 'public/searches#search', as: 'search'
+  # 新規登録失敗時の遷移先
+  get '/users' => redirect("/users/sign_up")
 
   scope module: :public do
     resources :users, only:[:show, :edit, :update] do

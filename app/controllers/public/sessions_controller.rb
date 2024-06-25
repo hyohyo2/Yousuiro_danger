@@ -20,10 +20,8 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
 
-
-  # 遷移先をマップへ変更すること
   def after_sign_in_path_for(resource)
-    user_path(current_user.id)
+    user_path(current_user)
   end
 
   def after_sign_out_path_for(resource)

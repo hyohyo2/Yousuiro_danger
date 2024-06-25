@@ -11,7 +11,9 @@
     <strong>投稿編集</strong>
   </h3>
   <!--バリデーションエラーメッセージ-->
-  <%= render 'layouts/errors', obj: @post %>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @post %>
+  </div>
   <!--編集フォーム-->
   <%= form_with model: [@post] do |f| %>
     <!--enumのラジオボタン-->

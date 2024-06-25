@@ -8,7 +8,9 @@
     <strong>新規投稿</strong>
   </h3>
   <!--バリデーションエラーメッセージ-->
-  <%= render 'layouts/errors', obj: @post %>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @post %>
+  </div>
   <!--投稿入力フォーム-->
   <%= form_with model: [@post] do |f| %>
     <div class="row d-flex justify-content-center align-items-center">

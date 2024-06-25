@@ -15,9 +15,7 @@
     <% posts.each do |post| %>
       <tr>
         <td class="text-center">
-          <%= link_to admin_post_path(post.id) do %>
-            <%= l post.created_at, format: :short %>
-          <% end %>
+          <%= l post.created_at, format: :short %>
         </td>
         <td class="text-center">
           <%= link_to admin_user_path(post.user_id) do %>
@@ -39,9 +37,11 @@
           〒<%= post.post_code.to_s.insert(3, "-") %>
         </td>
         <td class="text-center">
-          <%= post.prefecture_address %>
-          <%= post.city_address %>
-          <%= post.block_address %>
+          <%= link_to admin_post_path(post.id) do %>
+            <%= post.prefecture_address %>
+            <%= post.city_address %>
+            <%= post.block_address %>
+          <% end %>
         </td>
         <td class="text-center">
           <%= post.favorites.count %>件

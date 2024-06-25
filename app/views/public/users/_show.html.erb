@@ -19,22 +19,28 @@
     <!--フォロー数表示-->
     <tr>
       <th>フォロー中</th>
-      <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+      <td>
+        <div id="following_count">
+          <%= render 'public/relationships/followingcount', user: user %>
+        </div>
+      </td>
     </tr>
     <!--フォロワー数表示(ゲストユーザーフォローできないので)-->
     <% unless user.guest_user %>
       <tr>
         <th>フォロワー</th>
-        <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+        <td>
+          <div id="follower_count">
+            <%= render 'public/relationships/followercount', user: user %>
+          </div>
+        </td>
       </tr>
     <% end %>
     <!--お気に入り投稿数表示-->
     <tr>
       <th><i class="fa-solid fa-star"></i>お気に入り</th>
       <td>
-        <%= link_to favorites_user_path(user) do %>
-          <%= user.favorites.count %>
-        <% end %>
+        <%= render 'public/favorites/count', user: user %>
       </td>
     </tr>
     <tr>
