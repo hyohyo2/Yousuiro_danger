@@ -39,7 +39,7 @@ post = taro.posts.create!(
   post_code: '7000913',
   prefecture_address: '岡山県',
   city_address: '岡山市北区',
-  block_address: '大供〇－〇',
+  block_address: '大供×××-×××',
   detail: 'ここは柵がないので、近くを通るときはお気を付けください。',
   status: 0
 )
@@ -49,7 +49,7 @@ hanako.posts.create!(
   post_code: '7010221',
   prefecture_address: '岡山県',
   city_address: '岡山市南区',
-  block_address: '藤田〇－〇',
+  block_address: '藤田×××-×××',
   detail: '最近柵が設置されました！',
   status: 1
 )
@@ -59,7 +59,7 @@ jiro.posts.create!(
   post_code: '7100833',
   prefecture_address: '岡山県',
   city_address: '倉敷市',
-  block_address: '西中新田〇－〇',
+  block_address: '西中新田×××-×××',
   detail: 'ここの用水路は転落防止の柵がないのでお気を付けください。',
   status: 0
 )

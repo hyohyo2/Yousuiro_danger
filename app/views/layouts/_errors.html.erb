@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <%= obj.errors.count %>件のエラー
-  <ul>
+  <ul style="list-style: none;">
     <% obj.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>

@@ -32,13 +32,13 @@ class Public::ChatsController < ApplicationController
     @chat = Chat.new(room_id: @room.id)
 
   end
-  
+
   # チャットを送信
   def create
     @chat = current_user.chats.new(chat_params)
     render :validate unless @chat.save
   end
-  
+
   # チャットを削除
   def destroy
     @chat = current_user.chats.find(params[:id])
@@ -50,7 +50,7 @@ class Public::ChatsController < ApplicationController
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
-  
+
   # チャット相手以外の利用制限
   def block_non_related_users
     user = User.find(params[:id])
@@ -59,7 +59,7 @@ class Public::ChatsController < ApplicationController
       redirect_to user_path(user), alert: "相互フォローでないのでDM機能は利用できません"
     end
   end
-  
+
   # ゲストユーザーの利用制限
   def ensure_guest_user
     if current_user.guest_user
