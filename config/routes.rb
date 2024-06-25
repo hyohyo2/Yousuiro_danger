@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/search' => 'public/searches#search', as: 'search'
   # 新規登録失敗時の遷移先
   get '/users' => redirect("/users/sign_up")
+  get '/posts' => redirect('/posts/new')
 
   scope module: :public do
     resources :users, only:[:show, :edit, :update] do

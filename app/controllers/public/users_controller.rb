@@ -5,6 +5,10 @@ class Public::UsersController < ApplicationController
   # ユーザー詳細
   def show
     @user = User.find(params[:id])
+    unless @user.is_active
+      redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
+    end
+
     # 新着順
     @posts = @user.posts.order('id DESC').limit(4)
   end
@@ -70,7 +74,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
   end
-  
+
 
   private
 
