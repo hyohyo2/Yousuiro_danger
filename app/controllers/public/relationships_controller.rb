@@ -16,11 +16,19 @@ class Public::RelationshipsController < ApplicationController
   def followings
     @user = User.find(params[:user_id])
     @users = @user.followings.page(params[:page]).per(10).order('users.id DESC')
+     # 退会になると非表示
+    unless @user.is_active
+      redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
+    end
   end
 
   # フォロワーユーザー一覧
   def followers
     @user = User.find(params[:user_id])
     @users = @user.followers.page(params[:page]).per(10).order('users.id DESC')
+     # 退会になると非表示
+    unless @user.is_active
+      redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
+    end
   end
 end
