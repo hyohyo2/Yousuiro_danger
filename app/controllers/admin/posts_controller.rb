@@ -4,6 +4,7 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+  
   # 投稿削除
   def destroy
     @post = Post.find(params[:id])

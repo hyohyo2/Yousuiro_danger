@@ -1,10 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
-  before_action :ensure_guest_user, only:[:edit]
+  before_action :ensure_guest_user, only:[:edit, :userpost]
   # ユーザー詳細
   def show
     @user = User.find(params[:id])
+    # 退会になると非表示
     unless @user.is_active
       redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
     end
@@ -67,12 +68,20 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites).page(params[:page]).per(10).order('id DESC')
+    # 退会になると非表示
+    unless @user.is_active
+      redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
+    end
   end
 
   # ユーザーの全投稿一覧
   def userpost
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
+    # 退会になると非表示
+    unless @user.is_active
+      redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
+    end
   end
 
 
