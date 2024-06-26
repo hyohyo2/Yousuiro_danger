@@ -1,9 +1,9 @@
-# 危険！！用水路安全確認マップ
-​
+# [危険！！用水路安全確認マップ](http://3.114.3.231/)
+
+
 ## サイト概要
 ### サイトテーマ
 用水路の転落事故減少を目的としたＳＮＳサイト
-
 ​
 ### テーマを選んだ理由
 私の出身地である岡山県は干拓されている土地が多いです。
@@ -27,8 +27,8 @@
 - 危険な用水路に対して柵の設置など安全策が取られたことを確認したいとき。
 ​
 ## 設計書
-- [UI flows]()
-- [ER図]()
+- [UI flows](https://drive.google.com/file/d/1UGGPR_NhUvkXba88xWndPVkbEO7nCPgR/view?usp=sharing)
+- [ER図](https://drive.google.com/file/d/1uwR_ugBGI4L7qKkLmOFCLGgBOxim0wRQ/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1fRSA3XEbFIdUtnC2txnp3PhowAbjoiFuHv5vUK5BVYQ/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1BsOuHHqLaxmVjB671dxxIgf9kfoycptCehEwiUI5J3c/edit?usp=sharing)
 ​
@@ -38,8 +38,18 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-​
+
+## 実装機能
+ゲストログイン、会員機能、投稿機能、検索機能、ユーザー管理機能、いいね機能、いいね一覧表示機能、
+フォロー機能、コメント機能、他者投稿をタイムラインで共有、地図表示機能(google map API/geocoder)、投稿数算出、通知機能、DM機能
+
+## サイトトップページ
+ ![スクリーンショット 2024-06-26 115836](https://github.com/hyohyo2/Yousuiro_danger/assets/163430298/f2815167-57c9-4711-80bd-830f88cb8981)​
+
 ## 使用素材
 - フリー素材ぱくたそ［ https://www.pakutaso.com ］
 - 著作権を考慮し、架空のデータを扱う予定です。
 なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
+
+## 作者
+- [Xアカウント](https://x.com/rnew48y)
