@@ -59,3 +59,33 @@
   height: 400px;
   width: 80%;
 }
+
+.nav-item{
+  font-size: 20px;
+  text-align: center;
+}
+
+.hidden-pc{
+  display: none;
+}
+
+.hidden-px{
+  display: none;
+}
+
+//レスポンシブ(768px以下)
+
+@media screen and (max-width:768px){
+  .top-title{
+    text-align: center;
+  }
+
+  .hidden-pc{
+    display: block;
+  }
+
+  .login-method-title{
+    text-align: center;
+  }
+
+}

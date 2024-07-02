@@ -38,23 +38,23 @@
       <% if user_signed_in? %>
         <!--新規投稿へ-->
         <li class="nav-item mr-3">
-          <%= link_to "新規投稿", new_post_path , class: 'btn btn-outline-light btn-text-dark btn-block'%>
+          <%= link_to "新規投稿", new_post_path, class: 'nav-link text-light'%>
         </li>
         <!--マイページへ-->
         <li class="nav-item mr-3">
-          <%= link_to "マイページ", user_path(current_user.id) , class: 'btn btn-outline-light btn-text-dark btn-block'%>
+          <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-light'%>
         </li>
         <!--タイムラインへ-->
         <li class="nav-item mr-3">
-          <%= link_to "タイムライン", timeline_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "タイムライン", timeline_path, class: 'nav-link text-light' %>
         </li>
         <!--マップ-->
         <li class="nav-item mr-3">
-          <%= link_to "マップ", map_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "マップ", map_path, class: 'nav-link text-light' %>
         </li>
         <!--通知ボタン-->
         <li class="nav-item mr-3">
-          <%= link_to notifications_path, class: 'btn btn-outline-light btn-text-dark btn-block' do %>
+          <%= link_to notifications_path, class: 'nav-link text-light' do %>
             <!--未読通知があればベルの色を黄色で表示-->
             <% if current_user.notifications.where(read: false).present? %>
               <i class="fa-solid fa-bell" style="color: #FFD43B;"></i>
@@ -67,39 +67,39 @@
         </li>
         <!--ログアウトリンク-->
         <li class="nav-item mr-3">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light btn-text-dark btn-block'%>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light'%>
         </li>
       <!--管理者ログイン時-->
       <% elsif admin_signed_in? %>
         <!--投稿一覧へ-->
         <li class="nav-item mx-3">
-          <%= link_to "投稿一覧", admin_root_path, class: "btn btn-outline-light btn-text-dark btn-block" %>
+          <%= link_to "投稿一覧", admin_root_path, class: 'nav-link text-light' %>
         </li>
         <!--ユーザー一覧へ-->
         <li class="nav-item mx-3">
-          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-light' %>
         </li>
         <!--ログアウトへ-->
         <li class="nav-item mx-3">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete ,class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
         </li>
       <!--ログアウト表示-->
       <% else %>
         <!--Topへ-->
         <li class="nav-item mx-3">
-          <%= link_to "トップページ", root_path, class: "btn btn-outline-light btn-text-dark btn-block" %>
+          <%= link_to "トップページ", root_path, class: 'nav-link text-light' %>
         </li>
         <!--Aboutへ-->
         <li class="nav-item mx-3">
-          <%= link_to "サイトについて", about_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "サイトについて", about_path, class: 'nav-link text-light' %>
         </li>
         <!--ログインへ-->
         <li class="nav-item mx-3">
-          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
         </li>
         <!--新規登録へ-->
         <li class="nav-item mx-3">
-          <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-light btn-text-dark btn-block' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
         </li>
       <% end %>
     </ul>
