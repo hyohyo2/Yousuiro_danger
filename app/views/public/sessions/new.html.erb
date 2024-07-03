@@ -5,8 +5,8 @@
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
   <div class="row no-gutters">
-    <div class="col-lg-7 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
-      <h3 class="text-dark bg-light py-4 mb-0">ログイン</h3>
+    <div class="col-lg-6 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
+      <h3 class="text-light bg-success rounded py-4 mb-0">ログイン</h3>
       <div class="form-body p-4">
         <div class="mx-auto text-center">
         <p>メールアドレスとパスワードを入力してください。</p>
@@ -29,7 +29,7 @@
             </div>
           <% end %>
           <!--ログインボタン-->
-          <%= f.submit "ログイン", class: "btn btn-success col-4" %>
+          <%= f.submit "ログイン", class: "btn btn-dark col-4" %>
         <% end %>
       </div>
       <div class="mb-3">

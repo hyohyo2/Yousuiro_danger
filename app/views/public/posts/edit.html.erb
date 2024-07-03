@@ -4,59 +4,63 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="my-4 text-center">
-    <%= link_to  post_path(@post.id) do %>
-      <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
-    <% end %>
-    <strong>投稿編集</strong>
-  </h3>
-  <!--バリデーションエラーメッセージ-->
-  <div class="text-center">
-    <%= render 'layouts/errors', obj: @post %>
-  </div>
-  <!--編集フォーム-->
-  <%= form_with model: [@post] do |f| %>
-    <!--enumのラジオボタン-->
-    <div class="row d-flex justify-content-center align-items-center">
-      <%= f.label :status, "状況", class: "col-lg-2 col-sm-3" %>
-      <div class="status-size col-5 p-0 d-flex justify-content-left">
-        <%= f.radio_button :status, Post.statuses.key(0) %>
-        <%= f.label :status, Post.statuses_i18n[:danger], class: "text-danger font-weight-bold"%>
-        <div class="col-2"></div>
-        <%= f.radio_button :status, Post.statuses.key(1) %>
-        <%= f.label :status, Post.statuses_i18n[:safety], class: "text-success font-weight-bold" %>
+  <div class="row no-gutters">
+    <div class="col-lg-6 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
+      <h3 class="text-dark bg-light rounded py-4 mb-0">
+        <%= link_to  post_path(@post.id) do %>
+          <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+        <% end %>
+        投稿編集
+      </h3>
+      <div class="form-body p-4">
+        <!--バリデーションエラーメッセージ-->
+        <div class="text-center">
+          <%= render 'layouts/errors', obj: @post %>
+        </div>
+        <!--編集フォーム-->
+        <%= form_with model: [@post] do |f| %>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <span class="col-md-4"><%= f.label :status, "状況" %></span>
+            <div class="status-button col-md-8 p-0">
+              <%= f.radio_button :status, Post.statuses.key(0) %>
+              <%= f.label :status, Post.statuses_i18n[:danger], class: "text-danger font-weight-bold"%>
+              <%= f.radio_button :status, Post.statuses.key(1) %>
+              <%= f.label :status, Post.statuses_i18n[:safety], class: "text-success font-weight-bold" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-4"><%= f.label :image, "画像" %></span>
+            <div class="image-label col-md-8 p-0">
+              <%= f.file_field :image, accept: "image*/" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-4"><%= f.label :post_code, "郵便番号" %></span>
+            <%= f.text_field :post_code, placeholder: "1234567" , class: "form-control" %>
+            <div class="col-md-3"></div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-4"><%= f.label :prefecture_address, "都道府県" %></span>
+            <%= f.text_field :prefecture_address, placeholder: "岡山県", class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-4"><%= f.label :city_address, "市区町村" %></span>
+            <%= f.text_field :city_address,placeholder: "岡山市北区", class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-4"><%= f.label :block_address, "以降の住所" %></span>
+            <%= f.text_field :block_address,placeholder: "岡山町１２３４", class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-4"><%= f.label :detail, "詳細" %></span>
+            <%= f.text_area :detail, rows: 5, placeholder: "どのような状況か詳しく教えてください。", class: "form-control" %>
+          </div>
+          <!--更新ボタン-->
+          <div class="row form-group d-flex justify-content-center">
+            <%= f.submit "更新する",class: "btn btn-success  col-4" %>
+          </div>
+        <% end %>
       </div>
     </div>
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.label :image, "画像", class: "col-lg-2 col-sm-3" %>
-      <%= f.file_field :image, accept: "image*/", class: "col-5 p-0" %>
-    </div>
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.label :post_code, "郵便番号", class: "col-lg-2 col-sm-3" %>
-      <%= f.text_field :post_code, placeholder: "1234567" , class: "form-control col-2 " %>
-      <div class="col-3"></div>
-    </div>
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.label :prefecture_address, "都道府県", class: "col-lg-2 col-sm-3" %>
-      <%= f.text_field :prefecture_address, placeholder: "岡山県", class: "form-control col-2" %>
-      <div class="col-3"></div>
-    </div>
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.label :city_address, "市区町村", class: "col-lg-2 col-sm-3" %>
-      <%= f.text_field :city_address,placeholder: "岡山市北区", class: "form-control col-3" %>
-      <div class="col-2"></div>
-    </div>
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.label :block_address, "以降の住所", class: "col-lg-2 col-sm-3" %>
-      <%= f.text_field :block_address,placeholder: "岡山町１２３４", class: "form-control col-5" %>
-    </div>
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.label :detail, "詳細", class: "col-lg-2 col-sm-3" %>
-      <%= f.text_area :detail, rows: 5, placeholder: "どのような状況か詳しく教えてください。", class: "form-control col-5" %>
-    </div>
-    <!--更新ボタン-->
-    <div class="row form-group d-flex justify-content-center">
-      <%= f.submit "更新する",class: "btn btn-success  col-2" %>
-    </div>
-  <% end %>
+  </div>
 </div>
