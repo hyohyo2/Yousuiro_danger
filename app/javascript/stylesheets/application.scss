@@ -67,11 +67,6 @@
 //新規投稿ステータスのフォントサイズ
 .status-button{
   font-size: 30px;
-  text-align: left;
-}
-
-.image-label{
-  text-align: left;
 }
 
 
@@ -94,15 +89,4 @@
     text-align: center;
   }
 
-}
-
-@media screen and (max-width:425px){
-   //新規投稿ステータの配置
-  .status-button{
-  text-align: center;
-  }
-
-  .image-label{
-  text-align: center;
-  }
 }

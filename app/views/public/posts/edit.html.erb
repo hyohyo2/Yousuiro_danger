@@ -23,14 +23,14 @@
             <span class="col-md-4"><%= f.label :status, "状況" %></span>
             <div class="status-button col-md-8 p-0">
               <%= f.radio_button :status, Post.statuses.key(0) %>
-              <%= f.label :status, Post.statuses_i18n[:danger], class: "text-danger font-weight-bold"%>
+              <%= f.label :status, Post.statuses_i18n[:danger], class: "text-danger font-weight-bold mr-3"%>
               <%= f.radio_button :status, Post.statuses.key(1) %>
               <%= f.label :status, Post.statuses_i18n[:safety], class: "text-success font-weight-bold" %>
             </div>
           </div>
           <div class="input-group mb-3">
             <span class="col-md-4"><%= f.label :image, "画像" %></span>
-            <div class="image-label col-md-8 p-0">
+            <div class="col-md-8 p-0">
               <%= f.file_field :image, accept: "image*/" %>
             </div>
           </div>
@@ -56,9 +56,7 @@
             <%= f.text_area :detail, rows: 5, placeholder: "どのような状況か詳しく教えてください。", class: "form-control" %>
           </div>
           <!--更新ボタン-->
-          <div class="row form-group d-flex justify-content-center">
-            <%= f.submit "更新する",class: "btn btn-success  col-4" %>
-          </div>
+          <%= f.submit "更新する",class: "btn btn-success  col-4" %>
         <% end %>
       </div>
     </div>
