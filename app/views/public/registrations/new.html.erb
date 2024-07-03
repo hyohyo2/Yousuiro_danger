@@ -4,50 +4,46 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <div class="text-center">
-    <%= render 'layouts/errors', obj: @user %>
-  </div>
-  <div class="text-center my-4">
-    <h3 class="my-3"><strong>新規登録</strong></h3>
-    <p>以下の項目を入力してください。</p>
-  </div>
-  <%= form_with model: @user, url: user_registration_path do |f| %>
+  <div class="row no-gutters">
+    <div class="col-lg-6 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
+      <h3 class="text-light bg-info rounded py-4 mb-0">新規登録</h3>
+      <div class="form-body p-4">
+        <div class="mx-auto text-center">
+          以下の項目を入力してください。
+        </div>
+        <div class="text-center mt-3">
+          <%= render 'layouts/errors', obj: @user %>
+        </div>
 
-    <div class="row form-group justify-content-center">
-      <%= f.label :name, "ユーザー名", class: "col-lg-3 col-sm-4" %>
-      <%= f.text_field :name,autofocus: true, class: "col-4" %>
-    </div>
+        <%= form_with model: @user, url: user_registration_path do |f| %>
+        <div class="input-group mb-3">
+          <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+          <%= f.text_field :name,autofocus: true, placeholder: "ユーザー名", class: "form-control" %>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+          <%= f.email_field :email,  autocomplete: "email",placeholder: "メールアドレス", class: "form-control" %>
+        </div>
 
-    <div class="row form-group justify-content-center">
-      <%= f.label :email, "メールアドレス", class: "col-lg-3 col-sm-4" %>
-      <%= f.email_field :email,  autocomplete: "email",placeholder: "Yousuiro@Map.com", class: "col-4" %>
-    </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)", class: "form-control" %>
+        </div>
 
-    <div class="row form-group justify-content-center">
-      <div class="col-lg-3 col-sm-4">
-        <%= f.label :password, "パスワード" %>
-        <% if @minimum_password_length %>
-        (<%= @minimum_password_length %> 文字以上)
-        <% end %>
-      </div>
-      <%= f.password_field :password, autocomplete: "new-password", class: "col-4" %>
+        <div class="input-group mb-3">
+          <span class="input-group-text" aria-hidden="true"><i class="fa-regular fa-circle-check"></i></span>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)", class: "form-control" %>
+        </div>
+          <%= f.submit "新規登録", class: "btn btn-dark col-4" %>
+      <% end %>
     </div>
-
-    <div class="row form-group justify-content-center">
-      <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-lg-3 col-sm-4" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-4" %>
+    <div>
+     <p>※一度登録されたメールアドレスは使用できません。</p>
     </div>
-
-    <div class="row form-group justify-content-center">
-      <%= f.submit "新規登録", class: "btn btn-info col-lg-2 col-sm-4 " %>
+    <div class="mb-3">
+      すでに登録済みの方は
+      <%= render "public/shared/links" %>
+      からログインしてください。
     </div>
-  <% end %>
-  <div class="row justify-content-center">
-   <p>※一度登録されたメールアドレスは使用できません。</p>
-  </div>
-  <div class="row justify-content-center mb-4">
-    すでに登録済みの方は
-    <%= render "public/shared/links" %>
-    からログインしてください。
   </div>
 </div>

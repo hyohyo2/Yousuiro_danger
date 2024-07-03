@@ -4,34 +4,39 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <div class="text-center my-4">
-    <h3 class="my-3"><strong>ログイン</strong></h3>
-    <p>メールアドレスとパスワードを入力してください。</p>
-  </div>
+  <div class="row no-gutters">
+    <div class="col-lg-6 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
+      <h3 class="text-light bg-success rounded py-4 mb-0">ログイン</h3>
+      <div class="form-body p-4">
+        <div class="mx-auto text-center">
+        <p>メールアドレスとパスワードを入力してください。</p>
+        </div>
+        <!--入力フォーム-->
+        <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+          <div class="input-group mb-3">
+            <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+            <%= f.password_field :password, autocomplete: "current-password",placeholder: "パスワード", class: "form-control" %>
+          </div>
 
-  <%= form_with model: @user, url: user_session_path do |f| %>
-    <div class="row form-group justify-content-center">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス", class: "col-lg-4 col-sm-6" %>
-    </div>
-
-    <div class="row form-group justify-content-center">
-      <%= f.password_field :password, autocomplete: "current-password",placeholder: "パスワード", class: "col-lg-4 col-sm-6" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="row form-group justify-content-center">
-        <%= f.check_box :remember_me, class: "mr-1" %>
-        <%= f.label :remember_me %>
+          <% if devise_mapping.rememberable? %>
+            <div class="row form-group justify-content-center">
+              <%= f.check_box :remember_me, class: "mr-1" %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+          <!--ログインボタン-->
+          <%= f.submit "ログイン", class: "btn btn-dark col-4" %>
+        <% end %>
       </div>
-    <% end %>
-
-    <div class="row form-group justify-content-center">
-      <%= f.submit "ログイン", class: "btn btn-success col-lg-2 col-sm-4" %>
+      <div class="mb-3">
+        会員登録がお済みでない方は<br class="hidden-pc">
+        <%= render "public/shared/links" %>
+        から会員登録をしてください。
+      </div>
     </div>
-  <% end %>
-  <div class="row form-group justify-content-center">
-    会員登録がお済みでない方は
-    <%= render "public/shared/links" %>
-     から会員登録をしてください。
   </div>
 </div>

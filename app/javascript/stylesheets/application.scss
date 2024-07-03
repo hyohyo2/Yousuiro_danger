@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-//新規投稿ステータスのフォントサイズ
-.status-size{
-  font-size: 30px;
-}
 
 // フラッシュメッセージ
 .flash-message {
@@ -58,4 +54,39 @@
   background-position: center;
   height: 400px;
   width: 80%;
+}
+
+.nav-item{
+  text-align: center;
+}
+
+.hidden-pc{
+  display: none;
+}
+
+//新規投稿ステータスのフォントサイズ
+.status-button{
+  font-size: 30px;
+}
+
+
+//レスポンシブ(768px以下)
+
+@media screen and (max-width:768px){
+  .top-title{
+    text-align: center;
+  }
+
+  .hidden-pc{
+    display: block;
+  }
+
+  .login-method-title{
+    text-align: center;
+  }
+
+  .post-new{
+    text-align: center;
+  }
+
 }
