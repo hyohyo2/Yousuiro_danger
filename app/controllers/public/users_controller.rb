@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
     end
 
     # 新着順
-    @posts = @user.posts.order('id DESC').limit(4)
+    @posts = @user.posts.order('id DESC').limit(3)
   end
 
   # ユーザー編集

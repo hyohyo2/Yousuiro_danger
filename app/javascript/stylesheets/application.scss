@@ -69,6 +69,49 @@
   font-size: 30px;
 }
 
+.post-group{
+  width: 920px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.card{
+  width: 30%;
+  margin: 15px;
+  padding: 20px 20px;
+  background-color: #fafafa;
+
+}
+
+.card-item{
+  margin-bottom: 10px;
+}
+
+.card-item:last-child{
+  margin-bottom: 0;
+}
+
+.card-top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-btn{
+  display: flex;
+  justify-content: center;
+}
+
+.comment{
+  margin-left: 10px;
+}
+
+.time{
+  font-size: 10px;
+}
+
 
 //レスポンシブ(768px以下)
 
