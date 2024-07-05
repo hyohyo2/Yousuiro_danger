@@ -1,31 +1,24 @@
 <!--管理者ユーザー一覧テーブル共通ページ-->
-<table class="table border-bottom table-hover table-inverse">
-  <thead>
-    <tr>
-      <th class="text-center">ユーザーID</th>
-      <th class="text-center">ユーザー名</th>
-      <th class="text-center">アドレス</th>
-      <th class="text-center">ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td class="text-center"><%= user.id %></td>
-        <td class="text-center">
-          <%= link_to admin_user_path(user.id) do %>
-            <%= user.name %>
-          <% end %>
-        </td>
-        <td class="text-center"><%= user.email %></td>
-        <td class="text-center">
-          <% if user.is_active == true %>
-            <span class="text-primary font-weight-bold">有効</span>
-          <% else %>
-            <span class="text-secondary font-weight-bold">退会</span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="post-group">
+  <% users.each do |user| %>
+    <div class="card shadow-lg">
+      <div class="card-item">
+        No,<%= user.id %>
+      </div>
+      <div class="card-item">
+        <%= link_to admin_user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+          <%= user.name %>
+        <% end %>
+      </div>
+      <div class="card-item"><%= user.email %></div>
+      <div class="card-item">
+        <% if user.is_active == true %>
+          <span class="text-primary font-weight-bold">有効</span>
+        <% else %>
+          <span class="text-secondary font-weight-bold">退会</span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

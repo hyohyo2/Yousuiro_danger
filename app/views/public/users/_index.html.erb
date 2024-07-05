@@ -1,27 +1,25 @@
 <!--ユーザー一覧共通ページ-->
-<table class="table border-bottom table-hover table-inverse">
-  <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(75,75), class: "rounded-circle" %><br>
-            <%= user.name %>
-          <% end %>
-        </td>
-        <td class="align-middle">
-          <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>
-          <!--ユーザのメッセージ-->
-          <%= render 'public/users/message', user: user %>
-        </td>
-        <td class="align-middle">
-          <% if current_user != user %>
-            <div id="follow-ajax_<%= user.id %>">
-              <%= render "public/relationships/btn", user: user, class: "col-4" %>
-            </div>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="post-group">
+  <% users.each do |user| %>
+    <div class="card shadow-lg">
+      <div class="card-item">
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+          <%= user.name %>
+        <% end %>
+      </div>
+      <div class="card-item">
+        <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>
+        <!--ユーザのメッセージ-->
+        <%= render 'public/users/message', user: user %>
+      </div>
+      <div class="card-item">
+        <% if current_user != user %>
+          <div id="follow-ajax_<%= user.id %>">
+            <%= render "public/relationships/btn", user: user, class: "col-4" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

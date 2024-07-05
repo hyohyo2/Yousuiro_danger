@@ -16,7 +16,7 @@
   <!--投稿一覧-->
   <%= render "admin/posts/userpostindex", posts: @posts %>
   <!--ページネーション-->
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center mt-3">
     <%= paginate @posts, theme: 'bootstrap-5'%>
   </div>
 </div>

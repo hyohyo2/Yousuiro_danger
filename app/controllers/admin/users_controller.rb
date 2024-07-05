@@ -2,13 +2,13 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   # ユーザー一覧
   def index
-    @users = User.page(params[:page]).per(10)
+    @users = User.page(params[:page]).per(21)
   end
 
   # ユーザー詳細
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order('id DESC').limit(4)
+    @posts = @user.posts.order('id DESC').limit(3)
   end
 
   # ユーザー情報編集
@@ -57,18 +57,18 @@ class Admin::UsersController < ApplicationController
   # ユーザーの投稿一覧
   def userpost
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
+    @posts = @user.posts.page(params[:page]).per(12).order('id DESC')
     # 退会になると非表示
     unless @user.is_active
       redirect_to admin_user_path(@user.id), alert: "指定のユーザーは存在しないか退会済みです。"
     end
   end
-  
+
   # お気に入り投稿一覧
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorites).page(params[:page]).per(20).order('id DESC')
+    @favorite_posts = Post.where(id: favorites).page(params[:page]).per(12).order('id DESC')
     # 退会になると非表示
     unless @user.is_active
       redirect_to admin_user_path(@user.id), alert: "指定のユーザーは存在しないか退会済みです。"

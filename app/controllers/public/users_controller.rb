@@ -67,7 +67,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorites).page(params[:page]).per(10).order('id DESC')
+    @favorite_posts = Post.where(id: favorites).page(params[:page]).per(12).order('id DESC')
     # 退会になると非表示
     unless @user.is_active
       redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
@@ -77,7 +77,7 @@ class Public::UsersController < ApplicationController
   # ユーザーの全投稿一覧
   def userpost
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(10).order('id DESC')
+    @posts = @user.posts.page(params[:page]).per(12).order('id DESC')
     # 退会になると非表示
     unless @user.is_active
       redirect_to user_path(current_user), alert: "指定のユーザーは存在しないか退会済みです。"
