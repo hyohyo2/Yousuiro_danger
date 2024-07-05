@@ -14,7 +14,7 @@ class Admin::SearchesController < ApplicationController
 
     if @model == "user"
       # 投稿住所検索は新着順に表示
-      @records = User.admin_search_for(@content).page(params[:page]).per(21)
+      @records = User.admin_search_for(@content).page(params[:page]).per(15)
     else
       @records = Post.search_for(@content, @model).page(params[:page]).per(12).order('id DESC')
     end

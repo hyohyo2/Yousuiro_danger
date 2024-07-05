@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   # ユーザー一覧
   def index
-    @users = User.page(params[:page]).per(21)
+    @users = User.page(params[:page]).per(15)
   end
 
   # ユーザー詳細

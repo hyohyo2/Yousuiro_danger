@@ -82,9 +82,16 @@
   width: 30%;
   margin: 15px;
   padding: 20px 20px;
-  background-color: #fafafa;
-
+  background-color: #f8f8ff;
 }
+
+.user-card{
+  width: 30%;
+  margin: 15px;
+  padding: 20px 20px;
+  background-color: #f8f8ff;
+}
+
 
 .card-item{
   margin-bottom: 10px;
@@ -130,6 +137,20 @@
 
   .post-new{
     text-align: center;
+  }
+
+  .post-group{
+    width: 300px;
+  }
+
+  .card{
+    width: 300px;
+    height: 400px;
+  }
+
+  .user-card{
+    width: 300px;
+    height: 300px;
   }
 
 }
