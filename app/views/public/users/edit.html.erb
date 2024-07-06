@@ -8,39 +8,39 @@
     <div class="col-lg-7 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
       <h3 class="text-dark bg-light rounded py-4 mb-0">ユーザー編集</h3>
       <div class="form-body p-4">
-      <!--バリデーションエラーメッセージ-->
-      <div class="text-center">
-        <%= render 'layouts/errors', obj: @user %>
-      </div>
-      <!--ユーザー編集フォーム-->
-      <%= form_with model: @user do |f| %>
-        <div class="input-group mb-3">
-          <span class="col-md-5"><%= f.label :profile_image, "プロフィール画像" %></span>
-          <div class="col-md-7 p-0">
-            <%= f.file_field :profile_image, accept: "image/*" %>
+        <!--バリデーションエラーメッセージ-->
+        <div class="text-center">
+          <%= render 'layouts/errors', obj: @user %>
+        </div>
+        <!--ユーザー編集フォーム-->
+        <%= form_with model: @user do |f| %>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :profile_image, "プロフィール画像" %></span>
+            <div class="col-md-7 p-0">
+              <%= f.file_field :profile_image, accept: "image/*" %>
+            </div>
           </div>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :name, "ユーザー名" %></span>
+            <%= f.text_field :name,autofocus: true, class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :email, "メールアドレス" %></span>
+            <%= f.email_field :email,  autocomplete: "email", class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :introduction, "メッセージ" %></span>
+            <%= f.text_area :introduction, rows: 3, placeholder: "３０文字以内", class: "form-control" %>
+          </div>
+          <!--更新ボタン-->
+        <div>
+          <%= f.submit "編集内容を保存", class: "btn btn-success col-5 my-2" %>
         </div>
-        <div class="input-group mb-3">
-          <span class="col-md-5"><%= f.label :name, "ユーザー名" %></span>
-          <%= f.text_field :name,autofocus: true, class: "form-control" %>
+        <!--退会ボタン-->
+        <div>
+          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-5" %>
         </div>
-        <div class="input-group mb-3">
-          <span class="col-md-5"><%= f.label :email, "メールアドレス" %></span>
-          <%= f.email_field :email,  autocomplete: "email", class: "form-control" %>
-        </div>
-        <div class="input-group mb-3">
-          <span class="col-md-5"><%= f.label :introduction, "メッセージ" %></span>
-          <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "form-control" %>
-        </div>
-        <!--更新ボタン-->
-      <div>
-        <%= f.submit "編集内容を保存", class: "btn btn-success col-5 my-2" %>
-      </div>
-      <!--退会ボタン-->
-      <div>
-        <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-5" %>
-      </div>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>

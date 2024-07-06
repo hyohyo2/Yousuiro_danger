@@ -16,10 +16,10 @@ class Public::SearchesController < ApplicationController
     # ユーザー検索
     if @model == "user"
       # 投稿住所検索は新着順に表示
-      @records = User.search_for(@content).page(params[:page]).per(10)
+      @records = User.search_for(@content).page(params[:page]).per(15)
     # 投稿住所or投稿郵便番号検索
     else
-      @records = Post.search_for(@content, @model).page(params[:page]).per(10).order('id DESC')
+      @records = Post.search_for(@content, @model).page(params[:page]).per(12).order('id DESC')
     end
   end
 end

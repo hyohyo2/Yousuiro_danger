@@ -4,41 +4,45 @@
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
-  <h3 class="text-center my-4">
-    <span><strong>ユーザー編集</strong></span>
-  </h3>
-  <!--バリデーションエラーメッセージ-->
-  <div><%= render 'layouts/errors', obj: @user %></div>
-  <!--入力フォーム-->
-  <%= form_with model: [:admin, @user] do |f| %>
-    <div class="row form-group justify-content-center">
-      <%= f.label :profile_image, "プロフィール画像", class: "col-lg-3 col-sm-5 my-2" %>
-      <%= f.file_field :profile_image, accept: "image/*", class: "col-lg-4 col-sm-5 px-0 my-2" %>
-    </div>
-    <div class="row form-group justify-content-center">
-      <%= f.label :name, "ユーザー名", class: "col-lg-3 col-sm-5" %>
-      <%= f.text_field :name,autofocus: true, class: "col-lg-4 col-sm-5" %>
-    </div>
-    <div class="row form-group justify-content-center">
-      <%= f.label :email, "メールアドレス", class: "col-lg-3 col-sm-5 my-2" %>
-      <%= f.email_field :email,  autocomplete: "email", class: "col-lg-4 col-sm-5 my-2" %>
-    </div>
-    <div class="row form-group justify-content-center">
-      <%= f.label :introduction, "メッセージ", class: "col-lg-3 col-sm-5 my-2" %>
-      <%= f.text_area :introduction, rows: 3,placeholder: "３０文字以内", class: "col-lg-4 col-sm-5 my-2" %>
-    </div>
-    <!--booleanのラジオボタン-->
-    <div class="row form-group justify-content-center">
-      <%= f.label :status, "ステータス", class: "col-lg-3 col-sm-5 my-2" %>
-      <div class="col-lg-4 col-sm-5 my-2 p-0">
-        <%= f.radio_button :is_active, true, class: "col-1" %>
-        <%= f.label "有効", class: "text-primary font-weight-bold" %>
-        <%= f.radio_button :is_active, false, class: "col-1" %>
-        <%= f.label "退会", class: "text-secondary font-weight-bold" %>
+  <div class="row no-gutters">
+    <div class="col-lg-7 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
+      <h3 class="text-dark bg-light rounded py-4 mb-0">ユーザー編集</h3>
+      <div class="form-body p-4">
+        <!--バリデーションエラーメッセージ-->
+        <div><%= render 'layouts/errors', obj: @user %></div>
+        <!--入力フォーム-->
+        <%= form_with model: [:admin, @user] do |f| %>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :profile_image, "プロフィール画像" %></span>
+            <div class="col-md-7 p-0">
+              <%= f.file_field :profile_image, accept: "image/*" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :name, "ユーザー名" %></span>
+            <%= f.text_field :name,autofocus: true, class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :email, "メールアドレス" %></span>
+            <%= f.email_field :email,  autocomplete: "email", class: "form-control" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :introduction, "メッセージ" %></span>
+            <%= f.text_area :introduction, rows: 3, placeholder: "３０文字以内", class: "form-control" %>
+          </div>
+          <!--booleanのラジオボタン-->
+          <div class="input-group mb-3">
+            <span class="col-md-5"><%= f.label :status, "ステータス" %></span>
+            <div class="status-button col-md-7 p-0">
+              <%= f.radio_button :is_active, true %>
+              <%= f.label "有効", class: "text-primary font-weight-bold mr-3" %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label "退会", class: "text-secondary font-weight-bold" %>
+            </div>
+          </div>
+          <%= f.submit "編集内容を保存", class: "btn btn-success col-4" %>
+        <% end %>
       </div>
     </div>
-    <div class="row form-group justify-content-center">
-      <%= f.submit "編集内容を保存", class: "btn btn-success col-3 my-2", "data-confirm" => "本当にこの内容に変更しますか？" %>
-    </div>
-  <% end %>
+  </div>
 </div>

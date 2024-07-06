@@ -1,28 +1,13 @@
 <!--管理者投稿一覧共通ページ-->
-<table class="table border-bottom table-hover table-inverse ">
-  <thead>
-    <tr>
-      <th class="text-center">投稿日時</th>
-      <th class="text-center">投稿者名</th>
-      <th class="text-center">ステータス</th>
-      <th class="text-center">郵便番号</th>
-      <th class="text-center">住所</th>
-      <th class="text-center"><i class="fa-solid fa-star" style="color: orange;"></i></th>
-      <th class="text-center"><i class="fa-solid fa-comment" style="color: #7a7a7a;"></i></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% posts.each do |post| %>
-      <tr>
-        <td class="text-center">
-          <%= l post.created_at, format: :short %>
-        </td>
-        <td class="text-center">
-          <%= link_to admin_user_path(post.user_id) do %>
-            <%= post.user.name %>
-          <% end %>
-        </td>
-        <td class="text-center">
+<div class="post-group">
+  <% posts.each do |post| %>
+    <div class="card shadow-lg d-flex">
+      <div class="card-item card-top">
+        <%= link_to admin_user_path(post.user_id) do %>
+          <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle" %>
+          <%= post.user.name %>
+        <% end %>
+        <div class="card-item status-button">
           <% if post.danger? %>
             <span class="text-danger font-weight-bold">
               <%= post.status_i18n %>
@@ -32,24 +17,36 @@
               <%= post.status_i18n %>
             </span>
           <% end %>
-        </td>
-        <td class="text-center">
-          〒<%= post.post_code.to_s.insert(3, "-") %>
-        </td>
-        <td class="text-center">
-          <%= link_to admin_post_path(post.id) do %>
-            <%= post.prefecture_address %>
-            <%= post.city_address %>
-            <%= post.block_address %>
-          <% end %>
-        </td>
-        <td class="text-center">
-          <%= post.favorites.count %>件
-        </td>
-        <td class="text-center">
-          <%= post.post_comments.count %>件
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+      <div class="card-item">
+        <%= image_tag post.get_image(200,150) %>
+      </div>
+      <div class="card-item">
+        〒<%= post.post_code.to_s.insert(3, "-") %>
+      </div>
+      <div class="card-item">
+        <%= link_to admin_post_path(post.id) do %>
+          <%= post.prefecture_address %>
+          <%= post.city_address %><br>
+          <%= post.block_address %>
+        <% end %>
+      </div>
+      <div class="card-item">
+        <div class="content-btn">
+          <div class="favorite">
+            <!--お気に入り数の表示-->
+            <i class="fa-solid fa-star" style="color: orange;"></i><%= post.favorites.count %>件
+          </div>
+          <!--コメント数の表示-->
+          <div class="comment">
+            <i class="fa-solid fa-comment" style="color: #7a7a7a;"></i><%= post.post_comments.count %>件
+          </div>
+        </div>
+      </div>
+      <div class="card-item time">
+        <%= l post.created_at, format: :short %>
+      </div>
+    </div>
+  <% end %>
+</div>
