@@ -139,6 +139,26 @@
   align-items: center;
 }
 
+.notification-list{
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid #bababa;
+}
+
+
+.notification-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+
+
 
 //レスポンシブ(768px以下)
 
