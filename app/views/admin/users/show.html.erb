@@ -62,20 +62,27 @@
       </table>
     </div>
   </div>
-  <!--ユーザの投稿一覧-->
-  <div class="my-4">
-    <h4 class="text-center">ポスト</h4>
-    <%= render "admin/posts/userpostindex", posts: @posts %>
-  </div>
-  <div class="text-right">
-    <!--4件より多く投稿がないとボタンが表示されない-->
-    <% if @user.posts.count > 4 %>
-      <%= link_to "もっと投稿を見る", admin_userpost_path(@user.id), class: "btn btn-outline-info" %>
-    <% end %>
-  </div>
-  <!--週の投稿数の表示-->
-  <div class="my-4">
-    <h4 class="text-center">１週間の投稿数</h4>
-    <%= render "public/users/weekpost", posts: @posts %>
-  </div>
+  <!--ゲストユーザーに表示-->
+  <% unless @user.guest_user %>
+    <!--ユーザの投稿一覧-->
+    <div class="my-4">
+      <h4 class="text-center">ポスト</h4>
+      <% if @posts.present? %>
+        <%= render "admin/homes/postindex", posts: @posts %>
+      <% else %>
+        <h3 class="py-5 text-center">投稿がありません。</h3>
+      <% end %>
+    </div>
+    <div class="text-right">
+      <!--4件より多く投稿がないとボタンが表示されない-->
+      <% if @user.posts.count > 3 %>
+        <%= link_to "もっと投稿を見る", admin_userpost_path(@user.id), class: "btn btn-outline-info" %>
+      <% end %>
+    </div>
+    <!--週の投稿数の表示-->
+    <div class="my-4">
+      <h4 class="text-center">１週間の投稿数</h4>
+      <%= render "public/users/weekpost", posts: @posts %>
+    </div>
+  <% end %>
 </div>

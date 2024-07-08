@@ -6,7 +6,8 @@
   <% end %>
   <div class="row align-items-center my-4">
     <!--ユーザ情報-->
-    <div class="col-lg-5 col-sm-12 text-center ">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-4 col-sm-12 text-center ">
       <div class="mb-3">
         <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
       </div>
@@ -31,7 +32,7 @@
       </div>
     </div>
     <!--詳細右側の表示-->
-    <div class="col-lg-7 col-sm-12 text-center">
+    <div class="col-lg-6 col-sm-12 text-center">
       <%= render 'public/users/show', user: @user %>
     </div>
   </div>

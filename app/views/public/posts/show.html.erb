@@ -5,10 +5,10 @@
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
   <!--お気に入りボタン-->
-  <div class="row my-3">
-    <div class="col-lg-9 col-sm-5"></div>
+  <div class="row mt-3">
+    <div class="col-9"></div>
     <div class="col-2">
-      <h3 class="text-center">
+      <h3 class="favorite-btn text-center">
         <div id="favorite_btn_<%= @post.id %>">
           <%= render "public/favorites/btn", post: @post %>
         </div>
@@ -17,11 +17,11 @@
   </div>
   <!--投稿内容-->
   <div class="row mb-5">
-    <div class="col-lg-5 col-sm-12 py-5 text-center">
+    <div class="col-lg-5 col-sm-12 py-3 text-center">
       <%= image_tag @post.get_image(360,270) %>
     </div>
     <!--投稿詳細(右側)-->
-    <div class="col-lg-6 col-sm-12 text-center">
+    <div class="col-lg-6 col-sm-12 text-center mt-3">
       <table class="table border-bottom">
         <tr>
           <th class="text-center col-3">投稿日時</th>
@@ -84,7 +84,7 @@
     </div>
   </div>
   <!--コメント一覧-->
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-lg-11 col-sm-12">
       <div id="comment_index">
         <%= render "public/post_comments/index", post: @post %>
@@ -93,7 +93,7 @@
   </div>
   <!--コメントフォーム-->
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-lg-8 col-sm-12">
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>

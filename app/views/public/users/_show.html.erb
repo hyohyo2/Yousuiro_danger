@@ -12,7 +12,7 @@
     <% end %>
     <!--メッセージ表示-->
     <tr>
-      <th colspan="2"><i class="fa-solid fa-message"></i></th>
+      <th colspan="2"><i class="fa-solid fa-message"></i>メッセージ</th>
       <!--ユーザのメッセージ-->
       <td> <%= render 'public/users/message', user: user%></td>
     </tr>
@@ -36,7 +36,7 @@
     </tr>
     <!--お気に入り投稿数表示-->
     <tr>
-      <th colspan="2"><i class="fa-solid fa-star"></i></th>
+      <th colspan="2"><i class="fa-solid fa-star"></i>お気に入り</th>
       <td>
         <%= render 'public/favorites/count', user: user %>
       </td>

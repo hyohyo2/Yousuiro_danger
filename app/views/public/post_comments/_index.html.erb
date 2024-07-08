@@ -6,30 +6,32 @@
   <tbody>
     <% post.post_comments.each do |post_comment| %>
       <tr>
-        <td class="text-center align-middle">
-          <%= l post_comment.created_at, format: :short %>
-        </td>
-        <td class="text-center">
+        <td class="text-center" style="font-size:15px;">
           <% if user_signed_in? %>
             <%= link_to user_path(post_comment.user) do %>
-              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+              <%= image_tag post_comment.user.get_profile_image(35,35), class: "rounded-circle" %><br>
               <%= post_comment.user.name %>
             <% end %>
           <% elsif admin_signed_in? %>
             <%= link_to admin_user_path(post_comment.user) do %>
-              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+              <%= image_tag post_comment.user.get_profile_image(35,35), class: "rounded-circle" %><br>
               <%= post_comment.user.name %>
             <% end %>
           <% end %>
         </td>
-        <td class="text-center align-middle">
+        <td class="text-center align-middle" style="font-size:15px;">
           <%= post_comment.comment %>
         </td>
         <!--削除ボタン-->
         <td class="text-center align-middle" colspan="3">
           <% if post_comment.user == current_user || admin_signed_in? %>
-            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" do %>
+              <i class="fa-solid fa-trash-can fa-sm" style="font-size: 20px; color: #bababa;"></i>
+            <% end %>
           <% end %>
+          <div class="text-center align-middle" style="font-size: 10px;" >
+            <%= l post_comment.created_at, format: :short %>
+          </div>
         </td>
       </tr>
     <% end %>

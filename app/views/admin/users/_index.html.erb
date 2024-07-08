@@ -1,13 +1,13 @@
 <!--管理者ユーザー一覧テーブル共通ページ-->
 <div class="post-group">
   <% users.each do |user| %>
-    <div class="user-card shadow-lg">
+    <div class="user-card shadow-lg align-items-center">
       <div class="card-item">
         No,<%= user.id %>
       </div>
       <div class="card-item">
         <%= link_to admin_user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle mb-2" %><br>
           <%= user.name %>
         <% end %>
       </div>
