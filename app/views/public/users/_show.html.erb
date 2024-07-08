@@ -5,20 +5,20 @@
     <% if @user.email != ENV["GUEST_USER_EMAIL"] %>
       <% if user == current_user %>
         <tr>
-          <th>メールアドレス</th>
+          <th colspan="2">メールアドレス</th>
           <td><%= user.email %></td>
         </tr>
       <% end %>
     <% end %>
     <!--メッセージ表示-->
     <tr>
-      <th><i class="fa-solid fa-message"></i>メッセージ</th>
+      <th colspan="2"><i class="fa-solid fa-message"></i></th>
       <!--ユーザのメッセージ-->
       <td> <%= render 'public/users/message', user: user%></td>
     </tr>
     <!--フォロー数表示-->
     <tr>
-      <th>フォロー中</th>
+      <th colspan="2">フォロー中</th>
       <td>
         <div id="following_count">
           <%= render 'public/relationships/followingcount', user: user %>
@@ -27,7 +27,7 @@
     </tr>
     <!--フォロワー数表示(ゲストユーザー)-->
     <tr>
-      <th>フォロワー</th>
+      <th colspan="2">フォロワー</th>
       <td>
         <div id="follower_count">
           <%= render 'public/relationships/followercount', user: user %>
@@ -36,7 +36,7 @@
     </tr>
     <!--お気に入り投稿数表示-->
     <tr>
-      <th><i class="fa-solid fa-star"></i>お気に入り</th>
+      <th colspan="2"><i class="fa-solid fa-star"></i></th>
       <td>
         <%= render 'public/favorites/count', user: user %>
       </td>
@@ -44,7 +44,7 @@
     <tr>
       <!--DM表示される条件：相互フォロー、ゲストユーザーでない→チャットページへ-->
       <% if current_user.following?(user) && user.following?(current_user) && !user.guest_user %>
-        <th class="align-middle">DM</th>
+        <th class="align-middle" colspan="2">DM</th>
         <td>
           <%= link_to chat_path(user.id), class: "btn btn-outline-info" do %>
             <i class="fa-regular fa-envelope"></i>
@@ -53,7 +53,7 @@
       <% end %>
       <!--ログインユーザーのページのみ表示(ゲストユーザーは非表示)→DM一覧-->
       <% if user == current_user && !user.guest_user %>
-        <th class="align-middle">DM</th>
+        <th class="align-middle" colspan="2">DM</th>
         <td>
           <%= link_to rooms_path, class: "btn btn-outline-danger" do %>
             <i class="fa-regular fa-envelope"></i>

@@ -80,9 +80,9 @@
 .post-group{
   width: 920px;
   display: flex;
-  justify-content: space-between;
-  text-align: center;
   flex-wrap: wrap;
+  text-align: center;
+
   margin: 0 auto;
 }
 
@@ -102,7 +102,7 @@
 
 
 .card-item{
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .card-item:last-child{
@@ -132,6 +132,13 @@
   justify-content: center;
 }
 
+.comment-item{
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 //レスポンシブ(768px以下)
 
@@ -157,13 +164,11 @@
   }
 
   .card{
-    width: 300px;
-    height: 400px;
+    width: 500px;
   }
 
   .user-card{
     width: 300px;
-    height: 300px;
   }
 
   .search{
