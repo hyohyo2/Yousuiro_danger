@@ -31,6 +31,7 @@
 - [ER図](https://drive.google.com/file/d/1uwR_ugBGI4L7qKkLmOFCLGgBOxim0wRQ/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1fRSA3XEbFIdUtnC2txnp3PhowAbjoiFuHv5vUK5BVYQ/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1BsOuHHqLaxmVjB671dxxIgf9kfoycptCehEwiUI5J3c/edit?usp=sharing)
+- [AWS構成図](https://drive.google.com/file/d/1VyP7lQa_55qQOVu0hoQC-gGGrpb1AqQM/view?usp=sharing)
 ​
 ## 開発環境
 - OS：Linux(CentOS)

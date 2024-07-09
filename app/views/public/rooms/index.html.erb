@@ -15,31 +15,31 @@
   </div>
   <div class="text-center">
     <% if @rooms.present? %>
-      <table class="table border-bottom text-center">
+      <div class="post-group">
         <% @rooms.each do |room| %>
           <% user_rooms = room.user_rooms.where.not(user_id: current_user.id) %>
           <% user_rooms.each do |user_room| %>
-            <tr>
-              <td>
+            <div class="user-card shadow-lg align-items-center">
+              <div class="card-item">
                 <%= link_to user_path(user_room.user_id) do %>
-                  <%= image_tag user_room.user.get_profile_image(50,50), class: "rounded-circle" %>
+                  <%= image_tag user_room.user.get_profile_image(100,100), class: "rounded-circle mb-2" %><br>
                   <%= user_room.user.name %>
                 <% end %>
-              </td>
-              <td class="align-middle">
+              </div>
+              <div class="card-item">
                 <%= link_to chat_path(user_room.user_id) do %>
                   <i class="fa-solid fa-envelope"></i>メッセージを送る
                 <% end %>
-              </td>
-              <td>
+              </div>
+              <div class="card-item">
                 <div id="follow-ajax_<%= user_room.user.id %>">
                   <%= render "public/relationships/btn", user: user_room.user, class: "col-4" %>
                 </div>
-              </td>
-            </tr>
+              </div>
+            </div>
           <% end %>
         <% end %>
-      </table>
+      </div>
     <!--DMルームがなければ表示される-->
     <% else %>
       <h3 class="py-5 text-center">ここにDMユーザーが表示されます。</h3>

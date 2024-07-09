@@ -2,6 +2,6 @@
 <%= form_with model: [post, post_comment], local: false do |f| %>
   <div class="d-flex align-items-center">
     <%= f.text_area :comment, placeholder: "60文字以内で入力してください。", class: "form-control", id: "comment_textarea" %>
-    <%= f.submit "送信", class: "btn btn-success ml-5" %>
+    <%= f.submit "送信", class: "session-btn btn text-light ml-5" %>
   </div>
 <% end %>

@@ -6,7 +6,7 @@
   <% end %>
   <div class="text-center my-3">
     <h3><strong>投稿一覧</strong></h3>
-    <p><%= @posts.count %>件</p>
+    <p><%= @posts.total_count %>件</p>
   </div>
   <!--投稿一覧-->
   <%= render "admin/homes/postindex", posts: @posts %>

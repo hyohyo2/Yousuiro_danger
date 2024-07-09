@@ -14,7 +14,7 @@
     <p><%= @posts.count %>件の投稿</p>
   </div>
   <!--投稿一覧-->
-  <%= render "admin/posts/userpostindex", posts: @posts %>
+  <%= render "admin/homes/postindex", posts: @posts %>
   <!--ページネーション-->
   <div class="d-flex justify-content-center mt-3">
     <%= paginate @posts, theme: 'bootstrap-5'%>

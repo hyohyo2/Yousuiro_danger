@@ -1,15 +1,15 @@
 <!--ユーザー一覧共通ページ-->
 <div class="post-group">
   <% users.each do |user| %>
-    <div class="user-card shadow-lg">
+    <div class="user-card shadow-lg align-items-center">
       <div class="card-item">
         <%= link_to user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %><br>
+          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle mb-2" %><br>
           <%= user.name %>
         <% end %>
       </div>
-      <div class="card-item">
-        <i class="fa-solid fa-message" style="color: #7a7a7a;"></i>
+      <div class="card-item comment-item">
+        <i class="fa-solid fa-message mr-2" style="color: #7a7a7a;"></i>
         <!--ユーザのメッセージ-->
         <%= render 'public/users/message', user: user %>
       </div>

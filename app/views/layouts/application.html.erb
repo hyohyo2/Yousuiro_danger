@@ -15,11 +15,15 @@
     </header>
     <main>
       <%= yield %>
+      <span id="back">
+        <a href=""><i class="fa-solid fa-circle-chevron-up" style="color: #FFD43B;"></i></a>
+      </span>
     </main>
     <footer>
       <%= render "layouts/footer" %>
     </footer>
     <!--jquery-jpostal-js-->
     <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.45/jquery.jpostal.min.js"></script>
+
   </body>
 </html>

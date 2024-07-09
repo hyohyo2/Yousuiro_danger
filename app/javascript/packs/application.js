@@ -16,3 +16,13 @@ import "../stylesheets/application";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+$(document).on('turbolinks:load', function()  {
+  $('#back a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 500);
+    event.preventDefault();
+  });
+});

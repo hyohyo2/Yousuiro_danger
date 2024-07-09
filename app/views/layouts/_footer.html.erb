@@ -1,7 +1,7 @@
 <!--フッター-->
 <div class= "footer" style="background-color: #a59ea4;">
   <div class="container">
-    <div class="row pt-4">
+    <div class="search pt-4">
       <!--ユーザーログイン時表示-->
       <% if user_signed_in? %>
         <div class="col-lg-5 col-sm-12 d-flex align-items-center justify-content-center pb-2">
@@ -13,12 +13,17 @@
           </ul>
         </div>
         <!--検索フォーム-->
-        <div class="col-lg-6 col-sm-12 d-flex align-items-center justify-content-center pb-2">
+        <div class="pb-2">
           <%= form_with url: search_path, method: :get, local: true do |f| %>
-            <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-            <%= f.text_field :content, :size => "25",  placeholder: "ユーザー名・住所・〒を検索" %>
-            <%= f.select :model, options_for_select({"ユーザー名" => "user", "投稿住所" => "post", "郵便番号(半角ハイフンなし)" => "post_code" }),{prompt: "-選択してください-"},{required: true}%>
-            <%= f.submit "検索", class: "btn btn-secondary" %>
+            <span class="search-form">
+              <%= f.text_field :content, :size => "25",  placeholder: "ユーザー名・住所・〒を検索" %>
+            </span>
+            <span class="search-form">
+              <%= f.select :model, options_for_select({"ユーザー名" => "user", "投稿住所" => "post", "郵便番号(半角ハイフンなし)" => "post_code" }),{prompt: "-選択してください-"},{required: true}%>
+            </span>
+            <span class="search-form">
+              <%= f.submit "検索", class: "session-btn btn text-light" %>
+            </span>
           <% end %>
         </div>
       <!--管理者ログイン時表示-->
@@ -33,12 +38,17 @@
             </li>
           </ul>
         </div>
-        <div class="col-lg-6 col-sm-12 d-flex align-items-center justify-content-center pb-2">
+        <div class="pb-2">
           <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-            <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-            <%= f.text_field :content, :size => "25", placeholder: "ユーザー名・住所・〒を検索" %>
-            <%= f.select :model, options_for_select({"ユーザー名" => "user", "投稿住所" => "post", "郵便番号(半角ハイフンなし)" => "post_code" }),{prompt: "-選択してください-"},{required: true}%>
-            <%= f.submit "検索", class: "btn btn-secondary" %>
+            <span class="search-form">
+              <%= f.text_field :content, :size => "25", placeholder: "ユーザー名・住所・〒を検索" %>
+            </span>
+            <span class="search-form">
+              <%= f.select :model, options_for_select({"ユーザー名" => "user", "投稿住所" => "post", "郵便番号(半角ハイフンなし)" => "post_code" }),{prompt: "-選択してください-"},{required: true}%>
+            </span>
+            <span class="search-form">
+              <%= f.submit "検索", class: "session-btn btn text-light" %>
+            </span>
           <% end %>
         </div>
       <% end %>

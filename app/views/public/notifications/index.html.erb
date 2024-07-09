@@ -10,36 +10,35 @@
   <div class="mx-5">
     <!--通知があると通知一覧を表示-->
     <% if @notifications.present? %>
-      <table class="table border-bottom table-hover table-inverse">
-        <% @notifications.each do |notification| %>
-          <tr>
+      <div class="text-center my-3">
+        <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
+      </div>
+      <% @notifications.each do |notification| %>
+        <div class="notification-list">
+          <div class="notification-group">
             <!--既読・未読の表示-->
-            <td class="text-center">
+            <div class="notification-item">
               <% if notification.read == true %>
-                <span class="text-secondary font-weight-bold">既読</span>
+                <h4><i class="fa-solid fa-square-check" style="color: #50ab4f;"></i></h4>
               <% else %>
-                <span class="text-danger font-weight-bold">未読</span>
+                <h4><i class="fa-solid fa-circle-exclamation" style="color: #db0000;"></i></h4>
               <% end %>
-            </td>
-            <td class="text-center">
-              <%= link_to notification_message(notification), notification_path(notification), method: :patch %>
-            </td>
+            </div>
             <!--通知時間の表示-->
-            <td class="text-center">
+            <div class="notification-item ml-3">
               <%= time_ago_in_words(notification.created_at) %>前
-            </td>
-          </tr>
-        <% end %>
-      </table>
+            </div>
+          </div>
+          <div class="notification-item">
+            <%= link_to notification_message(notification), notification_path(notification), method: :patch %>
+          </div>
+        </div>
+      <% end %>
       <!--ページネーション-->
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center mt-3">
         <%= paginate @notifications, theme: 'bootstrap-5'  %>
       </div>
       <!--通知があれば全削除ボタンを表示-->
-      <div class="row my-4">
-        <div class="col-10"></div>
-        <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
-      </div>
     <!--通知が0だと表示-->
     <% else %>
       <h3 class="py-5 text-center">ここに通知が表示されます。</h3>
