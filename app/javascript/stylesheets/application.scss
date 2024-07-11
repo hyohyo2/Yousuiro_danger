@@ -56,18 +56,22 @@
   width: 80%;
 }
 
+//ナビプルダウンの表示 
 .nav-item{
   text-align: center;
 }
 
+// ログイン・新規登録の背景色
 .session-title{
   background-color: #c0c0c0;
 }
 
+// Topのボタン、検索ボタン、ログイン・新規登録ボタンの色
 .session-btn{
   background-color: #202f55;
 }
 
+// 改行
 .hidden-pc{
   display: none;
 }
@@ -77,15 +81,16 @@
   font-size: 30px;
 }
 
+// 投稿・ユーザー一覧のグループ
 .post-group{
   width: 920px;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-
   margin: 0 auto;
 }
 
+// 投稿カード
 .card{
   width: 30%;
   margin: 15px;
@@ -93,13 +98,13 @@
   background-color: #f8f8ff;
 }
 
+// ユーザーカード
 .user-card{
   width: 30%;
   margin: 15px;
   padding: 20px 20px;
   background-color: #f8f8ff;
 }
-
 
 .card-item{
   margin-bottom: 20px;
@@ -109,19 +114,23 @@
   margin-bottom: 0;
 }
 
+// 投稿カードの上側
 .card-top{
   display: flex;
   justify-content: space-between;
 }
 
+// 投稿一覧のお気に入り・コメントボタン
 .content-btn{
   display: flex;
   justify-content: center;
 }
 
+// 投稿一覧のコメントボタン
 .comment{
   margin-left: 10px;
 }
+
 
 .time{
   font-size: 10px;
@@ -172,7 +181,7 @@
   .top-title{
     text-align: center;
   }
-
+  // 改行を行う
   .hidden-pc{
     display: block;
   }
