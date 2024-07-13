@@ -9,7 +9,7 @@
       <h3 class="text-dark bg-light rounded py-4 mb-0">ユーザー編集</h3>
       <div class="form-body p-4">
         <!--バリデーションエラーメッセージ-->
-        <div class="text-center">
+        <div>
           <%= render 'layouts/errors', obj: @user %>
         </div>
         <!--ユーザー編集フォーム-->
@@ -33,18 +33,15 @@
             <%= f.text_area :introduction, rows: 3, placeholder: "３０文字以内", class: "form-control" %>
           </div>
           <!--更新ボタン-->
-        <div>
-          <%= f.submit "編集内容を保存", class: "btn btn-success col-5 my-2" %>
-        </div>
-        <!--退会ボタン-->
-        <div>
-          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-5" %>
-        </div>
-      <% end %>
+          <div>
+            <%= f.submit "編集内容を保存", class: "btn btn-success col-5 my-2" %>
+          </div>
+          <!--退会ボタン-->
+          <div>
+            <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger col-5" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
-
-
 </div>

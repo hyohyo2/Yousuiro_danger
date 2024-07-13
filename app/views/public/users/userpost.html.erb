@@ -11,7 +11,7 @@
       <% end %>
       <strong><%= @user.name %></strong>
     </h3>
-    <p><%= @posts.count %>件の投稿</p>
+    <p><%= @posts.total_count %>件の投稿</p>
   </div>
   <!--投稿一覧-->
   <%= render "public/posts/timeline", posts: @posts %>

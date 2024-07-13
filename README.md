@@ -1,4 +1,4 @@
-# [危険！！用水路安全確認マップ](http://3.114.3.231/)
+# [危険！！用水路安全確認マップ](http://52.68.222.79/)
 
 
 ## サイト概要
@@ -32,6 +32,7 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1fRSA3XEbFIdUtnC2txnp3PhowAbjoiFuHv5vUK5BVYQ/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1BsOuHHqLaxmVjB671dxxIgf9kfoycptCehEwiUI5J3c/edit?usp=sharing)
 - [AWS構成図](https://drive.google.com/file/d/1VyP7lQa_55qQOVu0hoQC-gGGrpb1AqQM/view?usp=sharing)
+
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -43,9 +44,14 @@
 ## 実装機能
 ゲストログイン、会員機能、投稿機能、検索機能、ユーザー管理機能、いいね機能、いいね一覧表示機能、
 フォロー機能、コメント機能、他者投稿をタイムラインで共有、地図表示機能(google map API/geocoder)、投稿数算出、通知機能、DM機能
+(非同期通信：フォロー機能、いいね機能、DM機能)
+レスポンシブ対応
 
 ## サイトトップページ
- ![スクリーンショット 2024-06-26 115836](https://github.com/hyohyo2/Yousuiro_danger/assets/163430298/f2815167-57c9-4711-80bd-830f88cb8981)​
+ ![スクリーンショット 2024-07-11 151438](https://github.com/hyohyo2/Yousuiro_danger/assets/163430298/61dd8493-be8d-4dcc-ab5e-5e20af7635b3)
+
+## アプリケーション資料
+- [プレゼンテーション資料](https://docs.google.com/presentation/d/1RF3Pq7VkfttYCt0hl4MabpxMxnd9PEctjr4-BcuG2oY/edit?usp=sharing)
 
 ## 使用素材
 - フリー素材ぱくたそ［ https://www.pakutaso.com ］

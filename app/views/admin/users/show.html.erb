@@ -25,13 +25,13 @@
       <table class="table border-bottom">
         <tbody>
           <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
+            <th class="align-middle">メールアドレス</th>
+            <td class="align-middle"><%= @user.email %></td>
           </tr>
           <tr>
-            <th><i class="fa-solid fa-message"></i>メッセージ</th>
+            <th class="align-middle"><i class="fa-solid fa-message"></i>メッセージ</th>
             <!--ユーザのメッセージ-->
-            <td><%= render 'public/users/message', user: @user%></td>
+            <td class="align-middle"><%= render 'public/users/message', user: @user%></td>
           </tr>
           <!--フォロー・お気に入り一覧-->
           <tr>
@@ -49,7 +49,7 @@
             <td><%= link_to @user.favorites.count, admin_favorite_path %></td>
           </tr>
           <tr>
-            <th class="text-center">ステータス</th>
+            <th>ステータス</th>
             <td>
               <% if @user.is_active == true %>
                 <span class="text-primary font-weight-bold">有効</span>

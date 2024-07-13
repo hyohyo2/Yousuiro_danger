@@ -1,5 +1,5 @@
 class Admin::PostCommentsController < ApplicationController
-  # コメントの削除
+  # 投稿コメントの削除
   def destroy
      comment = PostComment.find(params[:id])
     if comment.destroy

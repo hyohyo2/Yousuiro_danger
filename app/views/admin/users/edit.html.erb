@@ -6,10 +6,17 @@
   <% end %>
   <div class="row no-gutters">
     <div class="col-lg-7 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
-      <h3 class="text-dark bg-light rounded py-4 mb-0">ユーザー編集</h3>
+      <h3 class="text-dark bg-light rounded py-4 mb-0">
+        <%= link_to admin_user_path(@user.id) do %>
+          <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+        <% end %>
+        ユーザー編集
+      </h3>
       <div class="form-body p-4">
         <!--バリデーションエラーメッセージ-->
-        <div><%= render 'layouts/errors', obj: @user %></div>
+        <div>
+          <%= render 'layouts/errors', obj: @user %>
+        </div>
         <!--入力フォーム-->
         <%= form_with model: [:admin, @user] do |f| %>
           <div class="input-group mb-3">
@@ -35,12 +42,14 @@
             <span class="col-md-5"><%= f.label :status, "ステータス" %></span>
             <div class="status-button col-md-7 p-0">
               <%= f.radio_button :is_active, true %>
-              <%= f.label "有効", class: "text-primary font-weight-bold mr-3" %>
+              <%= f.label "有効", class: "text-primary font-weight-bold" %>
               <%= f.radio_button :is_active, false %>
               <%= f.label "退会", class: "text-secondary font-weight-bold" %>
             </div>
           </div>
-          <%= f.submit "編集内容を保存", class: "btn btn-success col-4" %>
+          <div>
+            <%= f.submit "編集内容を保存", class: "btn btn-success col-5", "data-confirm" => "本当に変更しますか？" %>
+          </div>
         <% end %>
       </div>
     </div>

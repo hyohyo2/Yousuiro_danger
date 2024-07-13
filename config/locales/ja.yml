@@ -7,7 +7,7 @@ ja:
   activerecord:
     attributes:
       user:
-        name: "ユーザーネーム"
+        name: "ユーザー名"
         introduction: "メッセージ"
       post:
         image: "画像"
