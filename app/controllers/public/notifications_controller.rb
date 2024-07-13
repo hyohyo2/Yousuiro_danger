@@ -3,7 +3,7 @@ class Public::NotificationsController < ApplicationController
 
   # 通知一覧
   def index
-    @notifications = current_user.notifications.order(created_at: :desc).page(params[:page]).per(20)
+    @notifications = current_user.notifications.order(created_at: :desc).page(params[:page]).per(30)
   end
 
   # 通知の更新

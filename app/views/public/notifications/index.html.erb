@@ -10,6 +10,7 @@
   <div class="mx-5">
     <!--通知があると通知一覧を表示-->
     <% if @notifications.present? %>
+       <!--通知があれば全削除ボタンを表示-->
       <div class="text-center my-3">
         <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "全ての通知を削除してよろしいですか？"%>
       </div>
@@ -38,7 +39,6 @@
       <div class="d-flex justify-content-center mt-3">
         <%= paginate @notifications, theme: 'bootstrap-5'  %>
       </div>
-      <!--通知があれば全削除ボタンを表示-->
     <!--通知が0だと表示-->
     <% else %>
       <h3 class="py-5 text-center">ここに通知が表示されます。</h3>
