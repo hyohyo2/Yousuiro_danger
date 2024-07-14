@@ -22,7 +22,7 @@
     <% else @model =='post_code' %>
     <!--郵便番号の検索結果一覧(完全一致)-->
       <div class="row my-4 justify-content-center text-center">
-        <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　郵便番号<strong>"〒<%= @content.to_s.insert(3, "-") %>"</strong>は<br class="hidden-pc"><%= @records.total_count %>件<br class="hidden-pc">見つかりました。</h4>
+        <h4 class="mb-3"><i class="fa-solid fa-magnifying-glass"></i>　郵便番号<strong>"〒<%= @content.slice(0, 3) %>-<%= @content.slice(3, 4) %>"</strong>は<br class="hidden-pc"><%= @records.total_count %>件<br class="hidden-pc">見つかりました。</h4>
       </div>
       <%= render 'admin/homes/postindex', posts: @records %>
     <% end %>

@@ -24,7 +24,7 @@
       </div>
       <div class="card-item">
         <%= link_to admin_post_path(post.id) do %>
-          〒<%= post.post_code.to_s.insert(3, "-") %><br>
+          〒<%= post.post_code.slice(0, 3) %>-<%= post.post_code.slice(3, 4) %><br>
           <%= post.prefecture_address %>
           <%= post.city_address %><br>
           <%= post.block_address %>

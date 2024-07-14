@@ -6,7 +6,12 @@
   <% end %>
   <div class="row no-gutters">
     <div class="col-lg-7 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
-      <h3 class="text-dark bg-light rounded py-4 mb-0">ユーザー編集</h3>
+      <h3 class="text-dark bg-light rounded py-4 mb-0">
+        <%= link_to  user_path(@user.id) do %>
+          <i class="fa-solid fa-circle-chevron-left"  style="color: #7a7a7a;"></i>
+        <% end %>
+        ユーザー編集
+      </h3>
       <div class="form-body p-4">
         <!--バリデーションエラーメッセージ-->
         <div>

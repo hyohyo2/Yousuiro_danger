@@ -1,6 +1,8 @@
 ja:
   activerecord:
     attributes:
+      admin:
+        email: メールアドレス
       user:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン

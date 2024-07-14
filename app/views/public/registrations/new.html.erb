@@ -1,9 +1,15 @@
 <!--ユーザー新規登録ページ-->
 <div class="container my-3">
-  <!--フラッシュメッセージ-->
+  <!--フラッシュメッセージ(退会ユーザーがログインしようとすると表示)-->
   <% flash.each do |message_type, message| %>
     <div class="flash-message <%= message_type %>"><%= message %></div>
   <% end %>
+
+  <!--新規登録でエラー出現時表示-->
+  <% if @user.errors.any? %>
+    <div class="flash-message alert">新規登録に失敗しました。</div>
+  <% end %>
+
   <div class="row no-gutters">
     <div class="col-lg-6 col-md-9 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded my-5">
       <h3 class="session-title rounded py-4 mb-0">新規登録</h3>
