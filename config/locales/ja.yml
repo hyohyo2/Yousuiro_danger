@@ -1,4 +1,11 @@
 ja:
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."
   enums:
     post:
       status:

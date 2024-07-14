@@ -52,7 +52,7 @@
           </tr>
           <tr>
             <th>郵便番号</th>
-            <td>〒<%= @post.post_code.to_s.insert(3, "-") %></td>
+            <td>〒<%= @post.post_code.slice(0, 3) %>-<%= @post.post_code.slice(3, 4) %></td>
           </tr>
           <tr>
             <th class="align-middle">住所</th>
