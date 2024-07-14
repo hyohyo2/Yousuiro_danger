@@ -19,15 +19,15 @@
     <div class="col-lg-5 col-sm-12 py-5 text-center">
       <%= image_tag @post.get_image(360,270) %>
     </div>
-    <div class="col-lg-6 col-sm-12 text-center align-middle">
+    <div class="col-lg-7 col-sm-12 text-center align-middle">
       <table class="table border-bottom">
         <tbody>
           <tr>
-            <th class="col-3">投稿日時</th>
+            <th class="post-head">投稿日時</th>
             <td><%= l @post.created_at%></td>
           </tr>
           <tr>
-            <th class="align-middle">投稿者名</th>
+            <th class="post-head align-middle">投稿者名</th>
             <td>
               <%= link_to admin_user_path(@post.user_id) do %>
                 <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
@@ -36,7 +36,7 @@
             </td>
           </tr>
           <tr>
-            <th>状況</th>
+            <th class="post-head">状況</th>
             <td>
               <!--危険だと赤色表示、安全だと緑色表示-->
               <% if @post.danger? %>
@@ -51,11 +51,11 @@
             </td>
           </tr>
           <tr>
-            <th>郵便番号</th>
+            <th class="post-head">郵便番号</th>
             <td>〒<%= @post.post_code.slice(0, 3) %>-<%= @post.post_code.slice(3, 4) %></td>
           </tr>
           <tr>
-            <th class="align-middle">住所</th>
+            <th class="post-head align-middle">住所</th>
             <td>
               <%= @post.prefecture_address %>
               <%= @post.city_address %>
@@ -63,7 +63,7 @@
             </td>
           </tr>
           <tr>
-            <th class="align-middle">詳細</th>
+            <th class="post-head align-middle">詳細</th>
             <td><%= @post.detail %></td>
           </tr>
         </tbody>
