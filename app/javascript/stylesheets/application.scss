@@ -56,7 +56,7 @@
   width: 80%;
 }
 
-//ナビプルダウンの表示 
+//ナビプルダウンの表示
 .nav-item{
   text-align: center;
 }
@@ -148,6 +148,10 @@
   align-items: center;
 }
 
+.post-head{
+  width: 20%;
+}
+
 .notification-list{
   width: 100%;
   text-align: center;
@@ -197,6 +201,10 @@
   .post-group{
     width: 350px;
   }
+
+  .post-head{
+  width: 25%;
+}
 
   .card{
     width: 350px;
