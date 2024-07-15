@@ -42,16 +42,14 @@
 - IDE：Cloud9
 
 ## 実装機能
-ゲストログイン、会員機能、投稿機能、検索機能、ユーザー管理機能、いいね機能、いいね一覧表示機能、
-フォロー機能、コメント機能、他者投稿をタイムラインで共有、地図表示機能(google map API/geocoder)、投稿数算出、通知機能、DM機能
-(非同期通信：フォロー機能、いいね機能、DM機能)
-レスポンシブ対応
+ゲストログイン、会員機能、投稿機能、検索機能、ユーザー管理機能、いいね機能、いいね一覧表示機能、  
+フォロー機能、コメント機能、他者投稿をタイムラインで共有、地図表示機能(google map API/geocoder)、  投稿数算出、通知機能、DM機能  
+(非同期通信：フォロー機能、いいね機能、DM機能)  
+レスポンシブ対応(768pxまで)
 
 ## サイトトップページ
- ![スクリーンショット 2024-07-11 151438](https://github.com/hyohyo2/Yousuiro_danger/assets/163430298/61dd8493-be8d-4dcc-ab5e-5e20af7635b3)
-
-## アプリケーション資料
-- [プレゼンテーション資料](https://docs.google.com/presentation/d/1RF3Pq7VkfttYCt0hl4MabpxMxnd9PEctjr4-BcuG2oY/edit?usp=sharing)
+ ![スクリーンショット 2024-07-11 151438](https://github.com/hyohyo2/Yousuiro_danger/assets/163430298/61dd8493-be8d-4dcc-ab5e-5e20af7635b3)  
+ ※サイト内であらかじめ投稿をしている投稿内容はあくまで一例です。ご了承ください。
 
 ## 使用素材
 - フリー素材ぱくたそ［ https://www.pakutaso.com ］
