@@ -1,10 +1,10 @@
 function jpostal(){
   $('#post_code').jpostal({
-    postcode : ['#post_code'],
+    postcode : ['#post_post_code'],
     address : {
-      '#prefecture_address': '%3',
-      '#city_address': '%4',
-      '#block_address': '%5'
+      '#post_prefecture_address': '%3',
+      '#post_city_address': '%4',
+      '#post_block_address': '%5'
     }
   });
 }

@@ -27,10 +27,6 @@ class Post < ApplicationRecord
     "#{prefecture_address} #{city_address} #{block_address}"
   end
 
-  # 投稿画像
-  def get_image(width, height)
-    image.variant(resize: "#{width}x#{height}!").processed
-  end
 
   # 特定ユーザーのお気に入り登録の判定
   def favorited_by?(user)

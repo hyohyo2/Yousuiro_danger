@@ -18,9 +18,9 @@
             <span class="col-md-4"><%= f.label :status, "状況" %></span>
             <div class="status-button col-md-8 p-0">
               <%= f.radio_button :status, Post.statuses.key(0) %>
-              <%= f.label :status, Post.statuses_i18n[:danger], class: "text-danger font-weight-bold mr-3"%>
+              <%= f.label :status, Post.statuses_i18n[:danger], value: Post.statuses.key(0), class: "text-danger font-weight-bold mr-3"%>
               <%= f.radio_button :status, Post.statuses.key(1) %>
-              <%= f.label :status, Post.statuses_i18n[:safety], class: "text-success font-weight-bold" %>
+              <%= f.label :status, Post.statuses_i18n[:safety], value: Post.statuses.key(1), class: "text-success font-weight-bold" %>
             </div>
           </div>
           <div class="input-group mb-3">
