@@ -28,9 +28,9 @@
         <% else %>
           <!--チャット相手送信内容表示-->
           <div class="left-container d-flex align-items-center my-2">
-            <%= image_tag @user.get_profile_image(50,50), class: "rounded-circle" %>
-            <p class="ml-3 mb-0" style="background-color: #DDDDDD; padding: 5px; border-radius: 10px;" >
-              <%= chat.message %>
+            <%= image_tag @user.profile_image, class: "rounded-circle small-user-img" %>
+            <p class="ml-3 mb-0" >
+              <%= simple_format(chat.message, sanitize: true, class: "m-0", style: "background-color: #DDDDDD; padding: 5px; border-radius: 10px;") %>
             </p>
             <!--時間表示-->
             <div class="time ml-2">

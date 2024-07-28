@@ -4,7 +4,7 @@
     <div class="card shadow-lg">
       <div class="card-item card-top">
         <%= link_to user_path(post.user_id) do %>
-          <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle" %>
+          <%= image_tag post.user.profile_image, class: "rounded-circle small-user-img" %>
           <%= post.user.name %>
         <% end %>
         <div class="card-item status-button">
@@ -22,7 +22,7 @@
       </div>
       <!--ユーザ画像とユーザー名をクリックすると-->
       <div class="card-item">
-        <%= image_tag post.get_image(200,150) %>
+        <%= image_tag post.image, class: "index-img" %>
       </div>
       <div class="card-item">
         <%= link_to post_path(post.id) do %>
