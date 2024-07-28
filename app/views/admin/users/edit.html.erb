@@ -39,12 +39,12 @@
           </div>
           <!--booleanのラジオボタン-->
           <div class="input-group mb-3">
-            <span class="col-md-5"><%= f.label :status, "ステータス" %></span>
+            <span class="col-md-5"><%= f.label :is_active, "ステータス" %></span>
             <div class="status-button col-md-7 p-0">
-              <%= f.radio_button :is_active, true %>
-              <%= f.label "有効", class: "text-primary font-weight-bold" %>
-              <%= f.radio_button :is_active, false %>
-              <%= f.label "退会", class: "text-secondary font-weight-bold" %>
+              <%= f.radio_button :is_active, true, id: "is_actives_true" %>
+              <%= f.label "有効", class: "text-primary font-weight-bold", for: "is_actives_true" %>
+              <%= f.radio_button :is_active, false, id: "is_actives_false" %>
+              <%= f.label "退会", class: "text-secondary font-weight-bold", for: "is_actives_false" %>
             </div>
           </div>
           <div>

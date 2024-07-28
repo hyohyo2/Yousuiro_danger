@@ -7,9 +7,9 @@
   <div class="row align-items-center my-4">
     <!--ユーザ情報-->
     <div class="col-lg-1"></div>
-    <div class="col-lg-4 col-sm-12 text-center ">
+    <div class="col-lg-4 col-sm-12 text-center">
       <div class="mb-3">
-        <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
+        <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle user-show-img" %>
       </div>
       <h5 class="my-2">
         <strong><%= @user.name %></strong>

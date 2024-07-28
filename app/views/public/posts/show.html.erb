@@ -18,7 +18,7 @@
   <!--投稿内容-->
   <div class="row mb-5">
     <div class="col-lg-5 col-sm-12 py-3 text-center">
-      <%= image_tag @post.get_image(360,270) %>
+      <%= image_tag @post.image, class: "show-img" %>
     </div>
     <!--投稿詳細(右側)-->
     <div class="col-lg-6 col-sm-12 text-center mt-3">
@@ -31,7 +31,8 @@
           <th class="post-head align-middle">投稿者名</th>
           <td>
             <%= link_to user_path(@post.user_id) do %>
-              <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%#= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= image_tag @post.user.profile_image, class: "rounded-circle small-user-img" %>
               <%= @post.user.name %>
             <% end %>
             <!--ログインユーザー以外にフォローするボタンを表示-->
@@ -71,7 +72,7 @@
         </tr>
         <tr>
           <th class="post-head align-middle">詳細</th>
-          <td><%= @post.detail %></td>
+          <td class="text-center"><%= simple_format(@post.detail, sanitize: true, class: "m-0") %></td>
         </tr>
       </table>
       <!--ログインユーザーの投稿のみに表示-->

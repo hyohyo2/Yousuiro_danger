@@ -1,10 +1,13 @@
 <!--ユーザー送信分のチャット表示-->
 <div class="right-container d-flex justify-content-end align-items-center my-2">
-  <p id="chat_<%= chat.id %>" style="background-color: #FFC7AF; padding: 5px; margin: 5px; border-radius: 10px; ">
-    <%= chat.message %>
-  </p>
+  <div id="chat_<%= chat.id %>">
+    <%= simple_format(chat.message, class: "m-0", style: "background-color: #FFC7AF; padding: 5px; margin: 5px; border-radius: 10px;", sanitize: true) %>
+  </div>
+  <!--<p id="chat_<%#= chat.id %>" style= "background-color: #FFC7AF; padding: 5px; margin: 5px; border-radius: 10px;">-->
+  <!--  <%#= chat.message %>-->
+  <!--</p>-->
   <!--チャット送信時間表示-->
-  <div class="time" id="chat_time_<%= chat.id %>">
+  <div class="time ml-2" id="chat_time_<%= chat.id %>">
     <%= l chat.created_at, format: :short %>
   </div>
   <%= link_to chat_path(chat), class: "ml-1", method: :delete, "data-confirm" => "本当に削除しますか？", remote: true, id: "delete_chat_#{chat.id}" do %>

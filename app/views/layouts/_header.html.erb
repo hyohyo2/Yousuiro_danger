@@ -38,7 +38,7 @@
       <% if user_signed_in? %>
         <!--新規投稿へ-->
         <li class="nav-item mr-3">
-          <%= link_to "新規投稿", new_post_path, class: 'nav-link text-light'%>
+          <%= link_to "新規投稿", new_post_path, class: 'nav-link text-light', data: {"turbolinks" => false}%>
         </li>
         <!--マイページへ-->
         <li class="nav-item mr-3">

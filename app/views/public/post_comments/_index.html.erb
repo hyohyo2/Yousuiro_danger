@@ -9,12 +9,12 @@
         <td class="align-middle" style="font-size:15px;">
           <% if user_signed_in? %>
             <%= link_to user_path(post_comment.user) do %>
-              <%= image_tag post_comment.user.get_profile_image(35,35), class: "rounded-circle" %><br>
+              <%= image_tag post_comment.user.profile_image, class: "rounded-circle small-user-img" %><br>
               <%= post_comment.user.name %>
             <% end %>
           <% elsif admin_signed_in? %>
             <%= link_to admin_user_path(post_comment.user) do %>
-              <%= image_tag post_comment.user.get_profile_image(35,35), class: "rounded-circle" %><br>
+              <%= image_tag post_comment.user.profile_image, class: "rounded-circle small-user-img" %><br>
               <%= post_comment.user.name %>
             <% end %>
           <% end %>
