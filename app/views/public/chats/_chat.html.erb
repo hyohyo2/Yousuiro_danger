@@ -3,9 +3,6 @@
   <div id="chat_<%= chat.id %>">
     <%= simple_format(chat.message, class: "m-0", style: "background-color: #FFC7AF; padding: 5px; margin: 5px; border-radius: 10px;", sanitize: true) %>
   </div>
-  <!--<p id="chat_<%#= chat.id %>" style= "background-color: #FFC7AF; padding: 5px; margin: 5px; border-radius: 10px;">-->
-  <!--  <%#= chat.message %>-->
-  <!--</p>-->
   <!--チャット送信時間表示-->
   <div class="time ml-2" id="chat_time_<%= chat.id %>">
     <%= l chat.created_at, format: :short %>
